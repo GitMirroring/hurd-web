@@ -93,6 +93,12 @@ or `/local/`, so your current Hurd servers will be replaced.
 To install to a different location, specify `--prefix=PREFIX` as `configure`
 parameter, e.g. `--prefix=/usr` (as done when having a real `/usr`).
 
+To build acpi:
+
+    $ make acpi
+
+You may need to install necessary acpi headers (`libacpica-dev` package in Debian based distro).
+
 By default profiling versions of all the libraries and code are generated but
 this is useless in most of the cases, so we disable them by specifying
 `--disable-profile` on `configure`'s command line.

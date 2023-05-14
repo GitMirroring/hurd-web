@@ -130,7 +130,10 @@ working directory. For example:
 
 ## Debug 64-bit gnumach
 
-[[build|microkernel/mach/gnumach/building/]] 64-bit gnumach
+[[build|microkernel/mach/gnumach/building/]] 64-bit gnumach with:
+
+    $ export CFLAGS=-g
+    $ ../configure --enable-kdb ...
 
 run a spare Hurd vm (prepare for data loss in vm):
 
@@ -151,14 +154,13 @@ example `/boot/grub/grub.cfg`:
 
     multiboot       /boot/gnumach-1.8-486.gz root=part:2:device:hd0 console=com0
     ...
-    module          /hurd/acpi.static acpi \
-                    --host-priv-port='${host-port}' --device-master-port='${device-port}' \
-                    --next-task='${fs-task}' \
-                    '$(acpi-task=task-create)' '$(task-resume)'
+    echo            'Loading the Hurd ...'
     module          /hurd/ext2fs.static ext2fs --readonly \
                     --multiboot-command-line='${kernel-command-line}' \
+                     \
+                    --host-priv-port='${host-port}' --device-master-port='${device-port}' \
                     --exec-server-task='${exec-task}' -T typed '${root}' \
-                    '$(fs-task=task-create)'
+                    '$(fs-task=task-create)' '$(task-resume)'
     module          /lib/ld.so.1 exec /hurd/exec '$(exec-task=task-create)'
 
 
