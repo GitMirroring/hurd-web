@@ -13,11 +13,18 @@ License|/fdl]]."]]"""]]
 
 [[!meta title="Is there a 64-bit version?"]]
 
-There are currently no plan for 64-bit userland for the short term, but there
-are plans for 64-bit kernelland with 32-bit userland, which will notably permit
-to efficiently make use of more than 2 GiB memory and provide 4 GiB userland
-addressing space. The kernel support was merged into GNU Mach, the currently
-missing bit is the 32/64 mig translation for kernel RPCs.
+There are plans for 64-bit kernelland with 32-bit userland, which will notably
+permit to efficiently make use of more than 2 GiB memory and provide 4 GiB
+userland addressing space.
+
+A 64-bit GNU/Hurd is also coming soon!  Hurd developers ported GNUMach to
+64-bit some time ago.  Then they started making significant progress
+on the x86_64 userland port in Feb 2023.  As of May 2023, the 64-bit
+port works well enough to start all the essential Hurd servers and run
+/bin/sh.  We are currently building 64-bit packages.  We plan on
+supporting both a 32-bit and 64-bit Debian GNU/Hurd.  However, there
+is no plan to fix the year 2038 concern on a 32-bit system.
 
 That being said, you can always run a 32-bit version on a 64-bit machine, it
 just works, processes are just limited to a couple GiB available memory.
+
