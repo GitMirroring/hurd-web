@@ -24,9 +24,23 @@ License|/fdl]]."]]"""]]
 
 **Installing a 64bit chroot**
 
-    sudo debootstrap --foreign --verbose --arch hurd-amd64 --keyring=/usr/share/keyrings/debian-keyring.gpg  sid chroot-hurd-amd64 https://people.debian.org/~sthibault/tmp/hurd-amd64
+    sudo debootstrap --foreign --verbose --arch hurd-amd64 --keyring=/usr/share/keyrings/debian-keyring.gpg sid chroot-hurd-amd64 https://people.debian.org/~sthibault/tmp/hurd-amd64
 
-That will however not be bootable (missing translators etc.
+Then boot it, it will drop you into a shell. You need to make / writable:
+
+    fsysopts / --writable
+
+and then run the second stage of the deboostrap:
+
+    /debootstrap/debootstrap --second-stage
+
+set a root password:
+
+    password
+
+and reboot:
+
+    reboot-hurd
 
 **Installing a 64bit system**
 
