@@ -24,6 +24,8 @@ License|/fdl]]."]]"""]]
 
 **Installing a 64bit chroot**
 
+Make sure to have `debootstrap >= 1.0.128+nmu2+hurd.1`
+
     sudo debootstrap --foreign --verbose --arch hurd-amd64 --keyring=/usr/share/keyrings/debian-keyring.gpg sid chroot-hurd-amd64 https://people.debian.org/~sthibault/tmp/hurd-amd64
 
 Then boot it, it will drop you into a shell. You need to make / writable:
