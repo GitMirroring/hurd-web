@@ -24,6 +24,49 @@ You can use the following images to give the Hurd a try.
 
 [[!inline pages=hurd/running/debian/qemu_image raw=yes feeds=no]]
 
+#### Trying out rumpdisk
+
+[[Rump kernels|hurd/rump]] provide new modern drivers for the Hurd.
+We refer to rumpdisk as a rump kernel that provides drivers for modern
+hard drives, SSDs, etc.  The Rump kernels' integration into the Hurd
+are still somewhat experimental, but they seem to work fairly well on
+bleeding edge Debian.
+
+Once you have your latest qemu Debian GNU/Hurd image running, then you
+can try the rumpdisk (be sure to pass "-m 2GB" or more).  First,
+upgrade to the bleeding edge Debian GNU/Hurd:
+
+     # apt-get update
+     # apt-get dist-upgrade
+
+Now test to see if the rump kernel works before you make the change
+permanent.  Manually tweak your /boot/grub/grub.cfg like so:
+
+    #	multiboot	/boot/gnumach-1.8-486.gz root=part:2:device:hd0 console=com0
+	multiboot	/boot/gnumach-1.8-486.gz root=part:2:device:wd0 console=com0 noide
+
+and your /etc/fstab
+
+    #/dev/hd0s2      /               ext2    defaults        0       1
+    /dev/wd0s2      /               ext2    defaults        0       1
+    #/dev/hd0s1      none            swap    sw              0       0
+    /dev/wd0s1      none            swap    sw              0       0
+    #/dev/hd2        /media/cdrom0   iso9660 noauto          0       0
+    /dev/wd2        /media/cdrom0   iso9660 noauto          0       0
+
+Now you can poweroff your machine, reboot, and start using the
+rumpdisk!  You can make these changes permanent by tweaking
+/etc/default/grub and telling it to use rumpdisk:
+
+	GRUB_CMDLINE_GNUMACH="noide"
+
+Then update your grub:
+
+     # update-grub
+
+Check that "noide" does appear in your /boot/grub/grub.cfg.
+
+
 ## Arch Hurd Live CD
 
 [[!inline pages=hurd/running/live_cd raw=yes feeds=no]]
