@@ -78,11 +78,17 @@ through a proxy server, substitute your proxies IP and port no.s
 - query-string and fragment support
 - HTTP/1.1 support
 - HTTP/2 support
-- HTTP/3 support
+- HTTP/3 support (there may exist a C library that provides HTTP/[123]
+  support).
 - Teach httpfs to understand HTTP status codes like re-directs, 404 not found,
   etc.
 - Teach httpfs to look for "sitemaps".  Many sites offer a sitemap, and this
-  would be a nifty way for httpfs to allow grep-ing the entire site's contents.
+  would be a nifty way for httpfs to allow grep-ing the entire site's
+  contents. [[sitemaps.org|https://www.sitemaps.org]] is a great resource for
+  this.
+- Teach httpfs to check if the computer has an internet connection at
+  startup and during operation.  The translator causes 30 second
+  pauses on commands like "ls", when the internet is down.
 
 # Source
 
