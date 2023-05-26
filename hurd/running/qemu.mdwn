@@ -43,6 +43,7 @@ add these sources to your /etc/apt/sources.list
 Then, upgrade to the bleeding edge Debian GNU/Hurd:
 
      # apt-get update
+     # apt-get upgrade --without-new-pkgs
      # apt-get dist-upgrade
 
 Now test to see if the rump kernel works before you make the change
