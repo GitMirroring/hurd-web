@@ -34,7 +34,13 @@ bleeding edge Debian.
 
 Once you have your latest qemu Debian GNU/Hurd image running, then you
 can try the rumpdisk (be sure to pass "-m 2GB" or more).  First,
-upgrade to the bleeding edge Debian GNU/Hurd:
+add these sources to your /etc/apt/sources.list
+
+    deb http://deb.debian.org/debian-ports unstable main
+    deb-src http://deb.debian.org/debian unstable main
+    deb http://deb.debian.org/debian-ports unreleased main
+
+Then, upgrade to the bleeding edge Debian GNU/Hurd:
 
      # apt-get update
      # apt-get dist-upgrade
