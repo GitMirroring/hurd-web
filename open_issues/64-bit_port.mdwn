@@ -34,6 +34,7 @@ Then boot it, it will drop you into a shell. You need to make / writable:
 
 and then run the second stage of the deboostrap:
 
+    tail -f /debootstrap/debootstrap.log
     /debootstrap/debootstrap --second-stage
 
 set a root password:
