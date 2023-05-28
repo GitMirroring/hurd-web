@@ -22,8 +22,9 @@ A 64-bit GNU/Hurd is also coming soon!  Hurd developers ported GNUMach to
 on the x86_64 userland port in Feb 2023.  As of May 2023, the 64-bit
 port works well enough to start all the essential Hurd servers and run
 /bin/sh.  We are currently building 64-bit packages.  We plan on
-supporting both a 32-bit and 64-bit Debian GNU/Hurd.  However, there
-is no plan to fix the year 2038 concern on a 32-bit system.
+supporting both a 32-bit and 64-bit Debian GNU/Hurd, only not both at the same
+time.  However, there is no plan to fix the year 2038 concern on a 32-bit
+system.
 
 That being said, you can always run a 32-bit version on a 64-bit machine, it
 just works, processes are just limited to a couple GiB available memory.
