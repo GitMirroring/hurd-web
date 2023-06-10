@@ -37,7 +37,7 @@ and then run the second stage of the deboostrap:
     tail -f /debootstrap/debootstrap.log &
     /debootstrap/debootstrap --second-stage
 
-(the warnings `chown: invalid user: 'root'` are ok at that stage)
+(the warnings `chown: invalid user: 'root'` are ok at that stage, as well as the pre-dependency loops, which debootstrap is actually fixing)
 
 set a root password:
 
