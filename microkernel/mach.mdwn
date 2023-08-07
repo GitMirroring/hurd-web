@@ -24,9 +24,7 @@ microkernel currently used by the [[Hurd]].
 # Implementations
 
   * [[GNU_Mach|gnumach]]
-  * [Apple's Darwin](http://developer.apple.com/darwin/)
-    ([API](http://developer.apple.com/documentation/Darwin/Conceptual/KernelProgramming/index.html))
-    (**non-free**)
+  * [Apple's XNU (Darwin)](https://github.com/apple-oss-distributions/xnu) (**non-free**)
   * [[open_issues/OSF_Mach]]
 
 
