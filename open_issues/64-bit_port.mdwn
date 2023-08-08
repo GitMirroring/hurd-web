@@ -27,6 +27,8 @@ License|/fdl]]."]]"""]]
 Make sure to have `debootstrap >= 1.0.128+nmu2+hurd.1`
 
     sudo debootstrap --foreign --verbose --arch hurd-amd64 --keyring=/usr/share/keyrings/debian-keyring.gpg sid chroot-hurd-amd64 https://people.debian.org/~sthibault/tmp/hurd-amd64
+    sudo mkdir chroot-hurd-amd64/etc/apt/trusted.gpg.d
+    sudo ln -s /usr/share/keyrings/debian-keyring.gpg chroot-hurd-amd64/etc/apt/trusted.gpg.d/
 
 Then boot it, it will drop you into a shell. You need to make / writable:
 
@@ -34,10 +36,7 @@ Then boot it, it will drop you into a shell. You need to make / writable:
 
 and then run the second stage of the deboostrap:
 
-    tail -f /debootstrap/debootstrap.log &
     /debootstrap/debootstrap --second-stage
-
-(the warnings `chown: invalid user: 'root'` are ok at that stage, as well as the pre-dependency loops, which debootstrap is actually fixing)
 
 set a root password:
 
