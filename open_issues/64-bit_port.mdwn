@@ -30,13 +30,16 @@ Make sure to have `debootstrap >= 1.0.128+nmu2+hurd.1`
     sudo mkdir chroot-hurd-amd64/etc/apt/trusted.gpg.d
     sudo ln -s /usr/share/keyrings/debian-keyring.gpg chroot-hurd-amd64/etc/apt/trusted.gpg.d/
 
+Or use the pre-built image from https://people.debian.org/~sthibault/hurd-i386/initrd-amd64.img.gz
+
 Then boot it, it will drop you into a shell. You need to make / writable:
 
     fsysopts / --writable
 
-and then run the second stage of the deboostrap:
+and then run the second stage of the deboostrap (and clear debs):
 
     /debootstrap/debootstrap --second-stage
+    apt clean
 
 set a root password:
 
@@ -53,59 +56,3 @@ In principle crosshurd should be working, one however needs to add this source:
     deb http://people.debian.org/~sthibault/tmp/hurd-amd64 unstable
 
 into /etc/crosshurd/sources.list/gnu
-
-# IRC, freenode, #hurd, 2011-10-16
-
-    <youpi> it'd be really good to have a 64bit kernel, no need to care about
-      addressing space :)
-    <braunr> yes a 64 bits kernel would be nice
-    <braunr> i guess it wouldn't be too hard to have a special mach kernel for
-      64 bits processors, but 32 bits userland only
-    <youpi> well, it means tinkering with mig
-
-[[mig_portable_rpc_declarations]].
-
-
-# IRC, freenode, #hurd, 2012-10-03
-
-    <braunr> youpi: just so you know in case you try the master-x86_64 with
-      grub
-    <braunr> youpi: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=689509
-    <youpi> ok, thx
-    <braunr> the squeeze version is fine but i had to patch the wheezy/sid one
-    <youpi> I actually hadn't hoped to boot into 64bit directly from grub
-    <braunr> youpi: there is code in viengoos that could be reused
-    <braunr> i've been thinking about it for a time now
-    <youpi> ok
-    <braunr> the two easiest ways are 1/ the viengoos one (a -m32 object file
-      converted with objcopy as an embedded loader)
-    <braunr> and 2/ establishing an identity mapping using 4x1 GB large pages
-      and switching to long mode, then jumping to c code to complete the
-      initialization
-    <braunr> i think i'll go the second way with x15, so you'll have the two :)
-
-
-## IRC, freenode, #hurd, 2013-07-02
-
-In context of [[mondriaan_memory_protection]].
-
-    <xscript> BTW, it's not like I have an infinite amount of time for this,
-      but having 64-bit support would be valuable for me, so I might contribute
-      that back if it's not a too monumental task
-    <xscript> I saw some discussions about 32bit apps on top of 64bit mach, but
-      I'd like a full 64bit system
-    <xscript> any clues?
-    <xscript> I suppose the compiler support is all there already
-    <xscript> is MIG (and mach) the only piece missing?
-    <braunr> the problem is the interfaces themselves
-    <braunr> type widths
-    <braunr> as passed between userspace and kernel
-
-
-## IRC, OFTC, #debian-hurd, 2013-10-05
-
-    <dharc> and what about 64 bit support, almost done?
-    <youpi> kernel part is done
-    <youpi> MIG 32/64 trnaslation missing
-
-[[mig_portable_rpc_declarations]].
