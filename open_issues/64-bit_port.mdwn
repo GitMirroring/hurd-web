@@ -45,6 +45,11 @@ set a root password:
 
     password
 
+avoid core dumpings for now (not supported and hangs):
+
+    rm -f /servers/crash
+    ln -s crash-kill /servers/crash
+
 and reboot:
 
     reboot-hurd
