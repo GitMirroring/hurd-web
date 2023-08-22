@@ -36,11 +36,9 @@ Currently the master branch builds that way without any testsuite issue.
 
 To save some disk space, after the compilers stage you can remove src/mpc, src/mpfr, src/binutils, src/linux.
 
+Build logs are available in `/tmp/build/logs`
+
 # Building
-
-One of the tests really put boxes on its knees:
-
-    $ echo "tests-unsupported += test-lfs" >> sysdeps/mach/hurd/i386/Makefile
 
 One can build libc this way:
 
