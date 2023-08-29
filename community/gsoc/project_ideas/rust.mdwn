@@ -10,6 +10,12 @@ License|/fdl]]."]]"""]]
 
 [[!meta title="Porting Rust"]]
 
+[[!template id=highlight text="""/!\ Obsolete /!\
+
+---
+
+Vedant Tewari has been working on this as a Google Summer of Code 2023 project."""]]
+
 The goal of this project is to make the [Rust
 language](https://www.rust-lang.org/) available on GNU/Hurd.
 
@@ -67,3 +73,88 @@ Then one builds the cross-compiler with
 [Rust language](https://www.rust-lang.org/)
 
 [How to build and run Rust](https://rustc-dev-guide.rust-lang.org/building/how-to-build-and-run.html)
+
+
+---
+
+One can check out the result with:
+
+    git clone https://github.com/sthibaul/getrandom.git
+    git clone https://github.com/sthibaul/nix.git -b r0.26-hack
+    git clone https://github.com/sthibaul/rust-errno.git -b hack
+    git clone https://github.com/sthibaul/rust_libloading.git -b v0.7-hack
+    git clone https://github.com/sthibaul/rust_libloading.git -b hack rust_libloading-0.8.0
+    git clone https://github.com/sthibaul/rustix.git -b 0.37-hack
+    git clone https://github.com/sthibaul/rustix.git -b hack rustix-0.38.6
+    git clone https://github.com/sthibaul/socket2.git -b v0.4.x
+    git clone https://github.com/Vtewari2311/libc.git -b libc-hurd-latest-hack
+    git clone https://github.com/Vtewari2311/rust.git -b mod-hurd-latest-hack
+
+(yes, we do need several checkouts of libloading and rustix...)
+
+---
+
+To build from GNU/Hurd, you will need existing `rustc`/`cargo`/`rustfmt`, you
+can e.g. fetch the tarball
+[from Samuel](https://people.debian.org/~sthibault/hurd-i386/rust-hurd.tar.xz).
+Then you can add the following to `rust/config.toml`
+
+    [build]
+    rustc = "/path/to/your/rust-hurd/usr/local/bin/rustc"
+    rustfmt = "/path/to/your/rust-hurd/usr/local/bin/rustfmt"
+    cargo = "/path/to/your/rust-hurd/usr/local/bin/cargo"
+
+And then run from `rust/`
+
+    ./x build
+    DESTDIR=/where/you/want ./x install
+
+Expect about 20GB disk usage and several hours duration. You also need quite
+some ram, 4GB may be needed.
+
+---
+
+To cross-build (e.g. from Linux), you need to set up a cross build toolchain
+; a simple way is to use the `build-many-glibcs.py` script as described on
+[[hurd/glibc]]. Note that to produce something that can be run even on current
+latest Debian, you should be using the `2.37/master` branch. You also need to
+comment the `#define ED` from `sysdeps/mach/hurd/bits/errno.h`.
+
+You also need to unpack a Hurd build of openssl ; a simple way is to take the
+debian packages from debian-ports:
+[libssl3](http://deb.debian.org/debian-ports/pool-hurd-i386/main/o/openssl/libssl3_3.0.10-1_hurd-i386.deb)
+and
+[libssl-dev](http://deb.debian.org/debian-ports/pool-hurd-i386/main/o/openssl/libssl-dev_3.0.10-1_hurd-i386.deb)
+and unpack them with:
+
+    dpkg-deb -x libssl3_3.0.10-1_hurd-i386.deb /where/you/want
+    dpkg-deb -x libssl-dev_3.0.10-1_hurd-i386.deb /where/you/want
+    mv /where/you/want/usr/include/i386-gnu/openssl/* /where/you/want/usr/include/openssl/
+    mv /where/you/want/usr/lib/i386-gnu/* /where/you/want/usr/lib/
+
+Then you can add the following to `rust/config.toml`
+
+    [llvm]
+    download-ci-llvm = false
+
+    [target.i686-unknown-hurd-gnu]
+    cc = "/path/to/your/build-glibc/install/compilers/i686-gnu/bin/i686-glibc-gnu-gcc"
+    cxx = "/path/to/your/build-glibc/install/compilers/i686-gnu/bin/i686-glibc-gnu-g++"
+    linker = "/path/to/your/build-glibc/install/compilers/i686-gnu/bin/i686-glibc-gnu-gcc"
+
+And then run from `rust/`
+
+    export I686_UNKNOWN_HURD_GNU_OPENSSL_DIR=/where/you/want/usr
+    ./x build --stage 0 compiler library
+    ./x build --host i686-unknown-hurd-gnu --target i686-unknown-hurd-gnu compiler library cargo rustfmt
+    DESTDIR=/where/you/want ./x install --host i686-unknown-hurd-gnu --target i686-unknown-hurd-gnu
+
+Expect about 30GB disk usage and several hours duration. You also need quite
+some ram, 4GB may be needed. Take care if you have many cores and threads, the
+parallel build of llvm can be quite demanding, you may want to reduce the number
+of available processors (e.g. disabling SMT by prefixing your commands with
+`hwloc-bind --no-smt all -- `), so you have more memory per core.
+
+Note that you will have a usable cross-compiler in
+`rust/build/x86_64-unknown-linux-gnu/stage1/bin/rustc` and a native Hurd compiler in
+`rust/build/i686-unknown-hurd-gnu/stage2/bin/rustc`
