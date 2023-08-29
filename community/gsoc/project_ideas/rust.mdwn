@@ -149,7 +149,7 @@ And then run from `rust/`
     ./x build --host i686-unknown-hurd-gnu --target i686-unknown-hurd-gnu compiler library cargo rustfmt
     DESTDIR=/where/you/want ./x install --host i686-unknown-hurd-gnu --target i686-unknown-hurd-gnu
 
-Expect about 30GB disk usage and several hours duration. You also need quite
+Expect about 25GB disk usage and several hours duration. You also need quite
 some ram, 4GB may be needed. Take care if you have many cores and threads, the
 parallel build of llvm can be quite demanding, you may want to reduce the number
 of available processors (e.g. disabling SMT by prefixing your commands with
