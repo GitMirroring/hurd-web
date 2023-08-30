@@ -109,7 +109,7 @@ And then run from `rust/`
     ./x build
     DESTDIR=/where/you/want ./x install
 
-Expect about 20GB disk usage and several hours duration. You also need quite
+Expect about 15GB disk usage and several hours duration. You also need quite
 some ram, 4GB may be needed.
 
 ---
