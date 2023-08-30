@@ -108,6 +108,7 @@ And then run from `rust/`
 
     ./x build
     DESTDIR=/where/you/want ./x install
+    DESTDIR=/where/you/want ./x install cargo rustfmt
 
 Expect about 20GB disk usage and several hours duration. You also need quite
 some ram, 4GB may be needed.
@@ -148,6 +149,7 @@ And then run from `rust/`
     ./x build --stage 0 compiler library
     ./x build --host i686-unknown-hurd-gnu --target i686-unknown-hurd-gnu compiler library cargo rustfmt
     DESTDIR=/where/you/want ./x install --host i686-unknown-hurd-gnu --target i686-unknown-hurd-gnu
+    DESTDIR=/where/you/want ./x install --host i686-unknown-hurd-gnu --target i686-unknown-hurd-gnu cargo rustfmt
 
 Expect about 25GB disk usage and several hours duration. You also need quite
 some ram, 4GB may be needed. Take care if you have many cores and threads, the
