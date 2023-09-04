@@ -90,7 +90,7 @@ One can check out the result with:
     git clone https://github.com/Vtewari2311/libc.git -b libc-hurd-latest-hack
     git clone https://github.com/Vtewari2311/rust.git -b mod-hurd-latest-hack
 
-(yes, we do need several checkouts of libloading and rustix...)
+(yes, rust imposes checking out libloading and rustix several times...)
 
 ---
 
