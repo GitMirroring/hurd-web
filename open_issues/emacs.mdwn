@@ -14,15 +14,6 @@ License|/fdl]]."]]"""]]
 
 GNU Emacs mostly does work, however there are a few issues.
 
-  * Configuration in `src/s/`: `gnu.h` uses `bsd-common.h`.  `gnu-kfreebsd.h`
-    uses `gnu-linux.h` -- we probably should too.
-
-      * `gnu-linux.h` makes a few things depend on `/proc` (also see
-        `HAVE_PROCFS`) -- either resort to our own ways, or enhance our
-        [[hurd/translator/procfs]] accordingly.
-
-          * `sysdep.c`
-
 ---
 
 # 2023-08-31
