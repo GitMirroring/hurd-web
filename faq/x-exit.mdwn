@@ -16,3 +16,12 @@ License|/fdl]]."]]"""]]
 This is due to a missing implementation of a corner case of Posix signaling for non-root processes to root processes.
 
 One can however use the usual ctrl-alt-backspace shortcut to kill the X server.
+
+You just need to configure it via the file:
+`/etc/X11/xorg.conf.d/xorg-ctrl-backspace.conf`
+
+	Section "InputDevice"
+		Identifier "Generic KeyBoard"
+        	Driver "kbd"
+        	Option "XkbOptions" "terminate:ctrl_alt_bksp"
+	EndSection
