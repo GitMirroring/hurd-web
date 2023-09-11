@@ -41,6 +41,7 @@ License|/fdl]]."]]"""]]
 ---
 
   * **[[Debian GNU/Hurd|hurd/running/debian]]**
+  * **[[Guix GNU/Hurd|hurd/running/Guix]]**
   * **[[Arch GNU/Hurd|hurd/running/live_cd/]]**
   * **[[GNU System|hurd/running/gnu]]**
 
