@@ -15,7 +15,7 @@ License|/fdl]]."]]"""]]
 
 ---
 
-This is no longer valid as a Google Summer of Code project."""]]
+Svante Signell revived the patch and fixed it, it is now committed"""]]
 
 
 Over the years, [[UNIX]] has acquired a host of different file locking mechanisms.
