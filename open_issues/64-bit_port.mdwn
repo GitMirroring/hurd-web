@@ -43,7 +43,7 @@ and then run the second stage of the deboostrap (and clear debs):
 
 set a root password:
 
-    password
+    passwd
 
 avoid core dumpings for now (not supported and hangs):
 
