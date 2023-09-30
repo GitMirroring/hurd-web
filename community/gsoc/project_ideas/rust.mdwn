@@ -84,13 +84,11 @@ One can check out the result with:
     git clone https://github.com/sthibaul/rust-errno.git -b hack
     git clone https://github.com/sthibaul/rust_libloading.git -b v0.7-hack
     git clone https://github.com/sthibaul/rust_libloading.git -b hack rust_libloading-0.8.0
-    git clone https://github.com/sthibaul/rustix.git -b 0.37-hack
-    git clone https://github.com/sthibaul/rustix.git -b hack rustix-0.38.6
     git clone https://github.com/sthibaul/socket2.git -b v0.4.x
     git clone https://github.com/Vtewari2311/libc.git -b libc-hurd-latest-hack
     git clone https://github.com/Vtewari2311/rust.git -b mod-hurd-latest-hack
 
-(yes, rust imposes checking out libloading and rustix several times...)
+(yes, rust imposes checking out libloading several times...)
 
 ---
 
