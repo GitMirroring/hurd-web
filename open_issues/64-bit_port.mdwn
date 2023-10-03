@@ -19,8 +19,9 @@ License|/fdl]]."]]"""]]
 
 **For pure 64bit support, we need to**
 
-  * Fix bugs :)
   * bootstrap a distrib
+  * port gdb
+  * Fix bugs :)
 
 **Installing a 64bit chroot**
 
