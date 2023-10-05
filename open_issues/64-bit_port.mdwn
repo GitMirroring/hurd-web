@@ -22,16 +22,17 @@ License|/fdl]]."]]"""]]
   * bootstrap a distrib
   * port gdb
   * Fix bugs :)
+    * Notably it seems to be requiring at least 2G memory to boot.
 
 **Installing a 64bit chroot**
 
+You can use the pre-built image from https://people.debian.org/~sthibault/hurd-i386/initrd-amd64.img.gz and boot that.
+
 Make sure to have `debootstrap >= 1.0.128+nmu2+hurd.1`
 
-    sudo debootstrap --foreign --verbose --arch hurd-amd64 --include=debian-keyring --keyring=/usr/share/keyrings/debian-keyring.gpg sid chroot-hurd-amd64 https://people.debian.org/~sthibault/tmp/hurd-amd64
-    sudo mkdir chroot-hurd-amd64/etc/apt/trusted.gpg.d
-    sudo ln -s /usr/share/keyrings/debian-keyring.gpg chroot-hurd-amd64/etc/apt/trusted.gpg.d/
-
-Or use the pre-built image from https://people.debian.org/~sthibault/hurd-i386/initrd-amd64.img.gz
+    debootstrap --foreign --verbose --arch hurd-amd64 --include=debian-keyring,wget,curl,inetutils-ping,openssh-server,openssh-client,nano,less --keyring=/usr/share/keyrings/debian-keyring.gpg sid chroot-hurd-amd64 https://people.debian.org/~sthibault/tmp/hurd-amd64
+    mkdir chroot-hurd-amd64/etc/apt/trusted.gpg.d
+    ln -s /usr/share/keyrings/debian-keyring.gpg chroot-hurd-amd64/etc/apt/trusted.gpg.d/
 
 Then boot it, it will drop you into a shell. You need to make / writable:
 
@@ -46,14 +47,79 @@ set a root password:
 
     passwd
 
-avoid core dumpings for now (not supported and hangs):
+Avoid core dumpings for now (not supported and hangs):
 
     rm -f /servers/crash
     ln -s crash-kill /servers/crash
 
-and reboot:
+Disable the Hurd console, buggy for now:
+
+    export TERM=mach
+    nano /etc/default/hurd
+    # set ENABLE to 'false'
+
+And reboot:
 
     reboot-hurd
+
+After reboot, you'll probably want to setup network:
+
+    vi /etc/network/interfaces
+    # put there this:
+    # auto /dev/eth0
+    # iface /dev/eth0 inet static
+    #     address 10.0.2.15/16
+    #     gateway 10.0.2.2
+
+**Creating a 64bit disk image**
+
+You can use the pre-built image from https://people.debian.org/~sthibault/hurd-i386/disk-amd64.img.gz and boot that.
+
+To make a bootable system we really better make the disk image partitioned, and mount the partition:
+
+    dd < /dev/zero > disk.img bs=1M count=1 seek=1000
+    fdisk disk.img
+    # create a new primary partition spanning the whole disk: n p and just accept the defaults, and finish with w
+    settrans -ca disk /hurd/storeio -T typed file:disk.img
+    settrans -ca disk1 /hurd/storeio -T typed part:1:file:disk.img
+    mke2fs disk1
+    settrans -ca chroot-hurd-amd64 /hurd/ext2fs disk1
+
+(here we assume that fdisk puts the partition at sector 2048, that's indeed the
+current default behavior)
+
+Then run the same debootstrap command as above.
+
+You can then make the disk bootable:
+
+    mkdir chroot-hurd-amd64/boot/grub
+    tee chroot-hurd-amd64/boot/grub/grub.cfg << 'EOF'
+    menuentry "Debian GNU/Hurd amd64" {
+            insmod ext2
+            set root=(hd0,1)
+            multiboot       /boot/gnumach-1.8-486.gz root=part:1:device:wd0
+            module /hurd/pci-arbiter.static pci-arbiter \
+                            --host-priv-port='${host-port}' --device-master-port='${device-port}' \
+                            --next-task='${disk-task}' \
+                            '$(pci-task=task-create)' '$(task-resume)'
+            module /hurd/rumpdisk.static rumpdisk \
+                            --next-task='${fs-task}' \
+                            '$(disk-task=task-create)'
+            module /hurd/ext2fs.static ext2fs --readonly \
+                            --multiboot-command-line='${kernel-command-line}' \
+                            --exec-server-task='${exec-task}' -T typed '${root}' \
+                            '$(fs-task=task-create)'
+            module /lib/ld-x86-64.so.1 exec /hurd/exec '$(exec-task=task-create)'
+    }
+    EOF
+    grub-install --modules="part_msdos ext2" --boot-directory chroot-hurd-amd64/boot disk
+    settrans -ga chroot-hurd-amd64
+    settrans -ga disk
+    settrans -ga disk1
+
+Note: you need to set the uuid in the grub config according to the uuid produced by the `mke2fs` command.
+
+Then boot it, and proceed like for the chroot case.
 
 **Installing a 64bit system**
 
