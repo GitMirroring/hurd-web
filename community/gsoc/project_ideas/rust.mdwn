@@ -81,7 +81,6 @@ One can check out the result with:
 
     git clone https://github.com/sthibaul/getrandom.git
     git clone https://github.com/sthibaul/nix.git -b r0.26-hack
-    git clone https://github.com/sthibaul/rust-errno.git -b hack
     git clone https://github.com/sthibaul/rust_libloading.git -b v0.7-hack
     git clone https://github.com/sthibaul/rust_libloading.git -b hack rust_libloading-0.8.0
     git clone https://github.com/sthibaul/socket2.git -b v0.4.x
