@@ -10,6 +10,193 @@ License|/fdl]]."]]"""]]
 
 [[!tag open_issue_gnumach]]
 
+Mach is not always able to merge/coalesce mappings (VM entries) that
+are made next to each other, leading to potentially very large numbers
+of VM entries, which may slow down the VM functionality. This is said
+to particularly affect ext2fs and bash.
+
+The basic idea of Mach designers is that entry coalescing is only an
+optimization anyway, not a hard guarantee. We can apply it in the
+common simple case, and just refuse to do it in any remotely complex
+cases (copies, shadows, multiply referenced objects, pageout in
+progress, ...).
+
+Suppose you define a special test program that intentionally maps
+parts of a file next to each other and watches the resulting VM map
+entries, and just ran a full Hurd system and observed results.
+
+One can stress test ext2fs in particular to check for VM entry
+merging:
+
+     # grep NR -r /usr &> /dev/null
+     # vminfo 8 | wc -l
+
+That grep opens and reads lots of files to simulate a long-running
+machine (perhaps a build server); then one can look at the number of
+mappings in ext2fs afterwards. Depending on how much your /usr is
+populated, you will get different numbers.  An older Hurd from say
+2022, the above comand would result in 5,000-20,000 entries depending
+on the machine!  In June 2023, GNUMach gained some forward merging
+functinality, which lowered the number of mappings down to 93 entries!
+
+(It is a separate question of why ext2fs makes that many mappings in
+the first place. There could possible by a leak in ext2fs that would
+be responsible for this, but none have been found so far. Possibly
+another problem is that we have an unbounded node cache in libdiskfs
+and Mach caching VM objects, which also keeps the node alive.)
+
+These are the simple forward merging cases that GNUMach now supports:
+
+- Forward merging: in `vm_map_enter`, merging with the next entry, in
+  addition to merging with the previous entry that was already there;
+
+- For forward merging, a `VM_OBJECT_NULL` can be merged in front of a
+  non-null VM object, provided the second entry has large enough
+  offset into the object to 'mount' the the first entry in front of
+  it;
+
+- A VM object can always be merged with itself (provded offsets/sizes
+  match) -- this allows merging entries referencing non-anonymous VM
+  objects too, such a file mappings;
+
+- Operations such as `vm_protect` do "clipping", which means splitting
+  up VM map entries, in case the specified region lands in the middle
+  of an entry -- but they were never "gluing" (merging, coalescing)
+  entries back together if the region is later vm_protect'ed back. Now
+  this is done (and we try to coalesce in some other cases too). This
+  should particularly help with "program break" (brk) in glibc, which
+  vm_protect's the pages allocated for the brk back and forth all the
+  time.
+
+- As another optimization, throw away unmapped physical pages when
+  there are no other references to the object (provided there is no
+  pager). Previously the pages would remain in core until the object
+  was either unmapped completely, or until another mapping was to be
+  created in place of the unmapped one and coalescing kicked in.
+
+- Also shrink the size of `struct vm_page` somewhat. This was a low
+  hanging fruit.
+
+`vm_map_coalesce_entry()` is analogous to `vm_map_simplify_entry()` in
+other versions of Mach, but different enough to warrant a different
+name. The same "coalesce" wording was used as in
+`vm_object_coalesce()`, which is appropriate given that the former is
+a wrapper for the latter.
+
+### The following provides clarifies some inaccuracies in old IRC logs:
+
+    any request, be it e.g. `mmap()`, or `mprotect()`, can easily split
+    entries
+
+`mmap ()` cannot split entries to my knowledge, unless we're talking about
+`MAP_FIXED` and unampping parts of the existing mappings.
+
+    my ext2fs has ~6500 entries, but I guess this is related to
+    mapping blocks from the filesystem, right?
+
+No. Neither libdiskfs nor ext2fs ever map the store contents into memory
+(arguably maybe they should); they just read them with `store_read ()`,
+and then dispose of the the read buffers properly. The excessive number
+of VM map entries, as far as I can see, is just heap memory.
+
+    (I'm perplexed about how the kernel can merge two memory objects if
+    disctinct port names exist in the tasks' name space -- that's what
+    `mem_obj` is, right?)
+
+    if, say, 584 and 585 above are port names which the task expects to be
+    able to access and do stuff with, what will happen to them when the
+    memory objects are merged?
+
+`mem_obj` in `vminfo` output is the VM object *name* port, not the
+pager port (arguably `vminfo` should name it something other than
+`mem_obj`). The name port is basically useful for seeing if two VM
+regions have the exact same VM object mapped, and not much
+else. Previously, it was also possible, as a GNU Mach extension, to
+pass the name port into `vm_map ()`, but this was dropped for security
+reasons. When Mach is built with `MACH_VM_DEBUG`, a name port can also
+be used to query information about a VM object.
+
+Mach can't merge two memory objects. Mach doesn't merge *memory objects*
+at all, it only merges/coalesces *VM objects*. The difference is subtle,
+but important in certain contexts like this one: a "VM object" refers to
+Mach's internal representation (`struct vm_object`), and a "memory object"
+refers to the memory manager's implementation. There is normally a
+1-to-1 correspondence between the two, but this is not always the case:
+internal VM objects start without a memory object (pager) port at all,
+and only get one created if/when they're paged out. There can be
+multiple VM objects referencing the same backing memory object due to
+copying and shadowing.
+
+So what Mach could do is merge the internal VM objects, by altering
+page offsets to paste pages of one of the objects after the pager of
+the other. But this is not implemented yet. What Mach actually does is
+it avoids creating those internal VM objects and entries in the first
+place, instead extending an already existing VM object and entry to
+cover the new mapping.
+
+    but at least, if two `vm_objects` are created but reference the same
+    externel memory object, the vm should be able to merge them back
+
+That never ever happens. There can only be a single `vm_object` for a
+memory object. (In a single instance of Mach, that is -- if multiple
+Machs access the same memory object over network-transparent IPC, each
+is going to have its own `vm_object` representing the memory object.)
+
+See `vm_object_enter()` function, which looks up an existing VM object for
+a memory object, and creates one if it doesn't yet exist.
+
+    ok so if I get it right, the entries shown by `vmstat` are the
+    `vm_object`, and the mem_obj listed is a send right to the memory
+    object they're referencing ?
+
+    yes
+
+No. The entries shown are VM map entries (`struct vm_map_entry`). There
+can be entries that reference no VM object at all (`VM_OBJECT_NULL`), or
+multiple entries that reference the same VM object. In fact this is
+visible in the example above, the two entries mapped at `0x1311000` and at
+`0x1314000` reference the same VM object, whose name port is 586.
+
+`mem_obj` listed is a send right to the *name* port of the VM object, not
+to the memory object. Letting a task get the memory object port would be
+disastrous for security (see the "No read-only mappings" vulnerability).
+
+    i'm not sure about the type of the integer showed (port name or simply
+    an index)
+
+It is a port name (in vminfo's IPC name space) of the VM object name
+port.
+
+    if every `vm_allocate` request implies the creation of a memory object
+    from the default pager
+
+Not immediately, no. Only if the memory has to be paged out. Otherwise
+an internal VM object is created without a memory object.
+
+    and a `vm_object` is not a capability, but just an internal kernel
+    structure used to record the composition of the address space
+
+It is a kernel structure, but it also is a capability in the same way as
+a task or a thread is a capability -- it is exposed as a port.
+Specifically, a `memory_object_control_t` port is directly converted to a
+`struct vm_object` by MIG. This would perhaps be clearer if
+`memory_object_control_t` was instead named `vm_object_t`. The VM object
+name port is also converted to a VM object, but this is only used in the
+`MACH_VM_DEBUG RPCs`.
+
+    i wonder when `vm_map_enter()` gets null objects though :/
+
+Whenever you do `vm_map ()` with `MACH_PORT_NULL` for the object, or on
+`vm_allocate ()` which is a shortcut for the same.
+
+    the default pager backs `vm_objects` providing zero filled memory
+
+If that was the case, there would not be a need for a pager, Mach could
+just hand out zero-filled pages. The anonymous mappings do start out
+zero-filled, that is true. The default pager gets involved when the
+pages are dirtied (so they no longer zero-filled) and there's memory
+shortage so the pages have to paged out.
+
 
 # IRC, freenode, #hurd, 2011-07-20
 
