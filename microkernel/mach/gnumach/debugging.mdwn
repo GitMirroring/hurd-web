@@ -73,6 +73,10 @@ and then type continue, to let Mach continue execution. The debugger will be ent
     struct db_watchpoint watch = { .task = NULL, .loaddr= 0x40e, .hiaddr = 0x40e+2, .link = NULL};
     db_set_hw_watchpoint(&watch, 0);
 
+To discover what an arbitrary address points to, try
+
+    whatis  0x123400
+
 # GDB in QEMU
 
 When you're [[running_a_system_in_QEMU|hurd/running/qemu]] you can directly
