@@ -17,7 +17,9 @@ There are plans for 64-bit kernelland with 32-bit userland, which will notably
 permit to efficiently make use of more than 2 GiB memory and provide 4 GiB
 userland addressing space.
 
-A 64-bit GNU/Hurd is also coming soon!  Hurd developers ported GNUMach to
+A 64-bit GNU/Hurd is also coming soon,
+progress is tracked on [[open_issues/64-bit_port]]!
+Hurd developers ported GNUMach to
 64-bit some time ago.  Then they started making significant progress
 on the x86_64 userland port in Feb 2023.  As of May 2023, the 64-bit
 port works well enough to start all the essential Hurd servers, run
