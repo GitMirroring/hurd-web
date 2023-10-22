@@ -121,9 +121,15 @@ Note: you need to set the uuid in the grub config according to the uuid produced
 
 Then boot it, and proceed like for the chroot case.
 
+**Installing from the debian-ports archive**
+
+For now it's quite empty (not even gcc), but it can be debootstrapped. That will be used to build packages on the buildds.
+
+    debootstrap --foreign --verbose --arch hurd-amd64 --extra-suites=unreleased --include=debian-ports-archive-keyring --keyring=/usr/share/keyrings/debian-ports-archive-keyring.gpg sid chroot-hurd-amd64 https://deb.debian.org/debian-ports/
+
 **Installing a 64bit system**
 
-In principle crosshurd should be working, one however needs to add this source:
+In principle crosshurd should be working, one however should add this source to get more packages for now:
 
     deb http://people.debian.org/~sthibault/tmp/hurd-amd64 unstable
 
