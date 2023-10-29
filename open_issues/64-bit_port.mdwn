@@ -129,6 +129,32 @@ For now it's quite empty (not even gcc), but it can be debootstrapped. That will
 
     debootstrap --foreign --verbose --arch hurd-amd64 --extra-suites=unreleased --include=debian-ports-archive-keyring --keyring=/usr/share/keyrings/debian-ports-archive-keyring.gpg sid chroot-hurd-amd64 https://deb.debian.org/debian-ports/
 
+**Creating a pbuilder chroot**
+
+Here is a sample `/etc/pbuilderrc`:
+
+    MIRRORSITE=https://people.debian.org/~sthibault/tmp/hurd-amd64
+    AUTOCLEANAPTCACHE=yes
+    EXTRAPACKAGES="eatmydata"
+    if [ -z "$LD_PRELOAD" ]; then
+            LD_PRELOAD=libeatmydata.so
+    else
+            LD_PRELOAD="$LD_PRELOAD":libeatmydata.so
+    fi
+    export LD_PRELOAD
+    DEBOOTSTRAPOPTS=(
+            '--variant=buildd'
+            '--force-check-gpg'
+            '--keyring=/usr/share/keyrings/debian-keyring.gpg'
+    )
+    APTKEYRINGS=(/usr/share/keyrings/debian-keyring.gpg)
+
+And this is needed until we get the `aptitude` package built:
+
+    sudo ln -sf pbuilder-satisfydepends-apt /usr/lib/pbuilder/pbuilder-satisfydepends
+
+And then you can run `sudo pbuilder create` , `sudo pbuilder login` , `pdebuild`
+
 **Installing a 64bit system**
 
 In principle crosshurd should be working, one however should add this source to get more packages for now:
