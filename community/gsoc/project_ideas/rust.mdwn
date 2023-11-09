@@ -113,7 +113,22 @@ some ram, 4GB may be needed.
 One can run the basic testsuites with
 
     ./x test tests/ui
+    ./x test library/core
     ./x test library/std
+
+One [can run tests remotely](https://rustc-dev-guide.rust-lang.org/tests/running.html#running-tests-on-a-remote-machine),
+to test with crossbuilding:
+
+    ./x build src/tools/remote-test-server --target i686-unknown-hurd-gnu
+
+One can run it on the target:
+
+    ./remote-test-server  -v --bind 0.0.0.0:12345
+
+and run the testsuite with
+
+    export TEST_DEVICE_ADDR="1.2.3.4:12345"
+    ./x test tests/ui --target i686-unknown-hurd-gnu
 
 Currently these tests are known to fail:
 
