@@ -22,13 +22,16 @@ enabled) is around 50 MiB.
 You can either use the git repository (see <http://git.savannah.gnu.org/git/hurd/>),
 
     $ git clone https://git.savannah.gnu.org/git/hurd/gnumach.git/
+    $ cd gnumach
+    $ autoreconf --install
 
-... or get the Debian sources, if you're using Debian. (See
+... or get the Debian sources to build a Debian package, if you're using Debian. (See
 [here](http://packages.debian.net/source/unstable/gnumach).)
 
     $ apt source gnumach
+    $ cd gnumach-XXXXXXXX
 
-## On Debian Systems:
+## Building a `.deb` package on Debian Systems:
 
 ### Preparing for the Build
 
@@ -39,10 +42,6 @@ and some additional dependencies specified by the gnumach source package:
     # apt build-dep gnumach
 
 ### Building and Installing ... Debian `.deb` files
-
-Change into the directory with the downloaded / unpacked GNU Mach sources,
-
-    $ cd gnumach-XXXXXXXX
 
 Start the build process with
 
@@ -56,17 +55,12 @@ directory and has a similar name as the build directory:
 
 You can now reboot your computer and enjoy the new kernel.
 
-## On non-Debian Systems:
+## Building from the git repository:
 
 ### Preparing for the Build
 
 Building GNU Mach requires a C compiler, a _static_ 32 bit standard C library,
 your favourite flavor of awk (gawk) and GNU make.
-
-First, create the configuration files:
-
-    $ cd gnumach
-    $ autoreconf --install
 
 GNU Mach (and the associated headers) need be built in a separate build directory:
 
@@ -77,7 +71,7 @@ Run configure:
 
     $ ../configure --prefix=
 
-If building on a 64 bit host system,
+If building on a Linux 64 bit host system,
 you need a number of additional settings to force a 32 bit build:
 
     $ ../configure --prefix= --host=i686-gnu LD=i686-linux-gnu-ld CC=i686-linux-gnu-gcc
