@@ -87,7 +87,7 @@ configure:
 If you are building on a 64 bit machine, you need to add a --host option:
 
     $ GNU=~/gnu
-    $ TARGET_CPPFLAGS=-I"$GNU"/include ../configure --prefix="$GNU" --host=i686-unknown-linux-gnu 
+    $ TARGET_CPPFLAGS=-I"$GNU"/include ../configure --prefix="$GNU" --host=i686-linux-gnu
 
 Build and install the Mach Interface Generator into _$GNU_ (i.e. _~/gnu/_ in our example):
 
