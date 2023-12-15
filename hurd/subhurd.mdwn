@@ -37,6 +37,11 @@ boot it:
     $ gunzip debian-hurd.img.gz
     $ boot --kernel-command-line="fastboot root=pseudo-root" -T typed part:1:file:debian-hurd.img
 
+/!\ If you face an error from the mach-defpager (most probably
+because there is already a default pager), you can comment
+the part that says `/hurd/mach-defpager` from the `/etc/hurd/runsystem.sysv` file
+included within the `debian-hurd.img` file you are trying to use.
+
 The 'fastboot' is necessary to skip the filesystem check which fails
 because the image assumes the root filesystem to be /etc/hd0s1.  Once
 booted, you can correct this:
