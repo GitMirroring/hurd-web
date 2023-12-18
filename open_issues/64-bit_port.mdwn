@@ -34,7 +34,11 @@ Make sure to have `debootstrap >= 1.0.128+nmu2+hurd.1`
     mkdir chroot-hurd-amd64/etc/apt/trusted.gpg.d
     ln -s /usr/share/keyrings/debian-keyring.gpg chroot-hurd-amd64/etc/apt/trusted.gpg.d/
 
-Then boot it, it will drop you into a shell. You need to make / writable:
+Then boot it, it will drop you into a shell. You'll probably want to use a nicer shell:
+
+    bash
+
+You need to make / writable:
 
     fsysopts / --writable
 
