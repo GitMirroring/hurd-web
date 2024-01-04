@@ -163,6 +163,7 @@ packages](http://people.debian.org/~sthibault/failed_packages.txt).
 This is the list of tasks that we *want* to address soon, starting with the most pressing:
 
 * Fix `sudo` crashing (as reported on IRC, apparently triggered by the `1.9.14p2-1` -> `1.9.15p3-1` upgrade).
+* Add amd64 support to gdb.
 * Fix shell output pipe replacement issue on amd64, see
 [discussion](https://lists.gnu.org/archive/html/bug-hurd/2023-10/msg00062.html).
 * Settle CI for mig+gnumach+hurd+glibc.
