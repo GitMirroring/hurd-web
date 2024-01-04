@@ -70,10 +70,10 @@ After reboot, you'll probably want to setup network:
 
     vi /etc/network/interfaces
     # put there this:
-    # auto /dev/eth0
-    # iface /dev/eth0 inet static
-    #     address 10.0.2.15/16
-    #     gateway 10.0.2.2
+    auto /dev/eth0
+    iface /dev/eth0 inet static
+        address 10.0.2.15/16
+        gateway 10.0.2.2
 
 **Creating a 64bit disk image**
 
