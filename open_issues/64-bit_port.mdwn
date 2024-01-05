@@ -125,12 +125,6 @@ You can then make the disk bootable:
 
 Then boot it, and proceed like for the chroot case.
 
-**Installing from the debian-ports archive**
-
-For now it's quite empty (not even gcc), but it can be debootstrapped. That will be used to build packages on the buildds.
-
-    debootstrap --foreign --verbose --arch hurd-amd64 --extra-suites=unreleased --include=debian-ports-archive-keyring --keyring=/usr/share/keyrings/debian-ports-archive-keyring.gpg sid chroot-hurd-amd64 https://deb.debian.org/debian-ports/
-
 **Creating a pbuilder chroot**
 
 Here is a sample `/etc/pbuilderrc`:
@@ -156,6 +150,21 @@ And this is needed until we get the `aptitude` package built:
     sudo ln -sf pbuilder-satisfydepends-apt /usr/lib/pbuilder/pbuilder-satisfydepends
 
 And then you can run `sudo pbuilder create` , `sudo pbuilder login` , `pdebuild`
+
+**Installing from the debian-ports archive**
+
+For now it's quite empty (not even gcc), but it can be debootstrapped. That will be used to build packages on the buildds.
+
+    debootstrap --foreign --verbose --arch hurd-amd64 --extra-suites=unreleased --include=debian-ports-archive-keyring --keyring=/usr/share/keyrings/debian-ports-archive-keyring.gpg sid chroot-hurd-amd64 https://deb.debian.org/debian-ports/
+
+**Installing proper & more packages**
+
+The `people.debian.org` repository is only for bootstraping the distribution. Proper packages are getting uploaded on the usual mirror:
+
+```
+deb http://deb.debian.org/debian-ports sid main
+deb http://deb.debian.org/debian-ports unreleased main
+```
 
 **Installing a 64bit system**
 
