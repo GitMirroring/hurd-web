@@ -9,27 +9,32 @@ License|/fdl]]."]]"""]]
 [[!meta title="Hurd Developers"]]
 
 The Hurd has very few people working on it. This is a list of people who are  large contributors to the project.
-<!-- Who the heck is the current maintainer, anyway? Schwinge? Thibault? -->
 
-* Thomas Schwinge - Maintainer
-* Samuel Thibault - Developer
-* Joshual Branson - Developer
-* Justus Winter - Developer
+* Samuel Thibault - Maintainer
+* Joshua Branson - Documentation
+* Sergey Bugaev - 64 bit port and security fixes
+* Flávio Cruz - Mach IPC improvements
+* Luca Dariz - 64 bit port
+* Almudena Garcia - SMP work and hardware tester
 * Joan Lledó - PCI arbiter and lwip port
-* Damien Zammit - ACPI arbiter
-* Svante Signell - pfinet/fakeroot fixes
-* Flávio Cruz - fixes
-* Manolis Ragkousis - Hurd support for Guix
+* Svante Signell - file record locking, ada/gnat/go port, owner of mahler buildd
+* Damien Zammit - ACPI arbiter, SMP, and rumpkernel
 
 Here is a list of people who were large contributors:
 
+* Miles Bader - Original developer
+* Richard Braun - MM hacker, owner of darnassus, ironforge buildd, exodar
+* Marcus Brinkman - Co-author of the Critique
+* Thomas Bushnell - Original maintainer
 * Zheng Da - netdde
 * Jeremie Koenig - Debian installer
-* Marcus Brinkman - Co-author of the Critique
-* Neal H. Walfield - Co-author of the Critique
-* Richard Braun - Owner of darnassus.sceen.net
-* Miles Bader - Original developer
-* Thomas Bushnell - Original maintainer
 * Roland McGrath - Original maintainer
+* Manolis Ragkousis - Hurd support for Guix
+* Marin Ramesa - Cleanups
+* Guillem Jover - 64 bit port
+* Thomas Schwinge - Previous Maintainer
+* Pino Toscano - Portability fixes
+* Neal H. Walfield - Co-author of the Critique, libpthread
+* Justus Winter - Developer
 
 [See the full list at Savannah](https://savannah.gnu.org/project/memberlist.php?group=hurd)
