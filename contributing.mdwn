@@ -180,9 +180,9 @@ This is the list of tasks that we *want* to address soon, starting with the most
 * Check performance of `rumpdisk` against the in-`gnumach` drivers.
 * Make `ext2fs` use xattr by default to store translators (see `use_xattr_translator_records`) after making sure the upgrade path works fine.
 * Extend `ext2fs` to support 64bit time.
-* Fix the `git` testsuite.
-* Fix the `subversion` testsuite.
-* Fix the `vim` testsuite.
+* Fix the `git` testsuite (just a few tests failing, used to pass).
+* Fix the `subversion` testsuite (just a few tests failing).
+* Fix the `vim` testsuite (just a few tests failing, used to pass).
 * Fix building `mesa`.
 * Fix building `wayland`.
 * Port `python-procps`.
