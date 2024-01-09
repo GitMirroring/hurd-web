@@ -9,56 +9,152 @@ Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license
 is included in the section entitled [[GNU Free Documentation
 License|/fdl]]."]]"""]]
 
-Several people have expressed interested in a port of GNU/Hurd for the ARM
-architecture.
+Several people have expressed interested in a port of GNU/Hurd for the
+ARM architecture.  Luckily a userspace port of the Hurd servers and
+glibc is underway.  As early as January 1, 2024 an AArch64 port is
+making some progress.  Sergey did some hacking on glibc, binutils,
+GCC, and added some headers to GNU Mach.  He was able to build the
+core Hurd servers: ext2fs, proc, exec, and auth.
 
+One would think that he would need to port GNU Mach to run the
+binaries, but Sergey ran a statically linked hello world executable on
+GNU/Linux, under GDB, being careful to skip over and emulate syscalls
+and RPCs.  The glibc port has the TLS setup, hwcaps / cpu-features,
+and ifuncs.
 
-# IRC, freenode, #hurd, 2012-07-28
+Now to some of the more technical things:
 
-    <mcsim> Has anyone heard about porting hurd and gnu/mach to arm
-      architecture?
-    <braunr> mcsim: i think so
-    <braunr> mcsim: why are you asking ?
-    <mcsim> I found an article where author stated that he has ported hurd to
-      arm, but I have never met this information before.
-    <mcsim> He wrote ethernet driver and managed to use ping command
-    <mcsim> author's name is Sartakov Vasily
-    <braunr> well that's possible, a long time ago
-    <braunr> and it was probably not complete enough to be merged upstream
-    <braunr> like many other attempts at many other things
-    <mcsim> Not so long. Article is dated by June 2011.
-    <braunr> do you have a link ?
-    <mcsim> Yes, but it is in Russian.
-    <braunr> oh
-    <braunr> well i don't remember him sharing that with us
-    <antrik> mcsim: he did some work on porting Mach, but AIUI never got it
-      nearly finished
-    <antrik> nowadays he does L4 stuff
-    <antrik> was also at FOSDEM
+- The TLS implementation is basically complete and working. We're
+using `tpidr_el0` for the thread pointer (as can be seen in the listing
+above), like GNU/Linux and unlike Windows (which uses x18, apparently)
+and macOS (which uses `tpidrro_el0`). We're using "Variant I" layout, as
+described in "ELF Handling for Thread-Local Storage", again same as
+GNU/Linux, and unlike what we do on both x86 targets. This actually
+ends up being simpler than what we had for x86! The other cool thing
+is that we can do `msr tpidr_el0, x0` from userspace without any
+gnumach involvement, so that part of the implementation is quite a bit
+simpler too.
 
+- Conversely, while on x86 it is possible to perform "cpuid" and
+identify CPU features entirely in user space, on AArch64 this requires
+access to some EL1-only registers. On Linux and the BSDs, the kernel
+exposes info about the CPU features via `AT_HWCAP` (and more recently,
+`AT_HWCAP2`) auxval entries. Moreover, Linux allows userland to read
+some otherwise EL1-only registers (notably for us, `midr_el1`) by
+catching the trap that results from the EL0 code trying to do that,
+and emulating its effect.  Also, Linux exposes `midr_el1` and
+`revidr_el1` values through procfs.
 
-## IRC, freenode, #hurd, 2012-10-09
+- The Hurd does not use `auxval`, nor is gnumach involved in `execve` anyway.
+So I thought the natural way to expose this info would be with an RPC,
+and so in `mach_aarch64.defs` I have an `aarch64_get_hwcaps` routine that
+returns the two hwcaps values (using the same bits as `AT_HWCAP{,2}`) and
+the values of `midr_el1`/`revidr_el1`. This is hooked to `init_cpu_features`
+in glibc, and used to initialize `GLRO(dl_hwcap)` / `GLRO(dl_hwcap2)` and
+eventually to pick the appropriate ifunc implementations.
 
-    <mcsim> bootinfdsds: There was an unfinished port to arm, if you're
-      interested.
-    <tschwinge> mcsim: Has that ever been published?
-    <mcsim> tschwinge: I don't think so. But I have an email of that person and
-      I think that this could be discussed with him.
+- The page size (or rather, paging granularity) is notoriously not
+necessarily 4096 on ARM, and the best practice is for userland not to
+assume any specific page size and always query it dynamically. GNU
+Mach will (probably) have to be built support for some specific page
+size, but I've cleaned up a few places in glibc where things were
+relying on a statically defined page size.
 
+- There are a number of hardware hardening features available on AArch64
+(PAC, BTI, MTE — why do people keep adding more and more workarounds,
+including hardware ones, instead of rewriting software in a properly
+memory-safe language...). Those are not really supported right now; all
+of them would require some support form gnumach side; we'll probably
+need new protection flags (`VM_PROT_BTI`, `VM_PROT_MTE`), for one thing.
 
-## IRC, freenode, #hurd, 2012-10-10
+We would need to come up with a design for how we want these to work
+Hurd-wide. For example I imagine it's the userland that will be
+generating PAC keys (and settings them for a newly exec'ed task),
+since gnumach does not contain the functionality to generate random
+values (nor should it); but this leaves an open question of what
+should happen to the early bootstrap tasks and whether they can start
+using PAC after initial startup.
 
-    <tschwinge> mcsim: If you have a contact to the ARM porter, could you
-      please ask him to post what he has?
-    <antrik> tschwinge: we all have the "contact" -- let me remind you that he
-      posted his questions to the list...
+- Unlike on x86, I believe it is not possible to fully restore
+execution context (the values of all registers, including `pc` and
+`cpsr`) purely in userland; one of the reasons for that being that we
+can apparently no longer do a load from memory straight into `pc`,
+like it was possible in previous ARM revisions. So the way `sigreturn
+()` works on Linux is of course they have it as a syscall that takes a
+`struct sigcontext`, and writes it over the saved thread state, which
+is similiar to `thread_set_state ()` in Mach-speak.  The difference
+being that `thread_set_state ()` explicitly disallows you to set the
+calling thread's state, which makes it impossible to use for
+implementing `sigreturn ()`. So I'm thinking we should lift that
+restriction; there's no reason why `thread_set_state ()` cannot be
+made to work on the calling thread; it only requires some careful
+coding to make sure the return register (`%eax`/`%rax`/`x0`) is *not*
+rewritten with `mach_msg_trap`'s return code, unlike normally.
 
+But other than that, I do have an AArch64 versions of `trampoline.c`
+and `intr-msg.h` (complete with `SYSCALL_EXAMINE` &
+`MSG_EXAMINE`). Whether they work, we'll only learn once we have
+enough of the Hurd running to have the proc server.
 
-## IRC, freenode, #hurd, 2012-10-17
+MIG seems to just work (thanks to all the Flávio's work!). We are
+using the `x86_64` ABI, and I have not seen any issues so far —
+neither compiler errors / failed static assertions (about struct sizes
+and such), nor hardware errors from misaligned accesses.
 
-    <mcsim> tschwinge: Hello. The person who I wrote regarding arm port of
-      gnumach still hasn't answered. And I don't think that he is going to
-      answer.
+To bootstrap gnumach someone must fix the console, set up the virtual
+memory, thread states, context switches, irqs and userspace entry
+points, etc.
+
+Also, there is a bunch of design work to do.
+
+Will/can AArch64 use the same mechanism for letting userland handle
+interrupts? Do we have all the mechanisms required for userland to
+poke at specific addresses in memory (to replace I/O ports)? — I
+believe we do, but I haven't looked closely.
+
+AFAIK there are no I/O ports in ARM, the usual way to configure things
+is with memory-mapped registers, so this might be easy. About IRQs,
+probably it needs to be arch-specific anyway.
+
+What should the API for manipulating PAC keys look like? Perhaps it
+should be another flavor of thread state, but then it is really
+supposed to be per-task, not per-thread. Alternatively, we could add a
+few aarch64-specific RPCs in `mach_arrch64.defs` to read and write the
+PAC keys. But also AFAICS Mach currently has no notion of per-task
+arch-specific data (unlike for threads, and other than the VM map), so
+it'd be interesting to add one. Could it be useful for something
+else?
+
+What are the debugging facilities available on ARM / AArch64? Should
+we expose them as more flavors of thread state, or something else?
+What would GDB need?
+
+Should gnumach accept tagged addresses (like `PR_SET_TAGGED_ADDR_CTRL`
+on Linux)?
+
+Can we make Linux code (in-Mach drivers, pfinet, netdde, ...) work on
+AArch64?
+
+One can trivially port pfinet to AArch64. Eventually, we should fix
+any remaining issues with lwip.  That way we can stop spending time
+maintaining pfinet, which is Linux's old abandoned networking stack.
+
+Developers will have a difficult time porting the in-Mach drivers
+(arm64 was probably not even a thing at the time).  We can perhaps
+port Netdde, but we should instead get our userspace drivers from a
+rumpkernel.
+
+Starting the kernel itself should be easy, thanks to GRUB, but it
+shouldn't be too hard to add support for U-Boot either if needed.
+
+I think more issues might come out setting up the various pieces of
+the system. For example, some chips have heterogeneous cores,
+(e.g. mine has two A72 cores and four A53 cores) so SMP will be more
+complicated.
+
+Also, about the serial console, it might be useful at some point to
+use a driver from userspace, if we can reuse some drivers from netbsd
+or linux, to avoid embedding all of them in gnumach.
 
 
 # IRC, freenode, #hurd, 2012-11-15
