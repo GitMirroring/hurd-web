@@ -48,7 +48,7 @@ the Hurd.
 
 Many people worked on the Hurd's new [[x86_64 bit
 support|https://lists.gnu.org/archive/html/bug-hurd/2023-10/msg00036.html]].
-A 64-bit debian bbuild is set up, and we can bootstrap a chroot!  The
+A 64-bit debian buildd is set up, and we can bootstrap a chroot!  The
 hurd-amd64 wanna-build infrastructure is also set up.  We are having
 issues reliably building packages on a 64-bit Hurd, which lead Samuel
 to uncover and fix [[a proc
@@ -68,10 +68,10 @@ seems best to remove any untyped RPC code.
 
 Sergey Bugaev added [[GNU Mach entry re-coalescing
 support|https://darnassus.sceen.net/~hurd-web/open_issues/gnumach_vm_map_entry_forward_merging/]].
-Essentially, Mach is not always able to merge two vm entries that are
-made next to each other, which slows down ext2 and bash.  Sergey
+Essentially, Mach was not always able to merge two vm entries that are
+made next to each other, which was slowing down ext2, bash, etc.  Sergey
 allowed GNU Mach to merge entries in the common cases, which greatly
-helps ext2fs.
+helps ext2fs for instance.
 
 Sergey is also working on [[porting the Ladybird web
 browser|https://lists.gnu.org/archive/html/bug-hurd/2023-11/msg00013.html]]
@@ -101,8 +101,7 @@ Power9|https://lists.gnu.org/archive/html/bug-hurd/2023-10/msg00021.html]].
 
 So if you want to test if your favorite packages work on the Hurd and
 contribute towards making the full GNU system usable for a wider range
-of people, please [[get in contact|contact_us]] -- and maybe already
-grab the [[source code|source_repositories]].
+of people, please [[check the contributing page|contributing]].
 
 ---
 
