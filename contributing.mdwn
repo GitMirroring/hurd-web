@@ -166,6 +166,7 @@ This is the list of tasks that we *want* to address soon, starting with the most
 * Fix shell output pipe replacement issue on amd64, see
 [discussion](https://lists.gnu.org/archive/html/bug-hurd/2023-10/msg00062.html).
 * Settle CI for mig+gnumach+hurd+glibc.
+* Port `dhcpcd`, see [call for help](https://lists.debian.org/debian-hurd/2023/11/msg00030.html)
 * Add hurd-amd64 support to llvm (probably only little to be done, such as paths fixes, adding case to `clang/lib/Basic/Targets.cpp`'s `AllocateTarget` and `llvm/unittests/TargetParser/TripleTest.cpp`, and adding paths tests cases), youpi is having a look: [pull request](https://github.com/llvm/llvm-project/pull/78065)
 * Extensively test (e.g. running testsuites of glibc, perl) and fix the lwip-based TCP/IP stack, to be sure we don't get regressions by switching to it.
 * Prevent duplicate instances of `rumpdisk` from competing for the disk PCI cards (e.g. when a second one gets started from a chroot).
