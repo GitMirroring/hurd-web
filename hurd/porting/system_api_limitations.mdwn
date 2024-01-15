@@ -24,4 +24,3 @@ These are the known system API limits that have porting implications.
 
 **_[\#187391](http://bugs.debian.org/187391): libc0.3-dev: `sockaddr_un.sun_path` can't be assigned a `const char *` when compiling with g++_**<br />**breaks:** fam, gail<br />**status:** maybe this should be in [[PortingIssues]] (see _long_ bug log)
 
-**_[\#190367](http://bugs.debian.org/190367): libc0.3-dev: `fcntl` `F_GETLK` not implemented (`ENOSYS`)_**<br />**breaks:** gnome-session (and others) from running<br />**error:** misc lock-related errors
