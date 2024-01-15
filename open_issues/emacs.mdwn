@@ -12,27 +12,30 @@ License|/fdl]]."]]"""]]
 
 [[!tag open_issue_porting]]
 
-GNU Emacs mostly does work, however there are a few issues.
+GNU Emacs works pretty well.  It works beautifully in X.
 
 ---
 
-# 2023-08-31
+# 2024-01-14
 
-Emacs version 27.1 runs on Debian GNU/Hurd, but it does not run super
-smoothly on the Hurd console.  Emacs will run in the Hurd console, but
-not as well.  These three commands kill emacs in the Hurd console
-pretty reliably:
+Emacs version 29.1 runs on Debian GNU/Hurd. Joshua Branson uses it in
+X without issue. He use org-mode, gnus, erc, calc, markdown-mode, etc.
+In fact he, edits this wiki via Debian GNU/Hurd (running on a T43)
+using Emacs.  He is able to make changes to the wiki, render the wiki,
+look at the resulting webpage with the
+[[netsurf|https://www.netsurf-browser.org/]] web browser, commit the
+changes, and send a patch to `bug-hurd@gnu.org`, all while using the
+Hurd.  :)
 
-     (use-package magit :ensure t)
-     M-x package-list-packages
-     M-x find-file ~/.authinfo.gpg
+Also since the Hurd ported rust, you can now use
+[[treesitter|https://www.masteringemacs.org/article/how-to-get-started-tree-sitter]]
+with Emacs!  Joshua got
+[[html-ts-mode|https://github.com/mickeynp/html-ts-mode]] working.
 
-Emacs does runs much better under X. Most things work well: org-mode,
-gnus, erc, etc.
 
 You can easily install many Emacs packages with apt:
 
      # apt install elpa-zenburn-theme
 
-
+Or you can use `use-package`.
 
