@@ -20,6 +20,18 @@ system|ext2fs]] on it, having a real `tmpfs` is better, as it need not deal
 with the additional block-level indirection layer that `ext2` (or any other
 disk-based file system) imposes.
 
-`tmpfs` generally works, although it requires root permissions for file content;
-see the [[discussion]] sub-pages for the past and current issues.
-There is a [[!FF_project 271]][[!tag bounty]] on this task.
+`tmpfs` generally works.  See the [[discussion]] sub-pages for the
+past and current issues.  There is a [[!FF_project 271]][[!tag
+bounty]] on this task.
+
+## How to use tmpfs
+
+    $ settrans -ac tmp /hurd/tmpfs 1MB
+    $ cd tmp
+    $ touch file
+    $ cat file
+
+    $ echo "tmpfs rocks!" > ./file
+    $ cat file
+      tmpfs rocks!
+    $
