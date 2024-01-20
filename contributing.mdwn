@@ -170,6 +170,7 @@ This is the list of tasks that we *want* to address soon, starting with the most
 * Extensively test (e.g. running testsuites of glibc, perl) and fix the lwip-based TCP/IP stack, to be sure we don't get regressions by switching to it.
 * Prevent duplicate instances of `rumpdisk` from competing for the disk PCI cards (e.g. when a second one gets started from a chroot).
 * Fix the memory consumption of `rumpdisk`.
+* Integrate `rumpusbdisk` with the rest of the disk translators etc.
 * Fix `tmpfs` losing files, see [discussion](https://lists.gnu.org/archive/html/bug-hurd/2015-02/msg00091.html).
 * Fix the `fakeroot-tcp` issue which is making `debian-installer` fail to build, see [build logs](http://d-i.debian.org/daily-images/daily-build-overview.html).
 * Port `libasan`/`lsan`/`ubsan`/`libtasn` so we can use these sanitizers (youpi did some of it, pending clean/submit).
@@ -186,7 +187,6 @@ This is the list of tasks that we *want* to address soon, starting with the most
 * Fix building `mesa`.
 * Fix building `wayland`.
 * Port `python-procps`.
-* Implement a `rumpusb`, needs to see how to integrate with disk.
 * Implement a `rumpnet`.
 * Implement a `rumpfs`.
 * Fix `SMP` support.
