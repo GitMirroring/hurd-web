@@ -186,6 +186,7 @@ This is the list of tasks that we *want* to address soon, starting with the most
 * Fix building `mesa`.
 * Fix building `wayland`.
 * Port `python-procps`.
+* Implement a `rumpusb`, needs to see how to integrate with disk.
 * Implement a `rumpnet`.
 * Implement a `rumpfs`.
 * Fix `SMP` support.
