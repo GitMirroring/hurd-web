@@ -34,14 +34,14 @@ Our Google summer of code student Vedant Tewari decided to port rust,
 and the rust porting effort is making good progress.  [[The build
 process is a bit
 wonky|https://lists.gnu.org/archive/html/bug-hurd/2023-08/msg00091.html]],
-and we are using an older rust version.  Check out [[the rust pull
+and Debian is using an older rust version.  Check out [[the rust pull
 request|https://github.com/rust-lang/rust/pull/115230]] that adds Hurd
 support!
 
 [[Samuel|samuelthibault]] worked on setting up
 [[PAE|https://en.wikipedia.org/wiki/Physical_Address_Extension]],
 which will eventually let us use more than 4GB of RAM on a 32-bit
-Hurd!  It is also useful for the X86_64 architecture. He also the
+Hurd!  It is also useful for the X86_64 architecture. He also fixed the
 [[jemalloc|https://lists.debian.org/debian-hurd/2023/08/msg00000.html]]
 build.
 
@@ -64,7 +64,7 @@ and a [[dpkg
 issue|https://lists.gnu.org/archive/html/bug-hurd/2023-08/msg00058.html]]
 for the 64-bit port.  It was hard to discover what the problem was,
 because the debugging tools have not been ported to the 64-bit port.
-He used some locking to fix some bugs, and he encourages other
+He add some helpers to locking to fix some bugs, and he encourages other
 developers to help him fix the debugging tools for X86-64. It seems
 that most developers are currently running the 64-bit Hurd in a
 virtual machine and not in real hardware.
