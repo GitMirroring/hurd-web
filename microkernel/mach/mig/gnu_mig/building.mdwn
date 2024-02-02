@@ -84,7 +84,7 @@ configure:
     $ GNU=~/gnu
     $ TARGET_CPPFLAGS=-I"$GNU"/include ../configure --prefix="$GNU"
 
-If you are building on a 64 bit machine, you need to add a --target option:
+If you want to build 32-bit gnumach on a 64-bit machine, you need to add a --target option. mig(com) will be build as ELF64 binary, but it will generate 32-bit stub code for gnumach:
 
     $ GNU=~/gnu
     $ TARGET_CPPFLAGS=-I"$GNU"/include ../configure --prefix="$GNU" --target=i686-gnu TARGET_CC=i686-linux-gnu-gcc
