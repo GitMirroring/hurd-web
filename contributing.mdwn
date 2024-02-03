@@ -167,7 +167,7 @@ This is the list of tasks that we *want* to address soon, starting with the most
 [discussion](https://lists.gnu.org/archive/html/bug-hurd/2023-10/msg00062.html).
 * Settle CI for mig+gnumach+hurd+glibc.
 * Port `dhcpcd`, see [call for help](https://lists.debian.org/debian-hurd/2023/11/msg00030.html)
-* Extensively test (e.g. running testsuites of glibc, perl) and fix the lwip-based TCP/IP stack, to be sure we don't get regressions by switching to it.
+* Extensively test (e.g. running testsuites of glibc, perl, curl) and fix the lwip-based TCP/IP stack, to be sure we don't get regressions by switching to it.
 * Prevent duplicate instances of `rumpdisk` from competing for the disk PCI cards (e.g. when a second one gets started from a chroot).
 * Fix the memory consumption of `rumpdisk`.
 * Integrate `rumpusbdisk` with the rest of the disk translators etc.
