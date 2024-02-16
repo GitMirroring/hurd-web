@@ -166,6 +166,7 @@ This is the list of tasks that we *want* to address soon, starting with the most
 * Fix shell output pipe replacement issue on amd64, see
 [discussion](https://lists.gnu.org/archive/html/bug-hurd/2023-10/msg00062.html).
 * Add make/swap/set/get/context support for amd64 (for go and others).
+* On amd64, fix memcpy (> 16 bytes) from `/dev/mem` (makes hurd-console crash)
 * Settle CI for mig+gnumach+hurd+glibc.
 * Port `dhcpcd`, see [call for help](https://lists.debian.org/debian-hurd/2023/11/msg00030.html)
 * Extensively test (e.g. running testsuites of glibc, perl, curl) and fix the lwip-based TCP/IP stack, to be sure we don't get regressions by switching to it.
