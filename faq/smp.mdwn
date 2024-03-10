@@ -13,21 +13,34 @@ License|/fdl]]."]]"""]]
 
 [[!meta title="Does GNU/Hurd support SMP/Multicore?"]]
 
-The Hurd servers themselves are multithreaded, so they should be able to take benefit of the parallelism brought by SMP/Multicore boxes. This has however never been tested yet because of the following.
+The Hurd servers themselves are multithreaded, so they should be able to
+benefit of the parallelism brought by SMP/Multicore boxes.
+This needs testing as SMP support has recently been added to Mach.
 
 [[microkernel/Mach]] used to be running on SMP boxes like the [[!wikipedia
 Intel_iPSC/860]], so principally has the required infrastructure.  It has
-however not yet been enhanced to support nowadays' SMP standards like ACPI,
-etc.  Also, [[GNU Mach|microkernel/mach/gnumach]]'s Linux device driver glue
-code likely isn't SMP-safe.  As this glue code layer is not used in the
-[[microkernel/mach/gnumach/ports/Xen]] port of GNU Mach, the plan is to try it
-in this enviroment first.
+recently been enhanced to support nowadays' SMP standards like ACPI.
 
-[[!tag open_issue_gnumach open_issue_xen]]
+However, [[GNU Mach|microkernel/mach/gnumach]]'s Linux device driver glue
+code isn't SMP-safe so build with --disable-linux-groups to test SMP and use
+rumpdisk to provide disk access.
 
-That is why for now GNU/Hurd will only use one logical processor (i.e. one core or one thread, depending on the socket type).
+To build an SMP supported gnumach with kdb:
+../configure --enable-ncpus=8 --enable-kdb --enable-apic --disable-linux-groups
 
-Once this issue is solved, there are follow-up issues about
+This will by default allow you to boot with one core isolated to the default
+processor set, and all the other detected cpus will be in the slave processor set.
+The slave processors need to be enabled per-task using RPCs to manipulate processor sets.
+
+See https://lists.gnu.org/archive/html/bug-hurd/2024-02/msg00088.html for a test program
+that can enable a task to use the slave processors by calling ./smp /bin/bash for example.
+
+Unfortunately, there are race conditions causing hangs or crashes in Mach when attempting
+to boot a full SMP system, (if you revert the slave processor pinning commit).
+This is what needs to be debugged one-by-one by running each translator using ./smp until
+we can squash these race condition bugs.
+
+There are follow-up issues about
 [[open_issues/multiprocessing]] and [[open_issues/multithreading]].
 
 [[Project idea|open_issues/smp]].
