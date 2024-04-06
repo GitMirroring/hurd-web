@@ -45,13 +45,17 @@ and some additional dependencies specified by the gnumach source package:
 
 Start the build process with
 
-    $ dpkg-buildpackage -us -uc -b -rfakeroot
+    $ dpkg-buildpackage -us -uc -b
+
+But to get it built faster, you probably want to only build the most common uniprocessor variant:
+
+    $ dpkg-buildpackage -us -uc -b -Ppkg.gnumach.onlyup
 
 [[GNU_Mach|gnumach]] is now building.  To use the new kernel, you must install the
 resulting `.deb` package which is located one directory above the build
 directory and has a similar name as the build directory:
 
-    # dpkg -i ../gnumach_XXXXXXXX-X_hurd-i386.deb
+    # dpkg -i ../gnumach-image-1.8-486_*_hurd-i386.deb
 
 You can now reboot your computer and enjoy the new kernel.
 
