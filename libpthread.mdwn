@@ -14,7 +14,7 @@ License|/fdl]]."]]"""]]
 
 # Sources
 
-<http://git.savannah.gnu.org/cgit/hurd/libpthread.git/>
+<https://git.savannah.gnu.org/cgit/hurd/libpthread.git/>
 
 
 # Specifics

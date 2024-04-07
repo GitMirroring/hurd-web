@@ -6,7 +6,7 @@ For that I want to use:
 
 * An up to date debian image (no longer online, but I have a copy here). 
 * My [Hurd Intro](http://bitbucket.org/ArneBab/hurd_intro), 
-* Translators from [hurd-extras](http://www.nongnu.org/hurdextras/) and the [incubator](http://git.savannah.gnu.org/cgit/hurd/incubator.git/), and naturally
+* Translators from [hurd-extras](http://www.nongnu.org/hurdextras/) and the [incubator](https://git.savannah.gnu.org/cgit/hurd/incubator.git/), and naturally
 * a lot of apt update; apt upgrade and apt dist-upgrade :) (all worked flawlessly). 
 
 ## Working

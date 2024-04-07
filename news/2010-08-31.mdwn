@@ -60,8 +60,8 @@ else="[[!paste id=full_news]]"]]
 > looking for a Hurd-related project to work on, go looking
 > [[there|open_issues]]!  He also converted and merged some of the [hurdextras
 > CVS repositories](http://www.nongnu.org/hurdextras/) into the [hurd Git
-> repositories](http://git.savannah.gnu.org/cgit/hurd) and our
-> [incubator](http://git.savannah.gnu.org/cgit/hurd/incubator.git/refs/).  All
+> repositories](https://git.savannah.gnu.org/cgit/hurd) and our
+> [incubator](https://git.savannah.gnu.org/cgit/hurd/incubator.git/refs/).  All
 > of this should make it easier for new contributors to join in.
 
 > The [[hurd/running/Arch_Hurd]] guys have some news to share, too:

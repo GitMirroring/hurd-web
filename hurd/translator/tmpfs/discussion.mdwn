@@ -107,7 +107,7 @@ License|/fdl]]."]]"""]]
 
     <antrik> mcsim: did you publish your in-progress work?
     <mcsim> there is a branch with working tmpfs in git repository:
-      http://git.savannah.gnu.org/cgit/hurd/hurd.git/log/?h=mplaneta/tmpfs/defpager
+      https://git.savannah.gnu.org/cgit/hurd/hurd.git/log/?h=mplaneta/tmpfs/defpager
     <jd823592> sorry for interrupting the meeting but i wonder what is a
       lazyfs?
     <mcsim> jd823592: lazyfs is tmpfs which uses own pager

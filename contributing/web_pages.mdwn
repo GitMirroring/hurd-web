@@ -143,9 +143,9 @@ Or, you can check out the Savannah repository:
 
 ..., or:
 
-    $ git clone http://git.savannah.gnu.org/cgit/hurd/web.git [dest]
+    $ git clone https://git.savannah.gnu.org/cgit/hurd/web.git [dest]
 
-See <http://git.savannah.gnu.org/cgit/hurd/web.git>.  If you're using the `ssh`
+See <https://git.savannah.gnu.org/cgit/hurd/web.git>.  If you're using the `ssh`
 protocol, and you're a member of the Hurd's [[rules/Savannah_group]], you can
 also push to this repository.  The disadvantage of pushing to the Savannah
 repository is that there is no [[ikiwiki]] installation where the pushed

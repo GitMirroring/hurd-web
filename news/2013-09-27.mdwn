@@ -25,13 +25,13 @@ than the [GNU project's 30th birthday](http://www.gnu.org/gnu30/)?
 
   * **GNU Hurd 0.5**: [[!message-id desc=announcement
     "874n960vyq.fsf@kepler.schwinge.homeip.net"]],
-    [NEWS](http://git.savannah.gnu.org/cgit/hurd/hurd.git/tree/NEWS?id=v0.5)
+    [NEWS](https://git.savannah.gnu.org/cgit/hurd/hurd.git/tree/NEWS?id=v0.5)
   * **GNU Mach 1.4**: [[!message-id desc=announcement
     "8761tm0vz8.fsf@kepler.schwinge.homeip.net"]],
-    [NEWS](http://git.savannah.gnu.org/cgit/hurd/gnumach.git/tree/NEWS?id=v1.4)
+    [NEWS](https://git.savannah.gnu.org/cgit/hurd/gnumach.git/tree/NEWS?id=v1.4)
   * **GNU MIG 1.4**: [[!message-id desc=announcement
     "877ge20vzt.fsf@kepler.schwinge.homeip.net"]],
-    [NEWS](http://git.savannah.gnu.org/cgit/hurd/mig.git/tree/NEWS?id=v1.4)
+    [NEWS](https://git.savannah.gnu.org/cgit/hurd/mig.git/tree/NEWS?id=v1.4)
 
 These new releases bundle bug fixes and enhancements done since the
 last releases more than a decade ago; really too many (both years and

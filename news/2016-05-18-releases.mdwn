@@ -21,7 +21,7 @@ else="
 We're pleased to announce new releases!
 
   * **GNU Hurd 0.8**,
-    [NEWS](http://git.savannah.gnu.org/cgit/hurd/hurd.git/tree/NEWS?id=v0.8):
+    [NEWS](https://git.savannah.gnu.org/cgit/hurd/hurd.git/tree/NEWS?id=v0.8):
 
         Version 0.8 (2016-05-18)
         
@@ -45,7 +45,7 @@ We're pleased to announce new releases!
 
     Release tarballs may be downloaded from <ftp://ftp.gnu.org/gnu/hurd/>,
     <http://ftp.gnu.org/gnu/hurd/>, or checked out of Git,
-    <http://git.savannah.gnu.org/cgit/hurd/hurd.git>.  SHA1 checksums:
+    <https://git.savannah.gnu.org/cgit/hurd/hurd.git>.  SHA1 checksums:
 
         38585aed93645704477d91d01136e1ae750a5ecb  hurd-0.8.tar.bz2
         531d5035427830e87828a79bf6794531250784d0  hurd-0.8.tar.bz2.sig
@@ -60,7 +60,7 @@ We're pleased to announce new releases!
     [[hurd/what_is_the_GNU_Hurd]].
 
   * **GNU Mach 1.7**,
-    [NEWS](http://git.savannah.gnu.org/cgit/hurd/gnumach.git/tree/NEWS?id=v1.7):
+    [NEWS](https://git.savannah.gnu.org/cgit/hurd/gnumach.git/tree/NEWS?id=v1.7):
 
         Version 1.7 (2016-05-18)
         
@@ -83,7 +83,7 @@ We're pleased to announce new releases!
 
     Release tarballs may be downloaded from <ftp://ftp.gnu.org/gnu/gnumach/>,
     <http://ftp.gnu.org/gnu/gnumach/>, or checked out of Git,
-    <http://git.savannah.gnu.org/cgit/hurd/gnumach.git>.  SHA1 checksums:
+    <https://git.savannah.gnu.org/cgit/hurd/gnumach.git>.  SHA1 checksums:
 
         4438c7c10f8eef019ada45b749c0796d620d08de  gnumach-1.7.tar.bz2
         6cdf299118066e3280dcc68f75477659fc783f7d  gnumach-1.7.tar.bz2.sig
@@ -99,7 +99,7 @@ We're pleased to announce new releases!
     [[microkernel/mach/documentation]].
 
   * **GNU MIG 1.7**,
-    [NEWS](http://git.savannah.gnu.org/cgit/hurd/mig.git/tree/NEWS?id=v1.7):
+    [NEWS](https://git.savannah.gnu.org/cgit/hurd/mig.git/tree/NEWS?id=v1.7):
 
         Version 1.7 (2016-05-18)
         
@@ -122,7 +122,7 @@ We're pleased to announce new releases!
 
     Release tarballs may be downloaded from <ftp://ftp.gnu.org/gnu/mig/>,
     <http://ftp.gnu.org/gnu/mig/>, or checked out of Git,
-    <http://git.savannah.gnu.org/cgit/hurd/mig.git>.  SHA1 checksums:
+    <https://git.savannah.gnu.org/cgit/hurd/mig.git>.  SHA1 checksums:
 
         25d87f0271678d044a8af1f45492a96bee32e486  mig-1.7.tar.bz2
         481dce92b8eb718231bf9d409c0e0c9337dc1f90  mig-1.7.tar.bz2.sig
@@ -144,8 +144,8 @@ We're pleased to announce new releases!
 
     Snapshot tarballs may be downloaded from <ftp://alpha.gnu.org/gnu/hurd/>,
     <http://alpha.gnu.org/gnu/hurd/>, or checked out of Git,
-    <http://git.savannah.gnu.org/cgit/hurd/glibc.git> and
-    <http://git.savannah.gnu.org/cgit/hurd/libpthread.git>.  SHA1 checksums:
+    <https://git.savannah.gnu.org/cgit/hurd/glibc.git> and
+    <https://git.savannah.gnu.org/cgit/hurd/libpthread.git>.  SHA1 checksums:
 
         3722b7f52aac89c66f064e1e6d19ec9b92ffc9e0  glibc-2.19-hurd+libpthread-20160518.tar.bz2
         69dfe1297013056b4b0d6436a1b3906c1bb67a52  glibc-2.19-hurd+libpthread-20160518.tar.bz2.sig

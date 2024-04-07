@@ -46,7 +46,7 @@ else="[[!paste id=full_news]]"]]
 > run with a simple `qemu -m 512 -hda debian-hurd-17042010-qemu.img`.
 
 > *Thomas Schwinge* updated [our glibc maintenance
-> repository](http://git.savannah.gnu.org/cgit/hurd/glibc.git/?h=tschwinge/Roger_Whittaker)
+> repository](https://git.savannah.gnu.org/cgit/hurd/glibc.git/?h=tschwinge/Roger_Whittaker)
 > to a recent version, including a bunch of the patches from the Debian glibc
 > package (and these are meant to eventually be submitted upstream).  After a
 > long break, he as well

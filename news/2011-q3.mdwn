@@ -71,7 +71,7 @@ Maksym Planeta finished a project he has been doing as a university task:
 replace GNU Mach's old zone memory allocator with a new [[!wikipedia
 slab_allocation desc="slab allocator"]] written by Richard Braun, who also
 mentored Maksym during the project.  [This
-allocator](http://git.savannah.gnu.org/cgit/hurd/gnumach.git/commit/?h=mplaneta/libbraunr/master&id=59c9da87375ad3c8401890ecd4f7f101093f2463),
+allocator](https://git.savannah.gnu.org/cgit/hurd/gnumach.git/commit/?h=mplaneta/libbraunr/master&id=59c9da87375ad3c8401890ecd4f7f101093f2463),
 apart from being overally cleaner than the zone allocator, is meant to waste
 less memory than the zone allocator (less fragmentation and more memory can be
 reclaimed by the VM system), there are debugging/inspection features, and it's

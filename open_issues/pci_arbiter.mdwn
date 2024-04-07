@@ -25,7 +25,7 @@ sequential: gnumach, netdde, and then Xorg. The PCI Arbiter will eventually allo
 concurrent access to the PCI config space.
 
 The Hurd now has a PCI Arbiter, but it could use some more polishing.  You can find
-its TODO file [[here|http://git.savannah.gnu.org/cgit/hurd/hurd.git/tree/pci-arbiter/TODO]].
+its TODO file [[here|https://git.savannah.gnu.org/cgit/hurd/hurd.git/tree/pci-arbiter/TODO]].
 
 Samuel also gave a presentation explaining some of the awesome possibilities
 that the PCI Arbiter can provide.  You can watch his fosdem talk

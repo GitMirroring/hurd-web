@@ -14,5 +14,5 @@ is included in the section entitled
 [[!tag open_issue_hurd]]
 
 The canonical [TODO
-file](http://git.savannah.gnu.org/cgit/hurd/hurd.git/plain/TODO)
+file](https://git.savannah.gnu.org/cgit/hurd/hurd.git/plain/TODO)
 from the git archive.

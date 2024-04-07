@@ -32,7 +32,7 @@ else="[[!paste id=full_news]]"]]
 > Also, Thomas Schwinge migrated Sergiu Ivanov's [[hurd/translator/nsmux]],
 > [[Flávio Cruz|flaviocruz]]' cl-hurd *(clisp bindings)*, and Carl Fredrik
 > Hammar [[hurd/libchannel]] repositories into our new [*incubator* Git
-> repository](http://git.savannah.gnu.org/cgit/hurd/incubator.git/), making
+> repository](https://git.savannah.gnu.org/cgit/hurd/incubator.git/), making
 > them easier to access for other contributors.
 
 > Our bunch of porters continued to make further Debian packages usable on

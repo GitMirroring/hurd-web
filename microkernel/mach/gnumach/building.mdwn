@@ -19,7 +19,7 @@ enabled) is around 50 MiB.
 
 ## Getting the Source Code
 
-You can either use the git repository (see <http://git.savannah.gnu.org/git/hurd/>),
+You can either use the git repository (see <https://git.savannah.gnu.org/git/hurd/>),
 
     $ git clone https://git.savannah.gnu.org/git/hurd/gnumach.git/
     $ cd gnumach

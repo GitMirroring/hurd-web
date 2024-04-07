@@ -122,7 +122,7 @@ License|/fdl]]."]]"""]]
     <neal> the first are a burden
     <neal> the latter is a pain
     <neal>
-      http://git.savannah.gnu.org/gitweb/?p=hurd/viengoos.git;a=blob;f=libviengoos/viengoos/rpc.h;h=721768358a0299637fb79f226aea6a304571da85;hb=refs/heads/viengoos-on-bare-metal
+      https://git.savannah.gnu.org/gitweb/?p=hurd/viengoos.git;a=blob;f=libviengoos/viengoos/rpc.h;h=721768358a0299637fb79f226aea6a304571da85;hb=refs/heads/viengoos-on-bare-metal
     <neal> in the same directory, you there are headers that use it
     <braunr> neal: cf. http://genode.org/documentation/release-notes/11.05
     <braunr> tschwinge: why do you recommend an IDL ?

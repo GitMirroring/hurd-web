@@ -30,7 +30,7 @@ This work has two objectives:
 #### Trying it
 I've commited this work to this branch:
 
-<http://git.savannah.gnu.org/cgit/hurd/gnumach.git/log/?h=k0ro/advisory_pageout/master>
+<https://git.savannah.gnu.org/cgit/hurd/gnumach.git/log/?h=k0ro/advisory_pageout/master>
 
 You'll also need the counterpart for user space:
 

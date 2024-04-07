@@ -20,13 +20,13 @@ else="
 
   * **GNU Hurd 0.6**: [[!message-id desc=announcement
     "8738415d4z.fsf@kepler.schwinge.homeip.net"]],
-    [NEWS](http://git.savannah.gnu.org/cgit/hurd/hurd.git/tree/NEWS?id=v0.6)
+    [NEWS](https://git.savannah.gnu.org/cgit/hurd/hurd.git/tree/NEWS?id=v0.6)
   * **GNU Mach 1.5**: [[!message-id desc=announcement
     "87618x5d5o.fsf@kepler.schwinge.homeip.net"]],
-    [NEWS](http://git.savannah.gnu.org/cgit/hurd/gnumach.git/tree/NEWS?id=v1.5)
+    [NEWS](https://git.savannah.gnu.org/cgit/hurd/gnumach.git/tree/NEWS?id=v1.5)
   * **GNU MIG 1.5**: [[!message-id desc=announcement
     "874moh5d5c.fsf@kepler.schwinge.homeip.net"]],
-    [NEWS](http://git.savannah.gnu.org/cgit/hurd/mig.git/tree/NEWS?id=v1.5)
+    [NEWS](https://git.savannah.gnu.org/cgit/hurd/mig.git/tree/NEWS?id=v1.5)
 
 If you want to give the Hurd a try, you may easily do so with [[Debian
 GNU/Hurd|hurd/running/debian]].

@@ -23,7 +23,7 @@ to some of the [[issues_uncovered_by_the_Hurd|challenges]].  Knowledge gained
 can then be integrated into something like [[Mach]].
 
 The source can be downloaded from the *viengoos.git* repository, cf.
-<http://git.savannah.gnu.org/gitweb/?p=hurd/viengoos.git>.  You can
+<https://git.savannah.gnu.org/gitweb/?p=hurd/viengoos.git>.  You can
 check it out using, for example:
 
     git clone git://git.sv.gnu.org/hurd/viengoos.git

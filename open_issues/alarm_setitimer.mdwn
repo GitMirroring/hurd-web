@@ -58,7 +58,7 @@ This issue was recently fixed (around January 2013).
       (e19a2fad70b187e5efe79768f86a1f05cb5e0390, Tue Feb 21 02:41:18 2012)
     <braunr> yes, fixed :)
     <braunr> patch committed at
-      http://git.savannah.gnu.org/cgit/hurd/glibc.git/log/?h=rbraun/setitimer_fix
+      https://git.savannah.gnu.org/cgit/hurd/glibc.git/log/?h=rbraun/setitimer_fix
     <youpi> and pushed to the debian package
 
 

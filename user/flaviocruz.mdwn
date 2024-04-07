@@ -14,7 +14,7 @@ Email: flaviocruz at gmail dot com
 
 Some [Hurd stuff](http://opensvn.csie.org/leic/hurd/)
 
-And code: [cl-hurd](http://git.savannah.gnu.org/cgit/hurd/incubator.git/log/?h=clisp)
+And code: [cl-hurd](https://git.savannah.gnu.org/cgit/hurd/incubator.git/log/?h=clisp)
 
 ## Summer session
 

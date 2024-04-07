@@ -67,7 +67,7 @@ License|/fdl]]."]]"""]]
     <braunr> we definitely want it to work with 8N1
     <gg0> never had problems with _virtual_ serial consoles
     <gg0> never = during last 2 years = since
-      http://git.savannah.gnu.org/gitweb/?p=hurd/gnumach.git;a=commitdiff;h=2a603e88f86bee88e013c2451eacf076fbcaed81
+      https://git.savannah.gnu.org/gitweb/?p=hurd/gnumach.git;a=commitdiff;h=2a603e88f86bee88e013c2451eacf076fbcaed81
     <gg0> but i don't think i was on real hardware at that time
 
 

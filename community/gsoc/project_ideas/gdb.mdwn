@@ -23,7 +23,7 @@ to be integrated first."""]]
 [[/GDB]] is available and working on GNU Hurd.  However, there are some bugs
 and there is missing functionality compared to a port targeting the Linux
 kernel ([[tag/Open_Issue_GDB]], [diff of
-testresults](http://git.savannah.gnu.org/cgit/hurd/web.git/tree/gdb/test.diff?h=toolchain/logs/master)).
+testresults](https://git.savannah.gnu.org/cgit/hurd/web.git/tree/gdb/test.diff?h=toolchain/logs/master)).
 For example, there is no port of [[open_issues/gdb/gdbserver]] available yet.
 Identifying (together with the mentors), and then addressing one or a few of
 these items is the goal of this project.

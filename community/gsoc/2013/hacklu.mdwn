@@ -1028,7 +1028,7 @@ In context of [[open_issues/libpthread/t/fix_have_kernel_resources]]:
     <hacklu> is libpthread a part of glibc or hurd?
     <pinotree> glibc
     <NlightNFotis> hacklu: it is a different repository available here
-      http://git.savannah.gnu.org/cgit/hurd/libpthread.git/
+      https://git.savannah.gnu.org/cgit/hurd/libpthread.git/
     <hacklu> tschwinge: thanks for that, but I don't think I need help about
       the comiler error now, it just say missing some C file. I will look into
       the Makefile to verify.
@@ -1044,7 +1044,7 @@ In context of [[open_issues/libpthread/t/fix_have_kernel_resources]]:
     <hacklu> tschwinge:BTW, I have found that, to continue the inferior from a
       breakpoint, doesn't need to call msg_sig_post_untraced. just call
       thread_abort and thread_resume is already ok.
-    <hacklu> I get the glibc from http://git.savannah.gnu.org/cgit/hurd. 
+    <hacklu> I get the glibc from https://git.savannah.gnu.org/cgit/hurd. 
     <tschwinge> hacklu: That sounds about right, because you want the inferior
       to continue normally, instead of explicitly sending a (Unix) signal to
       it.

@@ -230,7 +230,7 @@ After you have a Hurd vm set up and running:
 * `git clone git://git.sv.gnu.org/hurd/gnumach.git`
 * `git clone git://git.sv.gnu.org/hurd/incubator.git`
 * You can connect through ssh with `ssh root@localhost -p 2222`
-* Get more from the [repo list](http://git.savannah.gnu.org/cgit/hurd/).
+* Get more from the [repo list](https://git.savannah.gnu.org/cgit/hurd/).
 * Read the docs on these pages.
 * Start hacking.
 * For shutting down, use `reboot`, then press `c` in grub and issue halt (to avoid filesystem corruption). Adding `--no-reboot` to the qemu line should help, too.

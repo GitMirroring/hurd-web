@@ -176,7 +176,7 @@ License|/fdl]]."]]"""]]
     <tschwinge> Exactly that is the abstraction level you need, yes.
     <nowhereman> I'm looking at http://savannah.gnu.org/git/?group=hurd
     <tschwinge> Yeah, that's a known shortcoming -- look here instead:
-      http://git.savannah.gnu.org/cgit/hurd
+      https://git.savannah.gnu.org/cgit/hurd
     <tschwinge> Here is some more up-to-date stuff on subhurds:
       http://www.gnu.org/software/hurd/hurd/subhurd.html
     <tschwinge> nowhereman: You know how to tell git to add a new remote to

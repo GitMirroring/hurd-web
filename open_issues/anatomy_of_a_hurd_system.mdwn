@@ -1050,12 +1050,12 @@ Actually, the Hurd has never used an M:N model. Both libthreads (cthreads) and l
     <teythoon> as I said, the wire format is specified, the semantics only in
       written form in the source
     <teythoon> this is an example of the ipc specification for the proc server
-      http://git.savannah.gnu.org/cgit/hurd/hurd.git/tree/hurd/process.defs
+      https://git.savannah.gnu.org/cgit/hurd/hurd.git/tree/hurd/process.defs
     <crocket> teythoon, how file server interacts with file clients should be
       defined as a formal protocol, too.
     <teythoon> do you consider the ipc description a kind of formal protocol ?
     <crocket>
-      http://git.savannah.gnu.org/cgit/hurd/hurd.git/tree/hurd/process.defs can
+      https://git.savannah.gnu.org/cgit/hurd/hurd.git/tree/hurd/process.defs can
       be considered as a formal protocol.
     <crocket> However, the file server protocol should be defined on top of IPC
       protocol.

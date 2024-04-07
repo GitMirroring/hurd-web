@@ -180,7 +180,7 @@ not get a define for `HZ`, which is then defined with a fallback value of 60.
     <braunr> keep in mind rpctrace doesn't behave like ptrace at all
     <braunr> it acts as a proxy
     <braunr> nalaginrut:
-      http://git.savannah.gnu.org/cgit/hurd/glibc.git/commit/?h=rbraun/getclktck_100_hz&id=90404d6d1aa01f6ce1557841f5a675bb6a30f508
+      https://git.savannah.gnu.org/cgit/hurd/glibc.git/commit/?h=rbraun/getclktck_100_hz&id=90404d6d1aa01f6ce1557841f5a675bb6a30f508
     <braunr> nalaginrut: you need to add it to the debian eglibc patch list,
       rebuild the packages, and install the resulting .debs
     <braunr> if you have trouble doing it, i'll make packages when i have time
@@ -786,7 +786,7 @@ not get a define for `HZ`, which is then defined with a fallback value of 60.
     <braunr> 04:53 < nalaginrut> braunr:  BTW, where is the patch/
     <braunr> there is hardly anyone here at 5am
     <braunr> nalaginrut:
-      http://git.savannah.gnu.org/cgit/hurd/glibc.git/log/?h=rbraun/clock_t_centiseconds
+      https://git.savannah.gnu.org/cgit/hurd/glibc.git/log/?h=rbraun/clock_t_centiseconds
     <nalaginrut> braunr:  thanks for that, but why not use a constant for 100?
     <braunr> nalaginrut: i don't know where to define it
     <braunr> it's glibc, you don't define new stuff mindlessly

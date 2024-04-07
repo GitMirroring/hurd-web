@@ -19,7 +19,7 @@ and will eat your data.
 
     <Arne`> There might be a copyright problem: <nalaginrut> well, there seems
       BSD-4clauses in the code:
-      http://git.savannah.gnu.org/cgit/hurd/hurd.git/tree/ufs/alloc.c
+      https://git.savannah.gnu.org/cgit/hurd/hurd.git/tree/ufs/alloc.c
     <Arne`> braunr, tschwinge: Do you have any info on that? 4-clause BSD and
       GPL on the same code are a license incompatibility… 
     <tschwinge> Arne`: I've put it onto my (long) TODO list.

@@ -57,7 +57,7 @@ For this years GSoC I want to turn the currently rudimentary Python Bindings of 
   * *August 8.*
     More translators and integrating into the build system.
   * *August 15.*
-    Suggested Pencils down. The translator API is easy to use, there are many example translators and there is a full featured settrans command in Python using the easier controlling API which shows how to control the Hurd directly from Python. The code is pushed to <https://github.com/ArneBab/PyHurd> and a git repo at <http://git.savannah.gnu.org/cgit/hurd> and integrated into the build system with a switch to enable building PyHurd.
+    Suggested Pencils down. The translator API is easy to use, there are many example translators and there is a full featured settrans command in Python using the easier controlling API which shows how to control the Hurd directly from Python. The code is pushed to <https://github.com/ArneBab/PyHurd> and a git repo at <https://git.savannah.gnu.org/cgit/hurd> and integrated into the build system with a switch to enable building PyHurd.
   * *August 22.*
     Firm pencils down.
 

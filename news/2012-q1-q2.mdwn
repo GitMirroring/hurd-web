@@ -59,11 +59,11 @@ using a Nix-based GNU QEMU image. Thanks to his work, we now have
 Thomas on the other hand
 [moved](http://lists.gnu.org/archive/html/bug-hurd/2012-03/msg00063.html)
 the translators
-[cvsfs](http://git.savannah.gnu.org/cgit/hurd/incubator.git/log/?h=cvsfs/master)
+[cvsfs](https://git.savannah.gnu.org/cgit/hurd/incubator.git/log/?h=cvsfs/master)
 and
-[smbfs](http://git.savannah.gnu.org/cgit/hurd/incubator.git/log/?h=smbfs/master)
+[smbfs](https://git.savannah.gnu.org/cgit/hurd/incubator.git/log/?h=smbfs/master)
 into the [[incubator Git repository|source_repositories/incubator]], as well as
-[libfuse](http://git.savannah.gnu.org/cgit/hurd/incubator.git/log/?h=libfuse/master),
+[libfuse](https://git.savannah.gnu.org/cgit/hurd/incubator.git/log/?h=libfuse/master),
 reducing the barrier of entry to improving them, so integrating cvs
 and samba in the filesystem and using FUSE translators can be
 stabilized more easily. Also he

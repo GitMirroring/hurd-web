@@ -10,7 +10,7 @@ is included in the section entitled [[GNU Free Documentation
 License|/fdl]]."]]"""]]
 
 There is a repository for maintenance of [[/glibc]] for the Hurd's needs:
-<http://git.savannah.gnu.org/cgit/hurd/glibc.git/>.  It's mainly used for
+<https://git.savannah.gnu.org/cgit/hurd/glibc.git/>.  It's mainly used for
 testing glibc's master branch, but with all the patches that we need on top of
 it, and also for development and sharing of (Hurd-specific) glibc patches.
 

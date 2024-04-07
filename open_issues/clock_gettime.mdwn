@@ -95,7 +95,7 @@ In context of [[select]].
 ## IRC, freenode, #hurd, 2013-02-12
 
     <braunr> pinotree:
-      http://git.savannah.gnu.org/cgit/hurd/hurd.git/commit/?h=rbraun/select_timeout_pthread_v2&id=6ec50e62d9792c803d00cbff1cab2c0b3675690a
+      https://git.savannah.gnu.org/cgit/hurd/hurd.git/commit/?h=rbraun/select_timeout_pthread_v2&id=6ec50e62d9792c803d00cbff1cab2c0b3675690a
     <pinotree> uh nice
     <pinotree> will need two small inline functions to convert time_data_t <->
       timespec, but that's it

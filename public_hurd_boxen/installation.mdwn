@@ -15,7 +15,7 @@ This page documents how installation of some new machines is being done.
 # [[zenhost]]
 
 For those on [[zenhost]], we use
-*[install_crosshurd](http://git.savannah.gnu.org/cgit/hurd/incubator.git/log/?h=install_crosshurd)*.
+*[install_crosshurd](https://git.savannah.gnu.org/cgit/hurd/incubator.git/log/?h=install_crosshurd)*.
 
 Another option might be switching to <http://www.informatik.uni-koeln.de/fai/>
 or a equivalent system.

@@ -31,7 +31,7 @@ Madhusudan.C.S has implemented a new, fully functional [[procfs|madhusudancs]] f
 
 In August 2010, Jérémie Koenig [published another, new
 version](http://lists.gnu.org/archive/html/bug-hurd/2010-08/msg00165.html).
-This can be found in <http://git.savannah.gnu.org/cgit/hurd/procfs.git/>.
+This can be found in <https://git.savannah.gnu.org/cgit/hurd/procfs.git/>.
 
 Testing it is as simple as this:
 

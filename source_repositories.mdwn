@@ -18,7 +18,7 @@ This page is meant to give some guidelines.  Please use good sense or ask on
 
 # Git repositories on Savannah
 
-<http://git.savannah.gnu.org/cgit/hurd>
+<https://git.savannah.gnu.org/cgit/hurd>
 
   * hurd.git -- Hurd meta package; no real content yet
   * [[hurd/glibc.git|glibc]] -- [[/glibc]] maintenance

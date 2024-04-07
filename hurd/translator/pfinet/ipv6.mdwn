@@ -139,7 +139,7 @@ Indeed, IPv6 now works properly, and the very machine hosting this wiki
     <youpi> which repo?
     <youpi> I don't have such commit here
     <gnu_srs>
-      http://git.savannah.gnu.org/cgit/hurd/hurd.git/commit/?id=2b2d7fdc42475019e5ce3eabc9c9673e3c13d89f
+      https://git.savannah.gnu.org/cgit/hurd/hurd.git/commit/?id=2b2d7fdc42475019e5ce3eabc9c9673e3c13d89f
     <gnu_srs> From which release, 2.4.x, 2.6.x?
     <youpi> it's very old
     <youpi> 2002

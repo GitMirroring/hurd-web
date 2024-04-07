@@ -9,7 +9,7 @@ is included in the section entitled [[GNU Free Documentation
 License|/fdl]]."]]"""]]
 
 There is a repository for *this*, and *that*, and *everything* -- the
-*incubator*: <http://git.savannah.gnu.org/cgit/hurd/incubator.git/>.
+*incubator*: <https://git.savannah.gnu.org/cgit/hurd/incubator.git/>.
 
 As the `README` file in the `master` branch says, the development of the
 various software happens in separate branches.
