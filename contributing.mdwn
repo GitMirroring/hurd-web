@@ -163,7 +163,7 @@ packages](http://people.debian.org/~sthibault/failed_packages.txt).
 
 This is the list of tasks that we *want* to address soon, starting with the most pressing:
 
-* Add amd64 support to gdb.
+* Add amd64 support to gdb, see [Flavio patch pending commit](https://sourceware.org/pipermail/gdb-patches/2024-February/206895.html)
 * Fix shell output pipe replacement issue on amd64, see
 [discussion](https://lists.gnu.org/archive/html/bug-hurd/2023-10/msg00062.html).
 * On amd64, fix memcpy (> 16 bytes) from `/dev/mem` (makes hurd-console crash)
