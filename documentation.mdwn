@@ -57,6 +57,7 @@ from userlandish interfaces (Hurd) or from the microkernel itself (Mach).
   * [[GNU_Hurd|hurd/documentation]]
   * [[Introduction to Translators|/hurd-paper#translator]] and
   [[Existing Translators|hurd/translator]]
+  * [[Subhurds|hurd/subhurd]]
   * [[Mach|microkernel/mach/documentation]]
   * [[MIG|microkernel/mach/mig/documentation]]
   * [[UNIX]]

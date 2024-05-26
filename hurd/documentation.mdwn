@@ -24,6 +24,7 @@ is included in the section entitled
     * [[The design|/hurd-paper#design]]
     * [[Introduction to Translators|/hurd-paper#translator]] and
       [[Existing Translators|hurd/translator]]
+    * [[Subhurds|hurd/subhurd]]
     * [[The auth translator|/hurd-paper#auth]]
     * [[The proc translator|/hurd-paper#proc]]
     * [[The exec translator|/hurd-paper#exec]]

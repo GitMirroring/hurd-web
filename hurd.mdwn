@@ -48,6 +48,7 @@ in the *unstable* branch of the Debian archive.
   * [[Documentation]]
   * [[Introduction to Translators|/hurd-paper#translator]] and
       [[Existing Translators|hurd/translator]]
+  * [[Subhurds|hurd/subhurd]]
   * [Gaël Le Mignot](http://kilobug.free.fr/hurd/pres-en/slides/slides.html)
   * [Neal Walfield](http://kerneltrap.org/node/5)
 * Architecture
