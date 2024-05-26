@@ -26,11 +26,6 @@ This page lists the few packages whose build makes the Debian buildd box crash a
 
   * rsyslog
 
-* ext2fs gets stuck
-
-  * emacs24
-  * emacs25
-
 * loops and eats memory
 
   * pygobject
