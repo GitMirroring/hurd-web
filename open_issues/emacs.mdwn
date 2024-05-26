@@ -32,6 +32,10 @@ Also since the Hurd ported rust, you can now use
 with Emacs!  Joshua got
 [[html-ts-mode|https://github.com/mickeynp/html-ts-mode]] working.
 
+Emacs also has a packaged eglot, which is a client for language server
+protocol, into core.  Joshua was able to get eglot working for C mode
+with clandg, but it was a bit slow.  Joshua is running Emacs on a T43,
+with 1.5 GB of RAM, so perhaps his hardware is just super slow.
 
 You can easily install many Emacs packages with apt:
 
