@@ -18,9 +18,9 @@ package, or otherwise frequently used package, or you know upstream anyway.
 
 If you had to change the code considerably and are not 100% sure you did not
 introduce a regression, or are not very experienced with these kinds of code
-changes, you should first submit your patch for review to the [Debian alioth
-patch
-tracker](http://alioth.debian.org/tracker/?atid=410472&group_id=30628&func=browse).
+changes, you should first submit your patch for review to
+[[https://salsa.debian.org/hurd-team/hurd/|https://salsa.debian.org/hurd-team/hurd/]].  Its
+documentation is available [[here|https://wiki.debian.org/Salsa]].
 
 If the patch is trivial, or one of the Debian porters approved your patch for
 submission, submit the patch to the Debian BTS (bug tracking system).  You can
