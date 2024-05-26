@@ -55,6 +55,8 @@ Depending on your background, you may want to start reading the documentation
 from userlandish interfaces (Hurd) or from the microkernel itself (Mach).
 
   * [[GNU_Hurd|hurd/documentation]]
+  * [[Introduction to Translators|/hurd-paper#translator]] and
+  [[Existing Translators|hurd/translator]]
   * [[Mach|microkernel/mach/documentation]]
   * [[MIG|microkernel/mach/mig/documentation]]
   * [[UNIX]]

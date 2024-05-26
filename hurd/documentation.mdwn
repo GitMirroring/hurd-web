@@ -22,7 +22,8 @@ is included in the section entitled
   * [[*Towards_a_New_Strategy_of_OS_Design*|/hurd-paper]], an architectural
     overview by Thomas Bushnell, BSG, notably:
     * [[The design|/hurd-paper#design]]
-    * [[Translators|/hurd-paper#translator]]
+    * [[Introduction to Translators|/hurd-paper#translator]] and
+      [[Existing Translators|hurd/translator]]
     * [[The auth translator|/hurd-paper#auth]]
     * [[The proc translator|/hurd-paper#proc]]
     * [[The exec translator|/hurd-paper#exec]]
