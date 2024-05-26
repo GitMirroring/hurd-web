@@ -22,16 +22,17 @@ License|/fdl]]."]]"""]]
 
   * [[internal_allocator]]
 
+## Current Limitations
+
+### Use 64 bit time by default
+
+Extend ext2fs to support 64bit time.
 
 ## Large Stores
 
-The `ext2fs` translator from the upstream Hurd code base can only handle file
-systems with sizes of less than roughly 2 GiB.
+[[!inline pagenames=faq/2_gib_partition_limit raw=yes feeds=no]]
 
-[[!tag open_issue_hurd]]
-
-
-### Ognyan's Work
+### Ognyan's Work to allow ext2 to surpass the 2 GiB limit
 
   * Ognyan Kulev, [[*Supporting Large ext2 File Systems in the
     Hurd*|ogi-fosdem2005.mgp]], 2005, at FOSDEM
@@ -40,8 +41,8 @@ systems with sizes of less than roughly 2 GiB.
 
   * <http://kerneltrap.org/node/4429>
 
-Ognyan's patch lifts this limitation (and is being used in the
-[[Debian_GNU/Hurd_distribution|running/debian]]), but it introduces another
+Ognyan's patch lifted this limitation (and is being used in the
+[[Debian_GNU/Hurd_distribution|running/debian]]), but it introduced another
 incompatibility: `ext2fs` then only supports block sizes of 4096 bytes.
 Smaller block sizes are commonly automatically selected by `mke2fs` when using
 small backend stores, like floppy devices.
