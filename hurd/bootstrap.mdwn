@@ -15,7 +15,14 @@ this text.  -->
 
 [[!toc]]
 
+[[!inline pagenames=hurd/what_is_an_os_bootstrap raw=yes feeds=no]]
+
 # State at the beginning of the bootstrap
+
+Please note that as of May 2024 this document is out of date.  It does
+not explain how rumpdisk or the pci-arbitor is started.  Also consider
+reading about [[Serverboot V2|open_issues/serverbootv2]], which
+is a new bootstrap proposal.
 
 After initializing itself, GNU Mach sets up tasks for the various bootstrap
 translators (which were loader by the GRUB bootloader). It notably makes
