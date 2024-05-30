@@ -80,32 +80,5 @@ in the *unstable* branch of the Debian archive.
 
 * [[Open Issues|tag/open_issue_hurd]]
 
-# Developer References
+# [[Documentation|hurd/documentation]]
 
-* [[Coding_Style]]
-* [[Rules]]
-* [[Trackers]]
-* [[Building]]
-* [[Toolchain]]
-    * [[glibc]]
-* RPC [[Interface]]s
-* Libraries
-  * [[libpager]]
-  * [[libports]]
-  * [[libstore]]
-  * [[libchannel]]
-  * [[libtrivfs]]
-  * [[libnetfs]] -- short introductory material
-  * [[libdiskfs]]
-  * [[libihash]]
-  * [[libpthread]]
-  * [[libfshelp]]
-  * [[libps]]
-* In-development Libraries
-  * [[libfuse]]
-* [[IO_Path]]
-* [[Porting]]
-* [[Debugging]]
-* [[Networking]]
-* [[Console]]
-* [[System bootstrap|hurd/bootstrap]]

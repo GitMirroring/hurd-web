@@ -59,8 +59,36 @@ is included in the section entitled
     applied, comparisions to other systems.
 
 
-# Development
+# Developer References
 
+* [[Coding_Style]]
+* [[Rules]]
+* [[Trackers]]
+* [[Building]]
+* [[Toolchain]]
+    * [[glibc]]
+* RPC [[Interface]]s
+* Libraries
+  * [[libpager]]
+  * [[libports]]
+  * [[libstore]]
+  * [[libchannel]]
+  * [[libtrivfs]]
+  * [[libnetfs]] -- short introductory material
+  * [[libdiskfs]]
+  * [[libihash]]
+  * [[libpthread]]
+  * [[libfshelp]]
+  * [[libps]]
+* In-development Libraries
+  * [[libfuse]]
+* [[IO_Path]]
+* [[Porting]]
+* [[Debugging]]
+* [[Networking]]
+* [[Console]]
+* [[System bootstrap|hurd/bootstrap]]
+* Additional references
   * [[RPC]]: our usage of *Remote Procedure Call*s.
   * The [[System Bootstrap|hurd/bootstrap]] explains how the early
     boot of the Hurd works.  There is an alternative [[RFC bootstrap
