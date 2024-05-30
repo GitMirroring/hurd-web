@@ -86,7 +86,7 @@ To make a bootable system we really better make the disk image partitioned, and 
     # create a new primary partition spanning the whole disk: n p and just accept the defaults, and finish with w
     settrans -ca disk /hurd/storeio -T typed file:disk.img
     settrans -ca disk1 /hurd/storeio -T typed part:1:file:disk.img
-    mke2fs disk1
+    /sbin/mke2fs disk1
     settrans -ca chroot-hurd-amd64 /hurd/ext2fs disk1
 
 (here we assume that fdisk puts the partition at sector 2048, that's indeed the

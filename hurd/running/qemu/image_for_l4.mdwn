@@ -156,11 +156,11 @@ Let's create it : we use the magic command `dd` on the special device which cont
 
 We will mount it in loopback :
 
-    $ losetup /dev/loop0 hurd_l4.img
+    # losetup /dev/loop0 hurd_l4.img
 
 We need now to have it recognized as a hard disk :
 
-    $ fdisk -u -C58 -S63 -H16 /dev/loop0
+    # fdisk -u -C58 -S63 -H16 /dev/loop0
       Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
       Building a new DOS disklabel. Changes will remain in memory only,
      until you decide to write them. After that, of course, the previous
@@ -195,12 +195,12 @@ If everything is fine (especially check the `Start` and `End` fields), you can p
 
 You will have noticed that the partition only starts at the 63rd sector. The beginning of the disk contains the MBR which is used for booting. We must then remount the disk making sure that this part is skipped before formating it. We know that a sector uses 512 bytes so we should begin at 63 \* 512 = 32256 :
 
-    $ losetup -d /dev/loop0
-    $ losetup -o32256 /dev/loop0 hurd_l4.img
+    # losetup -d /dev/loop0
+    # losetup -o32256 /dev/loop0 hurd_l4.img
 
 Now comes time to format it into a decent filesystem :
 
-    $ mke2fs /dev/loop0
+    # mke2fs /dev/loop0
       mke2fs 1.35 (28-Feb-2004)
       Filesystem label=
       OS type: Linux
@@ -223,19 +223,19 @@ Now comes time to format it into a decent filesystem :
 
 We should now be able to mount it the right way :
 
-    $ mkdir mnt
-    $ losetup -d /dev/loop0
-    $ mount -o loop,offset=32256 hurd_l4.img mnt/
+    # mkdir mnt
+    # losetup -d /dev/loop0
+    # mount -o loop,offset=32256 hurd_l4.img mnt/
 
 Here comes grub time (I assume you have the grub files in `/boot/grub` and the `menu.lst` we've obtained in the previous section is in `~/`) :
 
-    $ mkdir -p mnt/boot/grub
-    $ cp /boot/grub/stage1 /boot/grub/stage2 /boot/grub/e2fs_stage1_5 mnt/boot/grub/
-    $ cp ~/menu.lst mnt/boot/grub
+    # mkdir -p mnt/boot/grub
+    # cp /boot/grub/stage1 /boot/grub/stage2 /boot/grub/e2fs_stage1_5 mnt/boot/grub/
+    # cp ~/menu.lst mnt/boot/grub
 
 We will make a grub bootimage and boot it with bochs :
 
-    $ cat stage1 stage2 > grubboot.img
+    # cat stage1 stage2 > grubboot.img
 
 Copy the following into `.bochsrc` (replace the parts in caps by the right info) :
 

@@ -212,7 +212,7 @@ I recommend that you start by reading the <code>/bin/mount</code> command,
 it is only a small script. Because setting filesystem translators is
 similar to mounting partitions, you can easily grasp the concept this way.
 Make a file system image with <code>dd if=/dev/zero of=dummy.fs bs=1024k
-count=8; mke2fs dummy.fs</code> and "mount" it with <code>settrans -c dummy
+count=8; /sbin/mke2fs dummy.fs</code> and "mount" it with <code>settrans -c dummy
 /hurd/ext2fs `pwd`/dummy.fs</code>. Note that the translator is not started
 yet, no new <code>ext2fs</code> process is running (verify with <code>ps
 Aux</code>). Check that everything is correct using <code>showtrans</code></p>
