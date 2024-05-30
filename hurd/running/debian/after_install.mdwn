@@ -15,3 +15,8 @@ you.  See [[GRUB]]'s page for this.
 
 Installing packages without having a network connection is described
 [[DebianAptOffline]].
+
+# Setting up mDNS responder
+
+To get `ssh <hostname>.local` working, you can set up the
+[[hurd/terrible-mdns-responder]].

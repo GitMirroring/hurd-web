@@ -229,6 +229,9 @@ After you have a Hurd vm set up and running:
 * `git clone git://git.sv.gnu.org/hurd/gnumach.git`
 * `git clone git://git.sv.gnu.org/hurd/incubator.git`
 * You can connect through ssh with `ssh root@localhost -p 2222`
+* Optionally if you connect to the Hurd running on another local
+  machine, then you might want to set up the
+  [[hurd/terrible-mdns-responder]].
 * Get more from the [repo list](https://git.savannah.gnu.org/cgit/hurd/).
 * Read the docs on these pages.
 * Start hacking.
