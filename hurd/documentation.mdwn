@@ -62,6 +62,11 @@ is included in the section entitled
 # Development
 
   * [[RPC]]: our usage of *Remote Procedure Call*s.
+  * The [[System Bootstrap|hurd/bootstrap]] explains how the early
+    boot of the Hurd works.  There is an alternative [[RFC bootstrap
+    proposal|open_issues/serverbootv2]].
+  * You should read the Hurd's [[IO path|hurd/io_path]] to learn how
+    glibc's `read ()` works on the Hurd.
   * *[[The_GNU_Hurd_Reference_Manual|reference_manual]]*.
   * [[*The Hurd Hacking Guide|Hurd_Hacking_Guide]]*, an introduction to GNU&nbsp;Hurd and Mach
     programming by Wolfgang Jährling.

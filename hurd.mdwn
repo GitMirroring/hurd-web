@@ -108,3 +108,4 @@ in the *unstable* branch of the Debian archive.
 * [[Debugging]]
 * [[Networking]]
 * [[Console]]
+* [[System bootstrap|hurd/bootstrap]]

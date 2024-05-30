@@ -32,6 +32,9 @@ depend on GNU Mach, while other Hurd servers depend on other Hurd servers.
 
 # Bootstrap
 
+Take a look at the [[hurd/bootstrap]] page.  There is an alternative
+proposal for an [[different bootstrap|open_issues/serverbootv2]].
+
 ## [[hurd_init]]
 
 ## Hurd Booting Process
