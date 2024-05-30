@@ -33,7 +33,14 @@ provides the same standard interfaces known from other [[UNIX]]-like systems.
 Thus, for a typical user, the Hurd is intended to silently work in the
 background providing the services and infrastructure which the [[microkernel]]
 itself has no business implementing, but that are required for higher level
-programs and libraries to operate.
+programs and libraries to operate. Let's look at an example.
+
+[[!img open_issues/images/overview.svg]]
+
+Firefox invokes glibc's `send ()`, which in turn uses the pfinet (or
+lwip) TCP/IP stack, which talk to our device drivers (rump or netdde),
+which finally talk to GNU Mach.  Only GNU Mach runs in kernel space!
+Everything else is userspace!
 
 The Hurd supplies the last major software component needed for a complete
 [[GNU_operating_system|running/gnu]] as originally conceived by Richard
