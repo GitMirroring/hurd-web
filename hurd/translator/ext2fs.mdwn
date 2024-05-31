@@ -32,6 +32,57 @@ Extend ext2fs to support 64bit time.
 
 [[!inline pagenames=faq/2_gib_partition_limit raw=yes feeds=no]]
 
+## Create your own custom ext2fs
+
+	$ dd if=/dev/zero of=silly.fs bs=1024k count=8
+	$ /sbin/mkfs.ext2 -E root_owner=$UID:0 silly.fs
+	$ settrans -c silly /hurd/ext2fs `pwd`/silly.fs
+	$ ps -e | grep silly  # ext2fs has not started
+	$ ls silly
+	$ ps -e | grep silly | awk '{ print $6 " " $7 }'
+	/hurd/ext2fs /home/joshua/silly.fs
+	$ cd silly
+	$ echo 'hello' > hello.txt
+	$ mkdir silly-dir
+	$ cd ..
+	$ fsysopts silly
+	/hurd/ext2fs --writable --relatime --no-inherit-dir-group /home/joshua/silly.fs
+	$ fsysopts silly --readonly  # stop writes to the filesystem
+	$ fsysopts silly --writable  # let writes again
+
+Try to make the filesystem read-only with fsysopts. Note how further
+write attempts fail now. Try to kill the active translator with
+settrans -g.
+
+You could go crazy even!  Why not make something like this:
+
+	~/silly <--> silly.fs
+	   |   \
+	   |    \
+	   |     \
+	   |	  \
+	   | 	   \
+	  \|/	    \/
+	 silly1 <-> silly1.fs
+	       ...
+
+	/hurd/joshua/silly/silly1/silly2/silly3/silly4
+
+Each sillyN is another ext2fs filesystem!  Make sure that as N gets
+bigger sillyN.fs gets smaller.  Let us know in the `#hurd` [irc
+channel](https://web.libera.chat/) how "silly" you are.  :)
+
+The current record is 2!
+
+	$ ps -e | grep silly | awk '{print $6 " " $7}'
+	/hurd/ext2fs /home/joshua/silly.fs
+	/hurd/ext2fs /home/joshua/silly/silly1.fs
+
+What is the limit?  How many nested ext2fs translators can you have?
+You could have 32 ["silly"
+directories](https://logs.guix.gnu.org/hurd/2024-05-31.log#005021).
+That's very silly!
+
 ### Ognyan's Work to allow ext2 to surpass the 2 GiB limit
 
   * Ognyan Kulev, [[*Supporting Large ext2 File Systems in the
