@@ -21,7 +21,7 @@ else="
 
 Sergey Bugaev [committed public
 headers](https://lists.gnu.org/archive/html/bug-hurd/2024-04/msg00023.html) for
-the GNU Mach port. He writes that
+the GNU Mach AArch64 port. He writes that
 
 > ``` ...there is now a real port of GNU Mach to AArch64, using these headers as
 > its actual API/ABI. We got the Mach port to run glibc, several Hurd servers,
@@ -39,11 +39,13 @@ He also added new tests to check that [threads handle signals
 well](https://lists.gnu.org/archive/html/bug-hurd/2024-04/msg00031.html), and he
 also fixed a [use-after-free in
 vm_map_pageable_scan()](https://lists.gnu.org/archive/html/bug-hurd/2024-04/msg00005.html).
-He also added support to [copy a send once
-right](https://lists.gnu.org/archive/html/bug-hurd/2024-04/msg00001.html) to
-Mach and MIG, and he hosted a [lengthy Hurd code
+He also hosted a [lengthy Hurd code
 jam](https://www.youtube.com/watch?v=lQ7bWzsL7Ps) (apologies for the poor audio
 quality).
+
+He also very notably added support to [copy a send once
+right](https://lists.gnu.org/archive/html/bug-hurd/2024-04/msg00001.html) to
+Mach and MIG.
 
 Some time ago, Sergey also wrote the
 [terrible-mdns-responder](https://darnassus.sceen.net/~hurd-web/hurd/terrible-mdns-responder/),
