@@ -167,6 +167,7 @@ This is the list of tasks that we *want* to address soon, starting with the most
 * Fix shell output pipe replacement issue on amd64, see
 [discussion](https://lists.gnu.org/archive/html/bug-hurd/2023-10/msg00062.html).
   - This means adding an `i386x_float_state` and `i386_XFLOAT_STATE` thread status, that glibc would be able to use along `i386_REGS_SEGS_STATE` and `i386_FLOAT_STATE` in `_hurd_setup_sighandler` and `sigtreturn.c`. The structure would contain the `fp_save_kind`. That'll actually be needed both on `i386` and `x86_64` actually, to fix SSE use against signals in general.
+* Fix rpctrace on amd64
 * On amd64, fix memcpy (> 16 bytes) from `/dev/mem` (makes hurd-console crash)
 * Settle CI for mig+gnumach+hurd+glibc.
 * Port `dhcpcd`, see [call for help](https://lists.debian.org/debian-hurd/2023/11/msg00030.html)
