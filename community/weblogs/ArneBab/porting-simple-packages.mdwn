@@ -13,7 +13,7 @@ See [[Instant Development Environment|contributing#index5h2]] - just follow the 
 
 ## Getting the list of failed packages
 
-    wget http://people.debian.org/~sthibault/failed_packages.txt.gz
+    wget http://people.debian.org/~sthibault/hurd-i386/failed_packages.txt.gz
     gunzip failed_packages.txt.gz
 
 ## Finding a simple task

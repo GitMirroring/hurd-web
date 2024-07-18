@@ -156,7 +156,7 @@ You can also just [[install_Debian_GNU/Hurd|hurd/running/debian]] and find what
 doesn't work or suit you and try to improve that.
 
 Or, you can pick one from the [list of failing
-packages](http://people.debian.org/~sthibault/failed_packages.txt).
+packages](http://people.debian.org/~sthibault/hurd-i386/failed_packages.txt).
 
 
 ## TODO List
