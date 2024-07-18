@@ -29,5 +29,7 @@ instance. Firmware loading is not implemented yet.
 For graphical mode, Xorg is supported, e.g. with the vesa driver. DRM is not
 supported yet.
 
+USB is on its way to getting supported with rumpusbdisk.
+
 [[microkernel/mach/gnumach/ports/Xen]] is also supported, both blkfront and
 netfront.
