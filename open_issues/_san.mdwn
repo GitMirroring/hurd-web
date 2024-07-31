@@ -35,11 +35,12 @@ as:
   * Undefined Behavior Sanitizer (UBsan; `-fsanitize=undefined`)
 
 Porting these to the Hurd is not a trivial task, for they have intimate
-knowledge about the operating system kernel they're running on, and from a
-first look they reimplement a lot of [[/glibc]] by directly using
+knowledge about the operating system kernel they're running on, and 
+reimplement the needed parts of [[/glibc]] by directly using
 [[system_call]]s -- which is basically a no-go on GNU Hurd.
 
-Samuel took some look at it and got some basic support for libubsan and libasan: 
+Samuel took some look at it and got some basic support for libubsan and libasan
+by making it call glibc still:
     <https://people.debian.org/~sthibault/hurd-i386/libubsan-hurd.diff>
 which allowed to fix some issues in the hurd code.
 
