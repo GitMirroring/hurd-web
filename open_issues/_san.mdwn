@@ -39,6 +39,11 @@ knowledge about the operating system kernel they're running on, and from a
 first look they reimplement a lot of [[/glibc]] by directly using
 [[system_call]]s -- which is basically a no-go on GNU Hurd.
 
+Samuel took some look at it and got some basic support for libubsan and libasan: 
+    <https://people.debian.org/~sthibault/hurd-i386/libubsan-hurd.diff>
+which allowed to fix some issues in the hurd code.
+
+This needs to be updated to a newer gcc and submitted upstream.
 
 # IRC, OFTC, #gcc, 2012-12-11
 
