@@ -21,7 +21,9 @@ system functionality is usually accessed through the
 [[/libpthread]].
 
 A whole-system port involves touching all these components, with varying
-degree, of course.
+degree, of course.  In 2024, Sergey Bugaev completed an experimental
+system port to AArch64, so be sure to consult him, if you are
+considering a system port.
 
 For a CPU architecture port, the microkernel is the most involved part,
 followed by glibc and the threading library.
@@ -30,10 +32,18 @@ The original [[microkernel/Mach]] microkernel was portable to a number of
 architectures which were a lot more popular at the beginning of the 1990s than
 they are now.
 
-The GNU/Hurd system is currently available for the x86 architecture.  This
-includes emulators such as [[hurd/running/QEMU]] (or KVM), or
-[[hurd/running/VirtualBox]].  Besides this, there is a port for the [[Xen
-domU|microkernel/mach/gnumach/ports/xen]] *sub-architecture*.
+The Debian GNU/Hurd system is currently available for the x86 and
+X86_64 architectures and it is probably the most up-to-date with about
+70% of Debian's packages available. There also exists an experimental
+GNU/Hurd AArch64 port. Contact Sergey if you are interested in running
+the Hurd on AArch64. You can also run the Hurd with emulators such as
+[[hurd/running/QEMU]] (or KVM), or [[hurd/running/VirtualBox]].
+Besides this, there is a port for the [[Xen
+domU|microkernel/mach/gnumach/ports/xen]] *sub-architecture*.  With
+Xen, you can run the Hurd and GNU/Linux in parallel.  If you are
+already running Guix System, then
+[[childhurds|https://guix.gnu.org/manual/devel/en/html_node/Virtualization-Services]]
+are probably the easiest way to try out the Hurd.
 
 Further on, there are some [[unfinished porting
 attempts|microkernel/mach/gnumach/ports]] for the Alpha, MIPS and PowerPC
