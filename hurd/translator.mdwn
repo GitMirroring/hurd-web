@@ -99,7 +99,6 @@ The [[concept|concepts]] of translators creates its own problems, too:
 * [[storeio]]
 * [[ext2fs]]
 * [[fatfs]]
-* [[ufs]]
 * [[magic]]
 * [[mtab]]
 * [[unionfs]]
