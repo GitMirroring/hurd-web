@@ -21,9 +21,12 @@ A 64-bit GNU/Hurd is also coming soon,
 progress is tracked on [[open_issues/64-bit_port]]!
 Hurd developers ported GNUMach to
 64-bit some time ago.  Then they started making significant progress
-on the x86_64 userland port in Feb 2023.  As of May 2023, the 64-bit
-port works well enough to start all the essential Hurd servers, run
-/bin/sh, establish TCP/IP connections, and compile C.  We are currently building
+on the x86_64 userland port in Feb 2023.  As of September 2024, the
+Debian hurd-amd64 port works just like the hurd-i386, except for
+missing packages and more
+[[bugs|https://lists.gnu.org/archive/html/bug-hurd/2024-07/msg00058.html]],
+namely swapping issues with rumpdisk and deadlocking issues with
+libdiskfs/ext2fs.  We are currently building
 64-bit packages.  We plan on supporting both a 32-bit and 64-bit Debian
 GNU/Hurd, only not both at the same time.  However, there is no plan to fix the
 year 2038 concern on a 32-bit system.

@@ -19,10 +19,20 @@ License|/fdl]]."]]"""]]
 
 **For pure 64bit support, we need to**
 
-  * bootstrap a distrib
+  * bootstrap a distribution. Debian is done. Alpine-Hurd is mostly
+    bootstrapped.  Reach out to Sergey if you are interested in an
+    Alpine-Hurd distribution with bleeding-edge software.  Reach out
+    to Guix, if you want to help them bootstrap a 64bit Hurd.
   * port gdb
   * Fix bugs :)
     * Notably it seems to be requiring at least 2G memory to boot.
+
+**Installing via the installer image**
+
+The installer appears to work in qemu.  Give it a shot!  Let us know
+how it works in real hardware!
+
+[[http://cdimage.debian.org/cdimage/ports/latest/hurd-amd64/current/]]
 
 **Installing a 64bit chroot**
 
