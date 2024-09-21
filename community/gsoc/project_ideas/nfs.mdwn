@@ -16,15 +16,15 @@ very well: File locking doesn't work properly (at least in conjunction with a
 GNU/Linux server), and performance is extremely poor. Part of the problems
 could be owed to the fact that only NFSv2 is supported so far.
 
-(Note though that locking on the Hurd is problematic in general, not only in
-conjunction with NFS -- see the [[file_locking]] task.)
-
 This project encompasses implementing NFSv3 support, fixing bugs and
 performance problems -- the goal is to have good NFS support. The work done in
 a previous unfinished GSoC project can serve as a starting point.
 
 Both client and server parts need work, though the client is probably much more
-important for now, and shall be the major focus of this project.
+important for now, and shall be the major focus of this project.  One
+could probably use [[open_issues/libnfs]] for the client portion.  You
+should probably talk to Sergey, who has an in-development
+9P port to the Hurd.
 
 Some [discussion of NFS
 improvements](http://lists.gnu.org/archive/html/bug-hurd/2008-04/msg00035.html)
