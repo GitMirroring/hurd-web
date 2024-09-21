@@ -13,10 +13,24 @@ License|/fdl]]."]]"""]]
 
 [[!meta title="what hardware is supported? What drivers does GNU/Hurd have?"]]
 
+As of September 2024, if you want to run the Hurd in real hardware,
+old Thinkpads are known to work well. We recommend the X200, T400, or
+T500 Thinkpads, which support internet connectivity via the ethernet
+port.  Those laptops support a maximum of 8GB of RAM, and you could
+use libreboot with an SSD!  You could probably purchase one of those
+used laptops for about $200 or less.  Be sure to read about the
+[[current status of the Hurd|hurd/status]].  Until we fix the
+libdiskfs/ext2fs issues on the [[64 bit port|faq/64-bit]], we
+recommend you use the 32 bit version of the Hurd.
+
+A cheaper option is the T43 (2GB max RAM) or T60 (4 GB max RAM), which
+one can find for about $50.
+
 Currently, for disks Mach integrates old drivers from Linux through some
 [[community/gsoc/project_ideas/driver_glue_code]], which provide
 IDE disk support, and we have an AHCI driver which provides [[SATA
-support|faq/sata_disk_drives]].
+support|faq/sata_disk_drives]].  [[Rumpdisk|hurd/rump]] lets us use
+modern hard drives, like SSDs.
 
 For network boards, we use the [[DDE]] toolkit
 to run linux 2.6.32 drivers in userland processes, which provides both long-term
