@@ -38,6 +38,59 @@ https://en.wikipedia.org/wiki/File:SMP_-_Symmetric_Multiprocessor_System.svg -->
 
 # Current Status
 
+As of September 2024, the SMP support is implemented for i386 with
+working internet, because it boots with only one cpu in the default
+processor set.  The slave processors are temporarily disabled until
+they can be safely used per task.  We are unable to turn on the full
+set at boot time due to race bugs.  Debian Hurd provides SMP enabled
+GNU Mach kernels.
+
+# How to test the current SMP support
+
+The easiest way to test the SMP support, is via the [[qemu
+guide|https://www.gnu.org/software/hurd/hurd/running/qemu.html]].
+Once you have the Hurd running you can build an SMP enabled GNU Mach.
+
+	$ git clone git://git.savannah.gnu.org/hurd/gnumach.git
+	$ cd gnumach
+	$ autoreconf -i
+	$ mkdir build
+	$ cd build
+	$ ../configure --enable-ncpus=4 --enable-apic --enable-kdb --disable-linux-groups
+	$ make gnumach.gz
+	$ su
+    # mv /boot/gnumach-1.8-486.gz /boot/gnumach-1.8-486.gz.bak
+    # cp gnumach.gz /boot/gnumach-1.8-486.gz
+
+You may optionally update `/boot/grub/grub.cfg` change `hd0` to `wd0`
+and add `console=com0`
+
+	/boot/gnumach-1.8-486.gz root=part:2:device:wd0 console=com0
+
+update `/etc/fstab` and update `wd0` instead of `hd0`.
+
+```
+/dev/wd0s2      /               ext2    defaults        0       1
+/dev/wd0s1      none            swap    sw              0       0
+```
+
+You can shutdown via `/sbin/poweroff`.
+
+start qemu with `-smp 4` and add `-nographic` if you want to use `com0`.
+
+	$ qemu-system-i386 -M q35,accel=kvm -smp 4 -m 2G -net  \
+	user,hostfwd=tcp::2223-:22 -net nic -hda debian-hurd-VERSION.img \
+	-nographic
+
+To test smp:
+
+	$ sudo /path/to/smp /bin/bash
+	$ stress -c 7
+
+smp.c source can be found
+[[here|https://lists.gnu.org/archive/html/bug-hurd/2024-02/msg00088.html]].
+
+# What was done to get the 32-bit SMP support
 
 The GNU Mach source code includes many special cases for multiprocessor,
 controlled  by #if NCPUS > 1 macro.
@@ -95,7 +148,7 @@ have to build an isolated environment to execute the non-thread-safe drivers.
 
 ### Task list
 
-1. Implement a routine to detect and identify the processors
+1. DONE Implement a routine to detect and identify the processors
 
    This routine must check the number of processors, initialize the lapic of BSP
    (the master processor), and assign a kernel ID for each processor. This kernel
@@ -180,7 +233,7 @@ have to build an isolated environment to execute the non-thread-safe drivers.
      Kernel/APIC array until it finds the same APIC ID. Then it will return the
      index (Kernel ID) of this position.
 
-2. Implement a routine to initialize the processors
+2. DONE Implement a routine to initialize the processors
 
 
    This routine will initialize the lapic of each processor and other structures
@@ -191,7 +244,7 @@ have to build an isolated environment to execute the non-thread-safe drivers.
    Developer Guide,
    Volume 3. [link](https://software.intel.com/sites/default/files/managed/a4/60/325384-sdm-vol-3abcd.pdf)
 
-3. Implement `intel_startCPU()`
+3. DONE Implement `intel_startCPU()`
 
 
    This function will initialize the descriptor tables of the processor specified by the
