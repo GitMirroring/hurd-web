@@ -9,20 +9,32 @@ Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license
 is included in the section entitled [[GNU Free Documentation
 License|/fdl]]."]]"""]]
 
-Several people have expressed interested in a port of GNU/Hurd for the
-ARM architecture.  Luckily a userspace port of the Hurd servers and
-glibc is underway.  As early as January 1, 2024 an AArch64 port is
-making some progress.  Sergey did some hacking on glibc, binutils,
-GCC, and added some headers to GNU Mach.  He was able to build the
-core Hurd servers: ext2fs, proc, exec, and auth.
+An experimental AArch64 port of GNU Mach, the Hurd servers, and glibc
+is underway.  In late September of 2024 the Hurd developers were able
+to run a minimal Hurd environment in qemu.  It still needs lots of
+work before we reccommend it to the casual user.
+
+Typically when one ports the Hurd to a different CPU architecture, one
+needs to first port GNU Mach.  But Sergey actually did it backward.
+He ported the Hurd first!  He did some hacking on glibc, binutils,
+GCC, and added some headers to GNU Mach.  Then He was able to build
+the core Hurd servers: ext2fs, proc, exec, and auth.
 
 One would think that he would need to port GNU Mach to run the
 binaries, but Sergey ran a statically linked hello world executable on
 GNU/Linux, under GDB, being careful to skip over and emulate syscalls
 and RPCs.  The glibc port has the TLS setup, hwcaps / cpu-features,
-and ifuncs.
+and ifuncs.  Then he went and ported GNU Mach with help from Luca.
+Once Sergey's glibc patches are merged, then we can start cross
+compiling debian packages for aarch64-gnu.
 
-Now to some of the more technical things:
+azert on irc can run a minimal GNU Mach userspace on the Olimex A64
+OLinuXino board, which supports a max 2GB of RAM.  As of September of
+2024, the easiest way to develop on the AArch64 port, is with qemu.
+Keep reading and you will see the guide that somes you how to
+cross-build a AArch64 Hurd.
+
+Now to some of the more technical things.
 
 - The TLS implementation is basically complete and working. We're
 using `tpidr_el0` for the thread pointer (as can be seen in the listing
@@ -91,6 +103,10 @@ made to work on the calling thread; it only requires some careful
 coding to make sure the return register (`%eax`/`%rax`/`x0`) is *not*
 rewritten with `mach_msg_trap`'s return code, unlike normally.
 
+- We need an interrupt handling framework with interupt controller
+  support.  Jessica Clark apparently did some of this for FreeBSD.
+  Perhaps Jessica could give us some pointers.
+
 But other than that, I do have an AArch64 versions of `trampoline.c`
 and `intr-msg.h` (complete with `SYSCALL_EXAMINE` &
 `MSG_EXAMINE`). Whether they work, we'll only learn once we have
@@ -156,6 +172,289 @@ Also, about the serial console, it might be useful at some point to
 use a driver from userspace, if we can reuse some drivers from netbsd
 or linux, to avoid embedding all of them in gnumach.
 
+# Setting up a AArch64 development environment (in qemu)
+
+Before you follow the below guide, take a look at Flavio's
+[[cross-hurd|https://github.com/flavioc/cross-hurd]] project, which
+should give you some ideas about how to [[cross
+build|toolchain/cross-gnu]] the AArch64 GNU Mach and the Hurd via a
+GNU/Linux device.  You can also read Sergey's
+[[guide|https://mail.gnu.org/archive/html/bug-hurd/2023-01/msg00132.html]]
+on how to cross build a X86 Hurd (but you will need a more recent
+binutils and gcc).
+
+## Build gnumach
+
+Prepare the crosscompiler environment
+
+	$ PREFIX=~/src/crosshurd-aarch64
+	$ mkdir $PREFIX
+	$ mkdir $PREFIX/{src,include,aarch64-gnu}; ln -s ../include
+	$ $PREFIX/aarch64-gnu/sys-include; ln -s ../lib $PREFIX/aarch64-gnu/lib
+
+Compile binutils
+
+	$ cd $PREFIX/src
+	$ git clone https://sourceware.org/git/binutils-gdb.git
+	$ mv binutils-gdb/ binutils
+	$ cd binutils
+	$ mkdir build
+	$ cd build
+	$ ../configure --disable-werror --target=aarch64-gnu --prefix=$PREFIX --with-lib-path=$PREFIX/lib
+	$ make
+	$ make install
+
+Verify that e.g. `$PREFIX/bin/i686-gnu-nm -v` works.
+
+Compile gcc
+
+	$ cd $PREFIX/src
+	$ git clone https://gcc.gnu.org/git/gcc.git
+	$ cd gcc
+	$ mkdir build
+	$ cd build
+	$ ../configure --prefix=$PREFIX --target=aarch64-gnu \
+	--with-lib-path=$PREFIX/lib --disable-multilib --enable-languages=c
+	$ make -j2 all-gcc
+	$ make install-gcc
+
+Note that at this step we're only building GCC itself, not libgcc.
+We can build libgcc after we have installed glibc headers.
+
+Next, we want to build MIG. MIG needs Mach headers, but we can't build
+GNU Mach without MIG. So what we do is we 'make' GNU Mach twice, once
+to install the headers, and later on once more to actually build it.
+
+You might need this
+[[patch|https://lists.gnu.org/archive/html/bug-hurd/2024-03/msg00110.html]].
+
+Compile gnumach and install headers, Sergey branch
+
+	cd $PREFIX/src
+	git clone https://git.savannah.gnu.org/git/hurd/gnumach.git
+	cd gnumach
+	git remote add bugaevc https://github.com/bugaevc/gnumach.git
+	git fetch bugaevc
+	git switch -c wip-aarch64 bugaevc/wip-aarch64
+	autoreconf -i && mkdir build && cd build && CC=gcc ../configure
+	--prefix=$PREFIX --host=aarch64-gnu && make install-data
+
+Set PATH variable:
+
+	PATH=$PATH:$PREFIX/bin
+
+Install mig
+
+	$ cd $PREFIX/src
+	$ git clone https://git.savannah.gnu.org/git/hurd/mig.git
+	$ cd mig
+	$ autoreconf -i
+	$ mkdir build
+	$ cd build
+	$ ../configure --target=aarch64-gnu --prefix=$PREFIX
+	$ make
+	$ make install
+
+Install hurd headers
+
+	$ cd $PREFIX/src
+	$ git clone https://git.savannah.gnu.org/git/hurd/hurd.git
+	$ cd hurd
+	$ git remote add bugaevc https://github.com/bugaevc/hurd.git
+	$ git fetch bugaevc
+	$ git switch -c aarch64 bugaevc/aarch64
+	autoreconf -i && mkdir build && cd build
+	$ CC=gcc ../configure --host=aarch64-gnu --without-parted \
+	  --without-libcrypt--without-libbz2 --without-libz       \
+	  --without-rump
+	$ make no_deps=t prefix=$PREFIX install-headers
+
+Install glibc headers
+
+	$ cd $PREFIX/src
+	$ git clone https://sourceware.org/git/glibc.git
+	$ cd glibc/
+	$ git remote add bugaevc https://github.com/bugaevc/glibc.git
+	$ git fetch bugaevc
+	$ git switch -c aarch64-gnu bugaevc/aarch64-gnu
+	$ mkdir build
+	$ cd build
+	$ ../configure --disable-mathvec --host=aarch64-gnu --prefix= \
+	$ make install-headers DESTDIR=$PREFIX
+	$ touch $PREFIX/include/gnu/stubs.h $PREFIX/lib/libc.so
+	$ make csu/subdir_lib install csu/crt1.o csu/crti.o csu/crtn.o $PREFIX/lib
+
+Make libgcc
+
+	$ cd $PREFIX/src
+	$ cd gcc/build
+	$ make configure-target-libgcc
+	$ make all-target-libgcc
+	$ make install-target-libgcc
+
+Make gnumach for real now
+
+	$ cd $PREFIX/src
+	$ cd gnumach
+	$ rm -r build
+	$ mkdir build
+	$ cd build
+	$ ../configure --prefix=$PREFIX --host=aarch64-gnu
+	$ make
+
+Check booting notes in `aarch64/BOOTING`.
+
+Test gnumach:
+
+	$ cd $PREFIX/src
+	$ cd gnumach/build
+	$ make tests/module-{hello,gsync,mach_host,machmsg,mach_port,syscalls,task,threads,vm,thread-state}
+	$ qemu-system-aarch64 -m 1G -machine virt -cpu max -kernel gnumach \
+	  -nographic -append "foo=bar" -device
+	guest-loader,kernel=tests/module-hello,bootargs="module-hello"'${host-port}
+	${device-port} $(task-create) $(task-resume)',addr=0x4000
+	for test in gsync hello mach_host machmsg mach_port syscalls task
+	threads vm; do qemu-system-aarch64 -m 1G -machine virt -cpu max
+	-kernel gnumach -nographic -append "foo=bar" -device
+	guest-loader,kernel=tests/module-$test,bootargs="module-$test
+	"'${host-port} ${device-port} $(task-create)
+	$(task-resume)',addr=0x4000; done
+
+## Debug gnumach:
+
+	$ qemu-system-aarch64 -m 1G -machine virt -cpu max -kernel gnumach \
+	-nographic -append "foo=bar" -device
+	guest-loader,kernel=tests/module-hello,bootargs="module-hello
+	"'${host-port} ${device-port} $(task-create) $(task-resume)',addr=0x4000
+
+in another terminal (tab), run gdb, enter tar ext :1234, then p
+$pc. $pc is in 0x40000000. Enter si 6 times, $pc should jump to
+0x0000000040200000. symbol-file gnumach.elf -o $pc.
+
+## Build Das U-Boot
+
+Make Arm Trusted Firmware:
+
+	$ cd $PREFIX/src
+	$ git clone https://github.com/ARM-software/arm-trusted-firmware.git
+	$ cd arm-trusted-firmware
+	$ export CROSS_COMPILE=aarch64-gnu-
+	$ export ARCH=arm64
+	$ make PLAT=sun50i_a64 bl31
+
+Make crust:
+
+	$ cd $PREFIX/src
+	$ git clone https://github.com/crust-firmware/crust
+	$ cd crust
+	$ export CROSS_COMPILE=or1k-elf-
+	$ make a64-olinuxino_defconfig
+	$ make scp
+
+Download Das U-boot:
+
+	$ cd $PREFIX/src
+	$ git clone https://github.com/u-boot/u-boot.git
+
+Make Das U-boot:
+
+	$ cd $PREFIX/src
+	$ cd u-boot
+	$ export CROSS_COMPILE=aarch64-gnu-
+	$ export BL31=$PREFIX/src/arm-trusted-firmware/build/sun50i_a64/release/bl31.bin
+	$ export ARCH=arm64
+	$ export SCP=$PREFIX/src/crust/build/scp/scp.bin
+	$ make distclean
+	$ make a64-olinuxino_defconfig
+	$ make all
+
+Install u-boot:
+
+	# dd if=u-boot-sunxi-with-spl.bin of=/dev/[CHANGE THIS] bs=1024 seek=8
+
+## Boot gnumach with Das U-boot
+
+### Boot from serial
+
+After copying dt.dtb from u-boot, gnumach and tests/module-hello from
+gnumach in a local directory. Boot the system in u-boot. Then from a
+serial terminal run:
+
+
+	loady 0x42000000
+		<== load gnumach size:0x00069c58
+
+	loady 0x60000000
+		<== load module-hello size:0x000779e0
+
+	loady 0x42200000
+		<== load dt.dtb size:0x0000a018
+
+	fdt addr 0x42200000
+	fdt resize
+	fdt set /chosen bootargs "foo=bar"
+	fdt set /chosen \#address-cells <0x2>
+	fdt set /chosen \#size-cells <0x2>
+	fdt mknod /chosen module@0x60000000
+	fdt set /chosen/module@0x60000000 compatible "multiboot,kernel" "multiboot,module"
+	fdt set /chosen/module@0x60000000 reg <0x0 0x60000000 0x0 0x000779e0>
+	fdt set /chosen/module@0x60000000 bootargs "module-hello
+	"'${host-port} ${device-port} $(task-create) $(task-resume)'
+
+	fdt print /chosen
+
+	booti 0x42000000 - 0x42200000
+
+Where <== load commands are terminal-emulator dependent.
+
+### Boot from smartcard
+
+Copy dt.dtb, gnumach, gnumach-tracing and all modules on the sd
+card. The tracing version of gnumach is obtained by cherrypicking the
+relative commit in a gnumach tree and rebuilding gnumach:
+
+```
+git cherry-pick ee177f52680116538192b2c0c5d9a08e174c007f
+```
+
+Create the file boot.cmd on the smartcard:
+
+```
+if itest $trace != 0; then load mmc 0:1 0x42000000 gnumach-tracing; else load mmc 0:1 0x42000000 gnumach; fi
+load mmc 0:1 0x60000000 $module
+load mmc 0:1 0x42200000 dt.dtb
+
+fdt addr 0x42200000
+fdt resize
+fdt set /chosen bootargs "foo=bar"
+fdt set /chosen \#address-cells <0x2>
+fdt set /chosen \#size-cells <0x2>
+fdt mknod /chosen module@0x60000000
+fdt set /chosen/module@0x60000000 compatible "multiboot,kernel" "multiboot,module"
+fdt set /chosen/module@0x60000000 reg <0x0 0x60000000 0x0 0x04000000>
+fdt set /chosen/module@0x60000000 bootargs "$module "'${host-port}
+${device-port} $(task-create) $(task-resume)'
+
+booti 0x42000000 - 0x42200000
+```
+
+Compile it with:
+
+```
+mkimage -C none -A arm -T script -d boot.cmd boot.scr
+```
+
+Boot into Das u-boot, interrupt automatic booting to set the variables
+before:
+
+```
+trace=0
+module=module-hello
+boot
+```
+
+modify trace to a different number to start the version of gnumach
+compiled with tracing.
 
 # IRC, freenode, #hurd, 2012-11-15
 
