@@ -26,6 +26,15 @@ recommend you use the 32 bit version of the Hurd.
 A cheaper option is the T43 (2GB max RAM) or T60 (4 GB max RAM), which
 one can find for about $50.
 
+Other hardware that is known to work includes the [[Dell Inspiron
+1750|https://logs.guix.gnu.org/hurd/2024-09-28.log]] on i386
+Debian/Hurd.  It won't boot with the current installer (June 2023
+debian-hurd i386 installer iso) because of an FPU issue (fixed
+upstream). I had to remove the optical drive. It Hangs for one minute
+during boot on ACPI init, but otherwise fine when disabling full tree
+parsing.  The touchpad, keyboard, display, ethernet, and the hard
+drive works (in legacy mode).
+
 Currently, for disks Mach integrates old drivers from Linux through some
 [[community/gsoc/project_ideas/driver_glue_code]], which provide
 IDE disk support, and we have an AHCI driver which provides [[SATA
