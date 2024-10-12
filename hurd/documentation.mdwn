@@ -74,6 +74,7 @@ is included in the section entitled
   * [[libstore]]
   * [[libchannel]]
   * [[libtrivfs]]
+  * [[libmachdev]]
   * [[libnetfs]] -- short introductory material
   * [[libdiskfs]]
   * [[libihash]]
