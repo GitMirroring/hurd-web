@@ -81,6 +81,7 @@ is included in the section entitled
   * [[libnetfs]] -- short introductory material
   * [[libdiskfs]]
   * [[libihash]]
+  * [[libirqhelp]]
   * [[libpthread]]
   * [[libfshelp]]
   * [[libps]]
