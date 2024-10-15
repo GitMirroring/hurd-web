@@ -9,12 +9,11 @@ is included in the section entitled
 [[GNU Free Documentation License|/fdl]]."]]"""]]
 
 - People agreed that some small projects should be done to during the bonding
-  period: ideas that floated around were fixing some of the build failures or
-  looking at the new debian installer.
-  http://unstable.buildd.net/buildd/hurd-i386_Failed.html
-  http://unstable.buildd.net/index-hurd-i386.html
+  period: ideas that floated around were fixing some of the build failures.
+  https://people.debian.org/~sthibault/hurd-i386/failed_packages.txt
+  https://people.debian.org/~sthibault/hurd-i386/out_of_date.txt
   For some context:
-  http://dept-info.labri.fr/~thibault/tmp/graph-radial.ps
+  https://www.debian.org/ports/hurd/hurd-devel-debian
   Don't pick something that looks too critical, it'll probably be too hard
 
 - Antrik was ok with not having a formal weekly report as long as the
