@@ -90,6 +90,7 @@ The [[concept|concepts]] of translators creates its own problems, too:
 * [[hello]]
 * [[auth]]
 * [[exec]]
+* [[ifsock]]
 * [[proc]]
 * [[pfinet]]
 * [[lwip]]
