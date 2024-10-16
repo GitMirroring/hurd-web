@@ -29,7 +29,7 @@ its TODO file [[here|https://git.savannah.gnu.org/cgit/hurd/hurd.git/tree/pci-ar
 
 Samuel also gave a presentation explaining some of the awesome possibilities
 that the PCI Arbiter can provide.  You can watch his fosdem talk
-[[here|https://archive.fosdem.org/2018/schedule/event/microkernel_hurd_pci_arbiter/]]
+[[here|https://archive.fosdem.org/2018/schedule/event/microkernel_hurd_pci_arbiter/]].
 
 The end goal is to allow different userland drivers to access PCI devices concurrently,
 while paving the way for fine-grain per-user, per-session, etc. permission management
