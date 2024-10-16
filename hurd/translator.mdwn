@@ -93,6 +93,7 @@ The [[concept|concepts]] of translators creates its own problems, too:
 * [[ifsock]]
 * [[password]]
 * [[proc]]
+* [[procfs]]
 * [[pfinet]]
 * [[lwip]]
 * [[eth-filter]]

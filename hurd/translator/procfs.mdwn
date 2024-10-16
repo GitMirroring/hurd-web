@@ -15,15 +15,15 @@ systems, and many tools concerned with process management use it. (`ps`, `top`,
 `htop`, `gtop`, `killall`, `pkill`, ...)
 
 Instead of porting all these tools to use [[libps]] (Hurd's official method for
-accessing process information), they could be made to run out of the box, by
-implementing a Linux-compatible `/proc` filesystem for the Hurd.
+accessing process information), they run out of the box, via the
+Hurd's Linux-compatible `procfs` at `/proc`.  (On Linux, the
+`/proc` filesystem is used also for debugging purposes; but this is
+highly system-specific anyways, so there is probably no point in
+trying to duplicate this functionality as well...)
 
-The goal is to implement all `/proc` functionality needed for the various process
-management tools to work.  (On Linux, the `/proc` filesystem is used also for
-debugging purposes; but this is highly system-specific anyways, so there is
-probably no point in trying to duplicate this functionality as well...)
+# History of procfs
 
-Ther was an implementation in [[open_issues/HurdExtras]],
+There was an implementation in [[open_issues/HurdExtras]],
 <http://www.nongnu.org/hurdextras/#procfs>.
 
 Madhusudan.C.S has implemented a new, fully functional [[procfs|madhusudancs]] for
