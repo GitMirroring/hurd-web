@@ -1,4 +1,5 @@
-[[!meta copyright="Copyright © 2007, 2008 Free Software Foundation, Inc."]]
+[[!meta copyright="Copyright © 2007, 2008, 2024 Free Software
+Foundation, Inc."]]
 
 [[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable
 id="license" text="Permission is granted to copy, distribute and/or modify this
@@ -8,7 +9,17 @@ Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license
 is included in the section entitled
 [[GNU Free Documentation License|/fdl]]."]]"""]]
 
-`storeio` is a *translator for devices and other stores*.
+<!-- http://richtlijn.be/~larstiq/hurd/hurd-2010-08-25 -->
+
+`storeio` is a translator for devices and other stores.  You can use
+it for user-level access to disks via `/dev/hd0s1` instead of kernel-based
+device access.
+
+	$ settrans -ca foo /hurd/storeio myfile
+
+Now, foo will look like a device, which gives you transparent
+decompression, partition handling, etc.  It is a little like Linux's
+`losetup`, and you don't have to be root to use it!
 
 It relies heavily on [[libstore]].
 
