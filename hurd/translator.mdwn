@@ -106,6 +106,7 @@ The [[concept|concepts]] of translators creates its own problems, too:
 * [[streamio]]
 * [[ext2fs]]
 * [[fatfs]]
+* [[ftpfs]]
 * [[magic]]
 * [[mtab]]
 * [[unionfs]]
