@@ -110,6 +110,7 @@ The [[concept|concepts]] of translators creates its own problems, too:
 * [[ftpfs]]
 * [[magic]]
 * [[mtab]]
+* [[remap]]
 * [[unionfs]]
 * [[nfs]]
 * [[symlink]]
