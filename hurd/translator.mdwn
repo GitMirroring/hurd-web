@@ -91,6 +91,7 @@ The [[concept|concepts]] of translators creates its own problems, too:
 * [[auth]]
 * [[exec]]
 * [[ifsock]]
+* [[password]]
 * [[proc]]
 * [[pfinet]]
 * [[lwip]]
