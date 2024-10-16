@@ -107,6 +107,7 @@ The [[concept|concepts]] of translators creates its own problems, too:
 * [[unionfs]]
 * [[nfs]]
 * [[symlink]]
+* [[fakeroot]]
 * [[firmlink]]
 * [[fifo]]
 * [[term]]
