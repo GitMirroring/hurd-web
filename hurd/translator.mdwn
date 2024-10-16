@@ -97,6 +97,7 @@ The [[concept|concepts]] of translators creates its own problems, too:
 * [[pflocal]]
 * [[hostmux]]
 * [[storeio]]
+* [[streamio]]
 * [[ext2fs]]
 * [[fatfs]]
 * [[magic]]
