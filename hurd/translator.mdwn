@@ -100,6 +100,7 @@ The [[concept|concepts]] of translators creates its own problems, too:
 * [[eth-multiplexer]]
 * [[pflocal]]
 * [[hostmux]]
+* [[startup]]
 * [[storeio]]
 * [[streamio]]
 * [[ext2fs]]
