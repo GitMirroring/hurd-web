@@ -27,6 +27,14 @@ arguments to give it.
 There, `-i`, `-a`, `-g` and `-m` are, quite obviously, the (Mach) device to
 use, the IP address, the gateway and netmask.
 
+You can see your currently running `pfinet`'s options via
+
+	$ fsysopts /servers/socket/2 # provides IPv4
+	/hurd/pfinet --interface=/dev/eth0 --address=ADDRESS --netmask=NETMASK --gateway=GATEWAY --address6=ADDRESS --address6=ADDRESS --gateway6=::
+
+	$ fsysopts /servers/socket/26 # provides IPv6
+	/hurd/pfinet --interface=/dev/eth0 --address=ADDRESS --netmask=ADDRESS --gateway=GATEWAY --address6=ADDRESS --address6=ADDRESS --gateway6=::
+
 ---
 
 To make DNS lookups work, you'll also have to properly configure the
