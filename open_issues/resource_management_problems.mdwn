@@ -1,5 +1,5 @@
-[[!meta copyright="Copyright © 2008, 2009, 2010, 2013 Free Software Foundation,
-Inc."]]
+[[!meta copyright="Copyright © 2008, 2009, 2010, 2013, 2024 Free
+Software Foundation, Inc."]]
 
 [[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable
 id="license" text="Permission is granted to copy, distribute and/or modify this
@@ -18,7 +18,35 @@ Mach can't do a good job at resource management, as it doesn't have enough
 information how resources are used: which data is important and which is
 discardable, for example.
 
-These issues are what Neal Walfield is working on with his new kernel
+<!-- the following 3 paragraphs comes from this email:
+	lists.gnu.org/archive/html/bug-hurd/2009-07/msg00084.html -->
+
+This is the fundamental failing of the Mach/Hurd architecture.  The
+Hurd operates via many server to client relationships, in which
+servers request resources on behalf of their clients.  For example at
+any given time, `extfs` could have many different clients (emacs, vim,
+git etc.) requesting data, creating files, deleting files, re-naming
+files, etc.  Suppose one rogue client out of 50 is continually
+requesting increasingly more memory, which is exhasting the machine's
+resources.  As far as Mach knows, `ext2fs` is wasting RAM.  It doesn't
+know that one `ext2fs`' client program is at fault.  There is no way
+for Mach to fix this, since it should not kill `ext2fs`, and it cannot
+know which `ext2fs` client to kill.
+
+This server/client architecture is a problem that exists elsewhere.  A
+good example is `X`.  Firefox might allocate a lot of pixmaps, which
+causes `X` to use more memory.  Linux actually used to kill X, because
+of this several years ago.
+
+This problem is much worse on a multiserver system, because we have
+many server/client relationships.  A simple fix that would limit these
+issues is to introduce fixed limits on various kinds of resource
+usage.  A proper fix requires a way to attribute all resource usage to
+the clients -- either by avoiding server-side allocation or by keeping
+track of who is requesting resources.  Both of these changes requires
+lots of changes to low-level code.
+
+These issues are what Neal Walfield explored with his kernel:
 [[microkernel/viengoos]].
 
 
