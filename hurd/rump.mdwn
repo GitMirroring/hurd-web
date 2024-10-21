@@ -1,5 +1,5 @@
-[[!meta copyright="Copyright © 2009, 2010, 2011 Free Software Foundation,
-Inc."]]
+[[!meta copyright="Copyright © 2009, 2010, 2011, 2024 Free Software
+Foundation, Inc."]]
 
 [[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable
 id="license" text="Permission is granted to copy, distribute and/or modify this
@@ -35,8 +35,9 @@ maintaining drivers ourselves, we can re-use the existing NetBSD
 drivers.
 
 Hurd developers have enabled experimental support for modern hard
-drives with a rump kernel.  We call it rumpdisk, and you can try it in
-the [[Debian GNU/Hurd image|hurd/running/qemu]].
+drives with a rump kernel.  We call it
+[[rumpdisk|hurd/rump/rumpdisk]], and you can try it in the [[Debian
+GNU/Hurd image|hurd/running/qemu]].
 
 As of May 2023, Hurd users are having good success with it in qemu
 environments and some are using it on real hardware!
@@ -44,6 +45,18 @@ environments and some are using it on real hardware!
 We do hope to use rump kernels for usb support, sound support (this
 was working at some point), and possibly a new TCP/IP stack, but work
 has not completed on those projects.
+
+# Rump kernels
+
+  * [[rumpdisk|rump/rumpdisk]] HHD/SSD/NVMe device drivers
+
+  * [[rumpfs|rump/rumpfs]] using NetBSDs filesystems (FFS)
+
+  * [[rumpnet|rump/rumpnet]] wifi/ethernet device drivers
+
+  * [[rumpsound|rump/rumpsound]] audio device drivers
+
+  * [[rumpusbdisk|rump/rumpusbdisk]] accessing external SATA devices
 
 # Documentation
 
@@ -54,6 +67,10 @@ has not completed on those projects.
   * <https://github.com/rumpkernel/wiki/wiki/Tutorial:-Getting-started>
 
     A tutorial introduction for those interested in using and deploying rump kernels.
+
+  * <https://netbsd.org/docs/rump/sptut.html>
+
+    Another tutorial on rump kernel servers and clients.
 
   * <https://core.ac.uk/display/41816390>
 

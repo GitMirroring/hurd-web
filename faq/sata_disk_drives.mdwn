@@ -15,3 +15,7 @@ License|/fdl]]."]]"""]]
 Until recently, GNU Mach did not support SATA disk drives (`/dev/sda` etc. in GNU/Linux) natively, the only way to get those drives to work used to be to put them into compatibility mode in the BIOS, if such an option exists.  GNU Mach will then recognize them as hd etc.
 
 An AHCI driver has been added on 10th May 2013, which should bring support for a wide range of SATA controlers. Please however make sure to configure the BIOS in AHCI mode (as opposed to RAID mode).
+
+Damien Zammit ported a rump kernel to the Hurd to use SSD devices.  We
+call it [[rumpdisk|hurd/rump/rumpdisk]].  With rumpdisk you can have a
+[[2TB partition!|faq/2_gib_partition_limit]]

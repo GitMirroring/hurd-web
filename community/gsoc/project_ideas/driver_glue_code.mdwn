@@ -36,7 +36,10 @@ for running all drivers in separate userspace processes,
 which is more desirable than drivers running in the microkernel.
 
 Robert Millan worked on a port of the Rump kernel, which allowed to run a sound
-driver in userland. This work now needs to be extended.
+driver in userland. Damien Zammit implemented
+[[rumpdisk|hurd/rump/rumpdisk]] and
+[[rumpusbdisk|hurd/rump/rumpusbdisk]].
+This work now needs to be extended.
 
 [[Zheng Da|zhengda]] has already done considerable work on a similar approach, using [[DDE]]
 The basic framework for using DDE in the Hurd is present,

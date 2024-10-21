@@ -67,6 +67,9 @@ is included in the section entitled
 * [[Building]]
 * [[Toolchain]]
     * [[glibc]]
+* Device Drivers
+	* [[rump|hurd/rump]] NetBSD drivers
+	* [[DDE|hurd/dde]] Outdated Linux Drivers (unmaintained)
 * RPC [[Interface]]s
 * Libraries
   * [[libpager]]

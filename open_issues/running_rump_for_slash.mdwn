@@ -11,6 +11,8 @@ License|/fdl]]."]]"""]]
 
 [[!tag open_issue_hurd]]
 
+## Samuel's [[email|https://lists.gnu.org/archive/html/bug-hurd/2019-12/msg00002.html]]
+
 I have been thinking about how to get rump running for the / filesystem.
 
 Looking at how things go between ext2fs and exec: in grub.cfg we have
@@ -51,3 +53,20 @@ and we'd make `pci-arbiter`'s initialization use `task_set_special_port`
 to set the `TASK_BOOTSTRAP_PORT` special port of rump to a send right to
 pci-arbiter and resume it. When `libpciaccess` sees that this port is set,
 it would use it instead of looking up `/server/bus/pci`.
+
+## Damien's [[follow up email|https://lists.gnu.org/archive/html/bug-hurd/2020-04/msg00032.html]]
+
+In my own words, the changes that are needed:
+
+1. libpciaccess needs to check if pci-arbiter's `task_bootstrap_port` is set
+and if it is, use it instead of `/servers/bus/pci`
+
+2. pci-arbiter needs to call `task_set_special_port` on rump's `TASK_BOOTSTRAP_PORT`
+if `--disk-server-task` flag is detected.
+
+3. rumpdisk needs to call `task_set_special_port` on ext2fs's `TASK_BOOTSTRAP_PORT`
+if `--fs-server-task` flag is detected.
+
+4. ext2fs will just work in this configuration
+
+
