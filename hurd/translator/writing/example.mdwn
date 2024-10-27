@@ -241,7 +241,7 @@ Makefile:
     CC = gcc
     MIG = mig
     CFLAGS = -Wall -g  -D_GNU_SOURCE
-    LDFLAGS = -lthreads -lports -ltrivfs -lfshelp -lshouldbeinlibc
+    LDFLAGS = -lports -ltrivfs -lfshelp -lshouldbeinlibc -lpthread
     INCLUDES = -I.
     LCHDRS = 
     MIGCOMSFLAGS = -prefix S_
