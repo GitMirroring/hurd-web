@@ -88,7 +88,7 @@ options of the `unionfs` translator.  This implementation resides in
 the master-unionmount branch of the unionfs git repository.  To
 checkout the code, do the following:
 
-    $ git clone git://git.sv.gnu.org/hurd/unionfs.git
+    $ git clone git://git.savannah.gnu.org/hurd/unionfs.git
     $ cd unionfs
     $ git checkout -b master-unionmount
     $ git pull origin master-unionmount

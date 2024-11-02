@@ -55,7 +55,7 @@ For that I want to use:
 ### Tarfs
 
     apt install zip libz-dev libbz2-dev
-    git clone git://git.sv.gnu.org/hurd/incubator.git tarfs
+    git clone git://git.savannah.gnu.org/hurd/incubator.git tarfs
     cd tarfs/
     git checkout tarfs/master
     cd tarfs
@@ -75,7 +75,7 @@ For that I want to use:
 
 ### nsmux
 
-    git clone git://git.sv.gnu.org/hurd/incubator.git nsmux
+    git clone git://git.savannah.gnu.org/hurd/incubator.git nsmux
     cd nsmux/
     git checkout -b nsmux origin/nsmux
 
@@ -96,7 +96,7 @@ For that I want to use:
 
 ### clisp
 
-    git clone git://git.sv.gnu.org/hurd/incubator.git clisp
+    git clone git://git.savannah.gnu.org/hurd/incubator.git clisp
     cd clisp/
     git checkout -b clisp origin/clisp
 

@@ -76,7 +76,7 @@ Still seen.
       out that both clones do have some decompression errors. (Some files are
       missing chunks in /both/ cloned repositories).
     <braunr> where did you clone it from ?
-    <sea`> git.sv.gnu.org/hurd/hurd.git
+    <sea`> git.savannah.gnu.org/hurd/hurd.git
     <braunr> hum decompression errors ?
     <braunr> can you paste them please ?
     <sea`> Hmm, I can clone again and show you an example if I find one

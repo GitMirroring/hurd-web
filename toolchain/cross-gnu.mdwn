@@ -88,7 +88,7 @@ guarantee is given.  Always the preferred version is listed first.
       * Git `master` branch
 
             $ git clone ↩
-                git://git.sv.gnu.org/hurd/gnumach.git gnumach
+                git://git.savannah.gnu.org/hurd/gnumach.git gnumach
 
         Prepare:
 
@@ -99,7 +99,7 @@ guarantee is given.  Always the preferred version is listed first.
       * Git `master` branch
 
             $ git clone ↩
-                git://git.sv.gnu.org/hurd/mig.git mig
+                git://git.savannah.gnu.org/hurd/mig.git mig
 
         Prepare:
 
@@ -110,14 +110,14 @@ guarantee is given.  Always the preferred version is listed first.
       * Git `master` branch
 
             $ git clone ↩
-                git://git.sv.gnu.org/hurd/hurd.git hurd
+                git://git.savannah.gnu.org/hurd/hurd.git hurd
 
   * [[`src/libpthread`|libpthread]]
 
       * Git `tschwinge/Peter_Herbolzheimer` branch
 
             $ git clone --no-checkout ↩
-                git://git.sv.gnu.org/hurd/libpthread.git libpthread
+                git://git.savannah.gnu.org/hurd/libpthread.git libpthread
             $ cd libpthread/
             $ git checkout origin/tschwinge/Peter_Herbolzheimer
 
@@ -130,7 +130,7 @@ guarantee is given.  Always the preferred version is listed first.
       * Git `tschwinge/Roger_Whittaker` branch
 
             $ git clone --no-checkout ↩
-                git://git.sv.gnu.org/hurd/glibc.git glibc
+                git://git.savannah.gnu.org/hurd/glibc.git glibc
             $ cd glibc/
             $ git checkout origin/tschwinge/Roger_Whittaker
 

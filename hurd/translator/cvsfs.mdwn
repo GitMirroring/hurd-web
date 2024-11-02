@@ -49,7 +49,7 @@ Happy Hacking.
 ## References
 
    * <http://www.nongnu.org/hurdextras/>
-   * <http://cvs.sv.nongnu.org/viewcvs/*checkout*/cvsfs/README?root=hurdextras>
+   * <http://cvs.savannah.gnu.org/viewcvs/*checkout*/cvsfs/README?root=hurdextras>
 
 ### Old version at Berlios
 

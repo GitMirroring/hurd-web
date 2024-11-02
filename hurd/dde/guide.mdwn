@@ -74,9 +74,9 @@ Note: here, use dde-debian instead of dde if you have gnumach >=
 2:1.3.99.dfsg.git20120219-1 already installed and running. Otherwise you will
 get "vm_allocate_contiguous: (ipc/mig) bad request message ID" error messages.
 
-	$ git clone git://git.sv.gnu.org/hurd/incubator.git -b dde hurd
+	$ git clone git://git.savannah.gnu.org/hurd/incubator.git -b dde hurd
 
-	$ git clone git://git.sv.gnu.org/hurd/gnumach.git -b master-user_level_drivers
+	$ git clone git://git.savannah.gnu.org/hurd/gnumach.git -b master-user_level_drivers
 
 Now comes the tricky part:
 you need to find out
