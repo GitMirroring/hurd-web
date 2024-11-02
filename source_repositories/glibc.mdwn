@@ -37,12 +37,12 @@ The Savannah hurd/glibc.git one does not/not yet include
 ## Clone
 
     $ git init
-    $ git remote add savannah git://git.sv.gnu.org/hurd/glibc.git
+    $ git remote add savannah git://git.savannah.gnu.org/hurd/glibc.git
     $ git remote update
     $ tg remote --populate savannah
     tg: Remote savannah can now follow TopGit topic branches.
     tg: Populating local topic branches from remote 'savannah'...
-    From git://git.sv.gnu.org/hurd/glibc
+    From git://git.savannah.gnu.org/hurd/glibc.git
      * [new branch]      refs/top-bases/t/_dl_random -> savannah/top-bases/t/_dl_random
      * [new branch]      refs/top-bases/t/accept4 -> savannah/top-bases/t/accept4
     [...]
@@ -68,7 +68,7 @@ A new (TopGit) branch has been published upstream:
     remote: Compressing objects: 100% (19/19), done.
     remote: Total 20 (delta 13), reused 1 (delta 0)
     Unpacking objects: 100% (20/20), done.
-    From git://git.sv.gnu.org/hurd/glibc
+    From git://git.savannah.gnu.org/hurd/glibc.git
      * [new branch]      t/unwind-resume.c -> savannah/t/unwind-resume.c
      * [new branch]      refs/top-bases/t/unwind-resume.c -> savannah/top-bases/t/unwind-resume.c
     tg: Skipping branch t/____longjmp_chk: Already exists
