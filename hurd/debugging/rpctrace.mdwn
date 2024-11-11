@@ -15,6 +15,7 @@ doing.
 
 See `rpctrace --help` about how to use it.
 
+    $ rpctrace cat /dev/null
 
 # IRC, freenode, #hurd, 2013-07-29
 
