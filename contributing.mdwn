@@ -170,6 +170,7 @@ This is the list of tasks that we *want* to address soon, starting with the most
 * Compare testsuite results of python on hurd-i386 and hurd-amd64, to fix regressions between the former and the latter.
 * Check the [packages build failures differences](https://people.debian.org/~sthibault/hurd-amd64/failed_diff.txt) between hurd-i386 and hurd-amd64: they are failing on hurd-amd64 but are successful on hurd-i386. Possibly it's just a mere missing `s/hurd-i386/hurd-any/` in the debian/ directory, or a new bug that actually also affects hurd-i386 if you rebuild the package there now, but possibly it's a more profound issue in the amd64 port.
 * On amd64, fix memcpy (> 16 bytes) from `/dev/mem` (makes hurd-console crash)
+* On amd64, fix running posixtestsuite (not necessarily fixing the tests themselves, but at least make sure it doesn't crash the box).
 * Settle CI for mig+gnumach+hurd+glibc.
 * Port `dhcpcd`, see [call for help](https://lists.debian.org/debian-hurd/2023/11/msg00030.html)
 * Extensively test (e.g. running testsuites of glibc, perl, curl, rust-mio) and fix the lwip-based TCP/IP stack, to be sure we don't get regressions by switching to it.
