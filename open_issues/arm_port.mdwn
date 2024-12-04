@@ -413,45 +413,37 @@ Copy dt.dtb, gnumach, gnumach-tracing and all modules on the sd
 card. The tracing version of gnumach is obtained by cherrypicking the
 relative commit in a gnumach tree and rebuilding gnumach:
 
-```
-git cherry-pick ee177f52680116538192b2c0c5d9a08e174c007f
-```
+    git cherry-pick ee177f52680116538192b2c0c5d9a08e174c007f
 
 Create the file boot.cmd on the smartcard:
 
-```
-if itest $trace != 0; then load mmc 0:1 0x42000000 gnumach-tracing; else load mmc 0:1 0x42000000 gnumach; fi
-load mmc 0:1 0x60000000 $module
-load mmc 0:1 0x42200000 dt.dtb
+    if itest $trace != 0; then load mmc 0:1 0x42000000 gnumach-tracing; else load mmc 0:1 0x42000000 gnumach; fi
+    load mmc 0:1 0x60000000 $module
+    load mmc 0:1 0x42200000 dt.dtb
 
-fdt addr 0x42200000
-fdt resize
-fdt set /chosen bootargs "foo=bar"
-fdt set /chosen \#address-cells <0x2>
-fdt set /chosen \#size-cells <0x2>
-fdt mknod /chosen module@0x60000000
-fdt set /chosen/module@0x60000000 compatible "multiboot,kernel" "multiboot,module"
-fdt set /chosen/module@0x60000000 reg <0x0 0x60000000 0x0 0x04000000>
-fdt set /chosen/module@0x60000000 bootargs "$module "'${host-port}
-${device-port} $(task-create) $(task-resume)'
+    fdt addr 0x42200000
+    fdt resize
+    fdt set /chosen bootargs "foo=bar"
+    fdt set /chosen \#address-cells <0x2>
+    fdt set /chosen \#size-cells <0x2>
+    fdt mknod /chosen module@0x60000000
+    fdt set /chosen/module@0x60000000 compatible "multiboot,kernel" "multiboot,module"
+    fdt set /chosen/module@0x60000000 reg <0x0 0x60000000 0x0 0x04000000>
+    fdt set /chosen/module@0x60000000 bootargs "$module "'${host-port}
+    ${device-port} $(task-create) $(task-resume)'
 
-booti 0x42000000 - 0x42200000
-```
+    booti 0x42000000 - 0x42200000
 
 Compile it with:
 
-```
-mkimage -C none -A arm -T script -d boot.cmd boot.scr
-```
+    mkimage -C none -A arm -T script -d boot.cmd boot.scr
 
 Boot into Das u-boot, interrupt automatic booting to set the variables
 before:
 
-```
-trace=0
-module=module-hello
-boot
-```
+    trace=0
+    module=module-hello
+    boot
 
 modify trace to a different number to start the version of gnumach
 compiled with tracing.

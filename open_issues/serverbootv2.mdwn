@@ -225,10 +225,8 @@ pci-arbiter.
 
 `rumpdisk` exposes `/dev/rumpdisk`:
 
-```
-$ showtrans /dev/rumpdisk
-  /hurd/rumpdisk
-```
+    $ showtrans /dev/rumpdisk
+      /hurd/rumpdisk
 
 
 # FAQ

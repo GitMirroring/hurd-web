@@ -69,10 +69,8 @@ and add `console=com0`
 
 update `/etc/fstab` and update `wd0` instead of `hd0`.
 
-```
-/dev/wd0s2      /               ext2    defaults        0       1
-/dev/wd0s1      none            swap    sw              0       0
-```
+    /dev/wd0s2      /               ext2    defaults        0       1
+    /dev/wd0s1      none            swap    sw              0       0
 
 You can shutdown via `/sbin/poweroff`.
 

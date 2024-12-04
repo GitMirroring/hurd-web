@@ -171,10 +171,8 @@ For now it's quite empty (not even gcc), but it can be debootstrapped. That will
 
 The `people.debian.org` repository is only for bootstraping the distribution. Proper packages are getting uploaded on the usual mirror:
 
-```
-deb http://deb.debian.org/debian-ports sid main
-deb http://deb.debian.org/debian-ports unreleased main
-```
+    deb http://deb.debian.org/debian-ports sid main
+    deb http://deb.debian.org/debian-ports unreleased main
 
 **Installing a 64bit system**
 
