@@ -24,11 +24,11 @@ sudo apt-get install ikiwiki perl libtext-markdown-perl \
     libsearch-xapian-perl libyaml-syck-perl texinfo
 #+END_EXAMPLE
 
-To setup a development environment for Guix, do:
-
+The development manifest for Guix is described in the usual [[file:manifest.scm][manifest.scm]], run:
 #+BEGIN_EXAMPLE
-guix shell ikiwiki perl perl-text-markdown perl-search-xapian perl-yaml-syck texinfo
+guix shell
 #+END_EXAMPLE
+to enter a development environment.
 
 * Running the website
 
