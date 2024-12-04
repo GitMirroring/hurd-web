@@ -9,11 +9,59 @@ GNU/Hurd support has been integrated in Guix.
 ---
 # Documentation
 
-As Hurd support is integrated in Guix, the official documentation (<https://guix.gnu.org/en/manual/devel/>) also works for Hurd. 
+As Hurd support is integrated in Guix, the [official
+documentation](https://guix.gnu.org/manual/en/html_node/) also works
+for Hurd.
 
-Guix has even support in its configuration language for creating Hurd VMs from a running Guix system (<https://guix.gnu.org/en/manual/devel/en/guix.html#The-Hurd-in-a-Virtual-Machine>).
-
----
 # Status
 
-At the time of writing, the official Guix manual says that "This configuration is experimental and under development. The easiest way for you to give it a try is by setting up an instance of hurd-vm-service-type on your GNU/Linux machine (see hurd-vm-service-type). See Contributing, on how to help!" (<https://guix.gnu.org/en/manual/devel/en/guix.html#GNU-Distribution>).
+At the time of writing the Guix manual says "This configuration is
+experimental and under development.  …  See
+[Contributing](https://guix.gnu.org/manual/en/html_node/Contributing.html),
+on how to help!"
+
+The easiest way to try Guix/Hurd is by setting up a Guix Childhurd
+instance on your GNU/Linux machine.
+
+Cross-building to x86_64-gnu [has just landed on Guix
+master](https://lists.gnu.org/archive/html/guix-patches/2024-12/msg00199.html).
+
+# Childhurds
+
+Guix' operating-system description supports a [`hurd-vm`
+or *childhurd* service](https://guix.gnu.org/manual/devel/en/html_node/Virtualization-Services.html#The-Hurd-in-a-Virtual-Machine).
+Specifying the `hurd-vm-service-type` in the `services` of an `operating system` description
+
+        (operating-system
+          ;; …
+          (services
+            (list
+              ;; Add the 'hurd-vm' service
+              (service hurd-vm-service-type)
+               …
+              %base-services)))
+
+automagically builds and starts a `Childhurd` that can be also used
+for
+[offloading](https://guix.gnu.org/manual/en/html_node/Daemon-Offload-Setup.html)
+Hurd builds.
+
+# Rumpdisk and NetDDE support
+
+Guix supports NetDDE and Rumpdisk, also [running in a
+Childhurd](https://toot.aquilenet.fr/@civodul/110848429561223704).
+
+# Guix/Hurd on Real Iron
+
+Guix/Hurd has been [ installed on a Thinkpad
+X60](https://todon.nl/@janneke/110451493405777898).
+
+The Guix installer supports cross-installation support for Guix/Hurd.
+
+Of course Guix/Hurd can also be installed from a running GNU/Linux
+system by doing something like:
+
+        guix system init hurd.scm /hurd
+
+An blog post was published about running [Guix/Hurd on a Thinkpad
+X60](https://guix.gnu.org/blog/2024/hurd-on-thinkpad/).
