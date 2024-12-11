@@ -85,7 +85,7 @@ pp. 67--77."
 
   * MIG *in action*: [[hurd/io_path]].
 
-  * [*Introduction to a mig-mutate.h file*](https://mail.gnu.org/archive/html/bug-hurd/2024-11/msg00045.html), a text by Sergey Bugaev
+  * [[What is mig-mutate.h?|mig-mutate]]
 
 ## IRC, freenode, #hurd, 2013-09-04
 
