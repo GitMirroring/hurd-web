@@ -21,9 +21,6 @@ add it to
 `mapped_time_value_t` in gnumach, handle it in `gnumach/kern/mach_clock.c`, and
 make `clock_gettime` use it.
 
-BTW, also make `gettimeofday()` use it, since it's way more efficient and some
-applications assume that it is.
-
 What about adding a nanosecond-precision clock, too?  --[[tschwinge]]
 
 
