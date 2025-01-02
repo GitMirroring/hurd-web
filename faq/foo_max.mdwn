@@ -39,7 +39,7 @@ since Posix 2008 `realpath(path, NULL)` and `getcwd(NULL, 0)` allocate the path
 dynamically.
 
 In general, using `FOO_MAX` in source code (with a large value) leads to code
-that is not acually checking against overflows. `PATH_MAX` being 4096 is
+that is not actually checking against overflows. `PATH_MAX` being 4096 is
 actually "wrong" on Linux:
 
     $ printf '#include <limits.h>\nPATH_MAX' | cpp -P
