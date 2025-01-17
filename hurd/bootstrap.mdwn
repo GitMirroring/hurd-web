@@ -19,100 +19,110 @@ this text.  -->
 
 # State at the beginning of the bootstrap
 
-Please note that as of May 2024 this document is out of date.  It does
-not explain how rumpdisk or the pci-arbitor is started.  Also consider
-reading about [[Serverboot V2|open_issues/serverbootv2]], which
-is a new bootstrap proposal.
+Also consider reading about [[Serverboot V2|open_issues/serverbootv2]], which is
+a new bootstrap proposal.
 
 After initializing itself, GNU Mach sets up tasks for the various bootstrap
 translators (which were loader by the GRUB bootloader). It notably makes
 variables replacement on their command lines and boot script function calls (see
-the details in `gnumach/kern/boot_script.c`). For instance, if the GRUB
-bootloader has the following configuration:
+the details in `gnumach/kern/boot_script.c`). For instance, the GRUB
+bootloader can have the following typical configuration:
 
     multiboot       /boot/gnumach-1.8-486-dbg.gz root=device:hd1 console=com0
-    module          /hurd/ext2fs.static ext2fs --readonly \
-                    --multiboot-command-line='${kernel-command-line}' \
+    module          /hurd/pci-arbiter.static pci-arbiter
                     --host-priv-port='${host-port}' \
                     --device-master-port='${device-port}' \
+                    --next-task='${acpi-task}' \
+                    '$(pci-task=task-create)' '$(task-resume)'
+    module          /hurd/acpi.static acpi \
+                    --next-task='${disk-task}' \
+                    '$(acpi-task=task-create)'
+    module          /hurd/rumpdisk.static rumpdisk \
+                    --next-task='${fs-task}' \
+                    '$(disk-task=task-create)'
+    module          /hurd/ext2fs.static ext2fs --readonly \
+                    --multiboot-command-line='${kernel-command-line}' \
                     --exec-server-task='${exec-task}' -T typed '${root}' \
-                    '$(task-create)' '$(task-resume)'
+                    '$(fs-task=task-create)'
     module          /lib/ld.so.1 exec /hurd/exec '$(exec-task=task-create)'
 
 
-GNU Mach will first make the `$(task-create)` function calls, and thus create a
-task for the ext2fs module and a task for the exec module (and store a port on
-that task in the `exec-task` variable).
+GNU Mach will first make the `$(task-create)` function calls, and thus create
+a series of tasks for the various modules, and assign to the `pci-task`,
+`acpi-task`, `disk-task`, and `fs-task` variables the task ports for each of
+them. None of these tasks is started yet.
 
 It will then replace the variables (`${foo}`), i.e.
 
 * `${kernel-command-line}` with its own command line (`root=device:hd1 console=com0`),
 * `${host-port}` with a reference to the GNU Mach host port,
 * `${device-port}` with a reference to the GNU Mach device port,
-* `${exec-task}` with a reference to the exec task port.
+* `${acpi-task}` with a reference to the acpi task port, and similarly for all other tasks.
 * `${root}` with `device:hd1`
 
 This typically results in:
 
-    task loaded: ext2fs --readonly --multiboot-command-line=root="device:hd1 console=com0" --host-priv-port=1 --device-master-port=2 --exec-server-task=3 -T typed device:hd1
+    task loaded: pci-arbiter --host-priv-port=1 --device-master-port=2 --next-task=3
+    task loaded: acpi --next-task=1
+    task loaded: rumpdisk --next-task=1
+    task loaded: ext2fs --readonly --multiboot-command-line=root="device:sd1 console=com0" --exec-server-task=1 -T typed device:sd1
     task loaded: exec /hurd/exec
+
 
 (You will have noticed that `/hurd/exec` is not run directly, but through
 `ld.so.1`: Mach only knows to run statically-linked ELF binaries, so we could
-either load `/hurd/exec.static`, or load the dynamic loader `ld.so.1` and tell
-it to load `/hurd/exec`)
+either load `/hurd/exec.static` directly, or load the dynamic loader `ld.so.1`
+and tell it to load `/hurd/exec`, which will be readable once `ext2fs.static` is
+started)
 
 GNU Mach will eventually make the `$(task-resume)` function calls, and thus
-resume the ext2fs task only.
+resume the `pci-arbiter` task only.
 
-This starts a dance between the bootstrap processes: `ext2fs`, `exec`, `startup`,
-`proc`, and `auth`. Indeed, there are a few dependencies between them: `exec` needs
-`ext2fs` working to be able to start `startup`, `proc` and `auth`, and `ext2fs` needs to
-register itself to `startup`, `proc` and `auth` so as to appear as a normal process,
-running under uid 0.
-
-The base principle is that `ext2fs` has a nul bootstrap port set to while other
-translators will have a non-nul bootstrap port, with which they will discuss. We
-thus have a hierarchy between the bootstrap processes. `ext2fs` is at the root,
-`exec` and `startup` are its direct children, and `auth` and `port` are direct
-children of `startup`.
-
-Usually the bootstrap port is used when starting a translator, see
+Usually the bootstrap ports of translators is used when starting them, see
 `fshelp_start_translator_long`: the parent translator starts the child and sets
 its bootstrap port. The parent then waits for the child to call `fsys_startup`
 on the bootstrap port, for the child to provide its control port, and for the
 parent to provide the FS node that the child is translator for.
 
-For the bootstrap translators, the story is extended:
+But here when `pci-arbiter` initializes itself, it notices that its bootstrap
+port is nul (it is started by the kernel, not a filesystem) so it knows that it
+is alone and can only rely on the kernel.  It initializes itself and parses the
+arguments, and since it is given a `next-task`, it uses `task_set_special_port`
+to pass a send right to its own control port to that next task (here `acpi`) as
+bootstrap port, and uses `task_resume` to start it.
 
-* Between `ext2fs` and `startup`: `startup` additionally calls `fsys_init`, to
+Similarly, `acpi` initializes itself, gives a send right to `rumpdisk` and
+starts it.
+
+`rumpdisk` does the same, so that eventually `ext2fs` starts, with all of
+`pci-arbiter`, `acpi` and `rumpdisk` ready to reply to `device_open` requests on
+the `pci`, `acpi`, and disks device names.
+
+Now that `ext2fs` starts, a dance begin between the remaining bootstrap
+processes: `ext2fs`, `exec`, `startup`, `proc`, and `auth`. Indeed, there are
+a few dependencies between them: `exec` needs `ext2fs` working to be able to
+start `startup`, `proc` and `auth`, and `ext2fs` needs to register itself to
+`startup`, `proc` and `auth` so as to appear as a normal process, running under
+uid 0.
+
+They will register to each other the following way:
+
+* Between `ext2fs` and `startup`: `startup` calls `fsys_init`, to
 provide `ext2fs` with `proc` and `auth` ports.
 * Between `startup` and `proc`: `proc` just calls `startup_procinit` to hand
 over a `proc` port and get `auth` and `priv` ports.
 * Between `startup` and `auth`: `auth` calls `startup_authinit` to hand over an
 `auth` port and get a `proc` port, then calls `startup_essential_task` to notify
 `startup` that the boot can proceed.
-* For translators before `ext2fs`, the child calls `fsys_startup` to pass over
-the control port of `ext2fs` (instead of its own control port, which is useless
-for its parent). This is typically done in the `S_fsys_startup` stub, simply
-forwarding it. The child also calls `fsys_init` to pass over the `proc` and
-`auth` ports. Again, this is typically done in the `S_fsys_init` stub, simply
-forwarding them.
+* For the series of translators before `ext2fs`, each task calls `fsys_startup`
+to pass over the control port of `ext2fs` to the previous task (instead of
+its own control port, which is useless for it). This is typically done in the
+`S_fsys_startup` stub, simply forwarding it. It also calls `fsys_init` to
+pass over the `proc` and `auth` ports. Again, this is typically done in the
+`S_fsys_init` stub, simply forwarding them.
 
 With that in mind, the dance between the bootstrap translators is happening as
 described in the next sections.
-
-# Initialization of translators before ext2fs
-
-We plan to start pci-arbiter and rumpdisk translators before ext2fs.
-
-pci-arbiter's `main` function parses the arguments, and since it is given a disk
-task port, it knows it is a bootstrap translator and thus initializes the
-machdev library. `machdev_trivfs_init` resumes the disk task.
-
-rumpdisk's `main` function parses the arguments, and since it is given a FS task
-port, it knows it is a bootstrap translator, and thus `machdev_trivfs_init`
-resumes the FS task.
 
 # ext2fs initialization
 
@@ -127,7 +137,8 @@ ext2fs bootstrap port to `MACH_PORT_NULL`: it is the bootstrap filesystem which
 will be in charge of dancing with the exec and startup translator.
 
 `diskfs_init_main` then initializes the libdiskfs library and spawns a thread to
-manage libdiskfs RPCs.
+manage libdiskfs RPCs. It also notices that the filesystem is given a kernel
+command line, i.e. this is the bootstrap filesystem.
 
 ext2fs continues its initialization: creating a pager, opening the
 hypermetadata, opening the root inode to be set as root by libdiskfs.
@@ -137,7 +148,7 @@ by the libdiskfs library.
 
 # libdiskfs bootstrap
 
-Since the bootstrap port is `MACH_PORT_NULL`, `diskfs_startup_diskfs` calls
+Since this is the bootstrap filesystem, `diskfs_startup_diskfs` calls
 `diskfs_start_bootstrap`.
 
 `diskfs_start_bootstrap` starts by creating a open port on itself for the
@@ -272,13 +283,26 @@ on its bootstrap port, i.e. rumpdisk.
 rumpdisk's `trivfs_S_fsys_init` gets called from the `fsys_init` call from
 ext2fs. It calls `fsys_init` on its bootstrap port.
 
+# acpi getting initialized
+
+acpi's `trivfs_S_fsys_init` gets called from the `fsys_init` call from
+rumpdisk. It calls `fsys_init` on its bootstrap port.
+
 # pci-arbiter getting initialized
 
 pci-arbiter's `trivfs_S_fsys_init` gets called from the `fsys_init` call from
 rumpdisk.
 
 It gets the root node of ext2fs, sets all common ports, and install
-pci-arbiter in the ext2fs FS as translator for `/servers/bus/pci`.
+itself in the ext2fs FS as translator for `/servers/bus/pci`.
+
+It eventually calls `startup_essential_task` to tell startup that it is ready,
+and requests shutdown notifications.
+
+# back to acpi initialization
+
+It gets the root node of ext2fs, sets all common ports, and install
+itself in the ext2fs FS as translator for `/servers/acpi`.
 
 It eventually calls `startup_essential_task` to tell startup that it is ready,
 and requests shutdown notifications.
@@ -286,7 +310,7 @@ and requests shutdown notifications.
 # back to rumpdisk initialization
 
 It gets the root node of ext2fs, sets all common ports, and install
-rumpdisk in the ext2fs FS as translator for `/dev/disk`.
+itself in the ext2fs FS as translator for `/dev/disk`.
 
 It eventually calls `startup_essential_task` to tell startup that it is ready,
 and requests shutdown notifications.
@@ -304,7 +328,7 @@ system is shutting down.
 
 # startup monitoring bootstrap progress
 
-As mentioned above, the different essential tasks (pci-arbiter, rumpdisk, ext2fs, proc, auth, exec)
+As mentioned above, the different essential tasks (pci-arbiter, acpi, rumpdisk, ext2fs, proc, auth, exec)
 call `startup_essential_task` when they are ready. startup's
 `S_startup_essential_task` function thus gets called each time, and startup
 records each of them as essential, monitoring their death to crash the whole
