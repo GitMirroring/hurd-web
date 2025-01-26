@@ -27,6 +27,35 @@ We're using this for some packages, where we're maintaining long-lived
 development branches, for example
 [[source_repositories/glibc]].  The latter one has usage examples, too.
 
+# Installing
+
+It's fairly easy to install topgit. First, clone the git repo of topgit.
+
+    $ git clone https://repo.or.cz/topgit.git
+    $ cd topgit
+
+Or download the tarball of source code directly and unpack it.
+
+    $ curl -o topgit.tar.gz https://repo.or.cz/topgit.git/snapshot/f2815f4debdb07f86ee86dd4eb75280919ace55d.tar.gz
+    $ tar xzf topgit.tar.gz
+    $ cd topgit-f2815f4
+
+Second, you have to build and install topgit with make. You can use
+any prefix to specify the install place. But note that, if you
+don't set `prefix`, it will default to `$HOME` rather than `$HOME/.local`,
+which may NOT be what you want.
+
+    $ make prefix=$HOME/.local install
+
+The topgit executable file is `tg`. It will be installed into `$prefix/bin`.
+
+Finally, add `$prefix/bin` to your `PATH` if you want to use `tg` directly in
+your shell. Then test the installation by running `tg` and check the output.
+
+    $ tg
+    TopGit v0.9 - A different patch queue manager
+    Usage: tg [...]
+
 
 # Running it on GNU/Hurd
 
