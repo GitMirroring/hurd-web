@@ -29,7 +29,13 @@ development branches, for example
 
 # Installing
 
-It's fairly easy to install topgit. First, clone the git repo of topgit.
+It's fairly easy to install topgit.
+
+You can simply installing from your distribution.
+
+Alternatively, you can install it from source.
+
+First, clone the git repo of topgit.
 
     $ git clone https://repo.or.cz/topgit.git
     $ cd topgit
