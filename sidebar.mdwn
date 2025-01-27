@@ -18,6 +18,7 @@ License|/fdl]]."]]"""]]
       * [[Contact_Us]]
   * **[[Donate]]**
   * **[[Contributing]]**
+      * [[Source Code|source_repositories]]
       * [[Public_Hurd_Boxen]]
       * [[QEMU Images|hurd/running/qemu]]
       * [[Getting Help]]
