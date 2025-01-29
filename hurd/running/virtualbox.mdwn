@@ -11,8 +11,23 @@ License|/fdl]]."]]"""]]
 
 [[!meta title="VirtualBox"]]
 
-<http://www.virtualbox.org/>
+Some people are very familiar with using VirtualBox to run virtual machines of OS
+like GNU/Linux, Windows, etc. Hurd CAN also be run with VirtualBox normally, and
+the way is very similar to running other OS with it. The main problem may be that
+Hurd may not support as many emulated hardware as others, which is also a good
+point to help us.
 
+This also provides a good opportunity for people who want to play with Hurd on
+every other OS which can run VirtualBox. You can absolutely run and develop Hurd
+without switching your current OS or running a nest Hurd in another virtual machine.
+
+If you happen to have experience on developing GNU/Linux on other OS like
+Windows, you can develop Hurd smoothly just like before. We might recommend that
+you use a FSF approved operating system to get better experience of developing
+Hurd, but if for some reason you are stuck using Windows, this won't be an
+unsolvable obstacle.
+
+You can download VirtualBox at <http://www.virtualbox.org/>.
 
 # Installation  
 

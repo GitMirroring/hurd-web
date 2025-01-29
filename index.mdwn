@@ -90,6 +90,8 @@ Three of them are
 * Installing a [[GNU/Hurd_distribution|hurd/running/distrib]], 
 * Running it [[in_Xen|microkernel/mach/gnumach/ports/xen]] and 
 * Starting a Hurd [[QEMU_image|hurd/running/qemu]] or [[LiveCD|hurd/running/live_cd/]].
+* Running it with [[VirtualBox|hurd/running/virtualbox]], if you are familiar
+  with VirtualBox or using an OS which is difficult to run QEMU like Windows.
 
 And these web pages are a living proof of the usability of the Hurd, as they
 are rendered on a [[Debian_GNU/Hurd|hurd/running/debian]] system.
