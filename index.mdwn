@@ -57,7 +57,7 @@ So, you are interested in contributing to the GNU Hurd project?  Welcome!
 Every single contribution is very much encouraged.  Please read our [[detailed
 recommendations about how to contribute|contributing]].
 
-Follow section [[#Running_the_Hurd]] to run the Hurd. See our
+Follow section [[Running_the_Hurd|/index#run]] to run the Hurd. See our
 [[source_repositories]] for the source code.
 
 ---
@@ -74,7 +74,9 @@ question, feel free to ask on a mailing list or on IRC.
 
 ---
 <a name="run"> </a>
-# Running the Hurd
+
+<!-- Use HTML h1 with an id to create an anchor for the section. -->
+<h1 id="run"> Running the Hurd </h1>
 
 Running the Hurd may not be as hard as some people think. There are
 [[various_ways|hurd/running]]. The easiest one might be using a
