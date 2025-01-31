@@ -57,12 +57,8 @@ So, you are interested in contributing to the GNU Hurd project?  Welcome!
 Every single contribution is very much encouraged.  Please read our [[detailed
 recommendations about how to contribute|contributing]].
 
-See our [[source_repositories]] for the source code.
-
-## Access to a GNU/Hurd System
-
-We provide accounts on our [[public_Hurd_boxen]], and there are also several GNU/Hurd [[Distributions|hurd/running/distrib]] that allow for
-[[hurd/running/QEMU]] emulation.
+Follow section [[#Running_the_Hurd]] to run the Hurd. See our
+[[source_repositories]] for the source code.
 
 ---
 # Getting Help
@@ -80,18 +76,31 @@ question, feel free to ask on a mailing list or on IRC.
 <a name="run"> </a>
 # Running the Hurd
 
-The most functional distribution of the Hurd is the one provided by Debian.
-Find more information about it at the
-[Debian GNU/Hurd website](http://www.debian.org/ports/hurd/hurd-install).
+Running the Hurd may not be as hard as some people think. There are
+[[various_ways|hurd/running]]. The easiest one might be using a
+virtual machine platform. We also provide accounts on our [[public_Hurd_boxen]].
 
-Along with it there are [[various_ways|hurd/running]] to run a GNU/Hurd system. 
-Three of them are
+Four of them are
 
-* Installing a [[GNU/Hurd_distribution|hurd/running/distrib]], 
-* Running it [[in_Xen|microkernel/mach/gnumach/ports/xen]] and 
-* Starting a Hurd [[QEMU_image|hurd/running/qemu]] or [[LiveCD|hurd/running/live_cd/]].
+* Installing a [[GNU/Hurd_distribution|hurd/running/distrib]] to a real machine.
+* Running it in [[Xen|microkernel/mach/gnumach/ports/xen]].
+* Running it with [[QEMU|hurd/running/qemu]].
 * Running it with [[VirtualBox|hurd/running/virtualbox]], if you are familiar
   with VirtualBox or using an OS which is difficult to run QEMU like Windows.
+
+For a virtual machine, you can use either a
+[[pre-installed_qemu_image|hurd/running/qemu]]
+or a [[LiveCD|hurd/running/live_cd/]]. The pre-installed image (converted
+to proper format) can be used as a hard disk in a virtual machine to skip the
+installation step and run the Hurd directly. The LiveCD is just like the one of
+other OS.
+
+There are also various [[GNU/Hurd_distributions|hurd/running/distrib]] which you
+can choose from. The most functional one is the one provided
+by Debian. It's a good choice for a start, whether you have experience with it,
+or if you can't decide which one to choose. It provides both a pre-installed
+image and a LiveCD. Find more information about it at the
+[Debian GNU/Hurd website](http://www.debian.org/ports/hurd/hurd-install).
 
 And these web pages are a living proof of the usability of the Hurd, as they
 are rendered on a [[Debian_GNU/Hurd|hurd/running/debian]] system.
