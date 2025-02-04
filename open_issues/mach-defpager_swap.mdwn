@@ -1,4 +1,4 @@
-[[!meta copyright="Copyright © 2012 Free Software Foundation, Inc."]]
+[[!meta copyright="Copyright © 2012,2025 Free Software Foundation, Inc."]]
 
 [[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable
 id="license" text="Permission is granted to copy, distribute and/or modify this
@@ -12,6 +12,19 @@ License|/fdl]]."]]"""]]
 
 [[!toc]]
 
+
+# Out of memory situations
+
+GNU Mach currently does not know how much room mach-defpager has. When it is
+full, mach-defpager will start not being able to write data and thus just
+lose it. The corresponding object will trigger SIGBUS on access to lost data
+(hopefully killing the corresponding process, thus releasing memory).
+
+GNU Mach should be aware of how much is left, to better manage paging out,
+possibly throttling some processes. Hopefully ext2fs will be able to flush out
+dirty data and release memory. With overcommit control we can then avoid one
+process filling the whole memory+swap with anonymous data. If several processes
+cooperate in sucking memory, we'd have to OOM some of them.
 
 # IRC, OFTC, #debian-hurd, 2012-06-16
 
