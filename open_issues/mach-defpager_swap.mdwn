@@ -21,10 +21,13 @@ lose it. The corresponding object will trigger SIGBUS on access to lost data
 (hopefully killing the corresponding process, thus releasing memory).
 
 GNU Mach should be aware of how much is left, to better manage paging out,
-possibly throttling some processes. Hopefully ext2fs will be able to flush out
+possibly throttling some processes. Hopefully ext2fs will be able to page out
 dirty data and release memory. With overcommit control we can then avoid one
 process filling the whole memory+swap with anonymous data. If several processes
 cooperate in sucking memory, we'd have to OOM some of them.
+
+E.g. `vm_page_evict` would know not to try to evict an internal page, and just
+wait for the external pages to get paged out and get released.
 
 # IRC, OFTC, #debian-hurd, 2012-06-16
 
