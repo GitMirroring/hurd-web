@@ -617,18 +617,6 @@ That would be a nice improvement, but only after writeback throttling is impleme
       separate partitions is a way to alleviate them
 
 
-## `ext2fs: ../../libdiskfs/rdwr-internal.c:42: _diskfs_rdwr_internal: Assertion `!diskfs_readonly' failed.`
-
-### IRC, freenode, #hurd, 2014-02-22
-
-    <gg0> login: init: notifying pfinet of shutdown...init: notifying tmpfs
-      none of shutdown...init: notifying tmpfs none of shutdown...init:
-      notifyi.
-    <gg0> ext2fs: ../../libdiskfs/rdwr-internal.c:42: _diskfs_rdwr_internal:
-      Assertion `!diskfs_readonly' failed.
-    <gg0> In tight loop: hit ctl-alt-del to reboot
-
-
 # Documentation
 
   * <http://e2fsprogs.sourceforge.net/ext2.html>
