@@ -39,10 +39,10 @@ is sent an [[exception]], which is normally further propagated
 as a segmentation fault.  If there is an associated memory
 object, Mach checks whether the corresponding [[page]] is in core.
 If it is, it installs the page and resumes the task.  Mach
-then invokes the memory object with the `memory_object_request`
+then invokes the memory object with the `memory_object_data_request`
 method and the page to read.  The memory manager then fetches
 or creates the content as appropriate and supplies it to
-Mach using the `memory_object_supply` method.
+Mach using the `memory_object_data_supply` method.
 
 
 # Creating and Mapping a Memory Object
@@ -120,7 +120,7 @@ mappings etc.
 
 (A) The client does a memory access and [[faults|page_fault]].  The kernel catches
 the fault and maps the address to the appropriate memory object.  It
-then invokes the `memory_object_request` method on the associated
+then invokes the `memory_object_data_request` method on the associated
 capability.  (In addition to the page to supply, it also supplies the
 control port so that the server can determine which kernel
 sent the message.)
@@ -147,7 +147,7 @@ its own address space at the same time.
 (E) The storeio server transfers the page to the server.  The page is still
 anonymous.
 
-(F) The manager does a `memory_object_supply` transferring the page to
+(F) The manager does a `memory_object_data_supply` transferring the page to
 the kernel.  Only now is the page not considered to be anonymous but
 managed.
 
@@ -174,8 +174,8 @@ if the server does not deallocate the page quickly enough, it cannot
 cause a denial of service: the kernel will just later double page it
 to swap (the default pager is part of the [[tcb]]).
 
-(C) Mach then invokes `memory_object_return` <!-- doesn't exist --> method on the control
-object.  The server is expected to save the page free <!-- ? --> it in a timely
+(C) Mach then invokes `memory_object_data_return` method on the control
+object.  The server is expected to save the page and free it in a timely
 fashion.  The server is not required to send a response to the kernel.
 
 (D) The manager then transfers the data to the storeio server which
