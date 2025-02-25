@@ -31,9 +31,12 @@ On Debian, `/bin/sh` points to `dash`.  Maybe you would rather it
 point to `bash`.
 
 	$ ls -lha /bin/sh
-	  lrwxr-xr-x 1 root root 4 Jun  5 04:08 /bin/sh -> dash
+	lrwxr-xr-x 1 root root 4 Jun  5 04:08 /bin/sh -> dash
 	$ remap /bin/sh /bin/bash -- ls -lha /bin/sh
-      -rwxr-xr-x 1 root root 1,2M 20 oct.  12:53 /bin/sh
+    -rwxr-xr-x 1 root root 1,2M 20 oct.  12:53 /bin/sh
+    /bin/settrans: fsys_goaway: (ipc/mig) server died
+
+(the warning is expected, it just tells that the exected command has finished)
 
 ## remapping python3
 
