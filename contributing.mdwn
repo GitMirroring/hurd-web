@@ -187,7 +187,6 @@ This is the list of tasks that we *want* to address soon, starting with the most
 * Rewrite `pthread_cond_*`, `pthread_rwlock_*`, `pthread_barrier_*` to use `gsync`, like `pthread_mutex_*` do (also see the nptl implementations, possibly just share with them).
 * Improve rumpdisk's asynchronism, see end of `hurd/rumpdisk/block-rump.c`.
 * Check performance of `rumpdisk` against the in-`gnumach` drivers.
-* Make `ext2fs` use xattr by default to store translators (see `use_xattr_translator_records`) after making sure the upgrade path works fine.
 * Finish glib's file monitoring (see [merge request draft](https://gitlab.gnome.org/GNOME/glib/-/merge_requests/3626) and [Debian bug](https://bugs.debian.org/1008208))
 * Extend `ext2fs` to support 64bit time.
 * Fix the `git` testsuite (just a few tests failing, used to pass).
