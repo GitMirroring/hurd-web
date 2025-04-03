@@ -190,7 +190,6 @@ This is the list of tasks that we *want* to address soon, starting with the most
 * Finish glib's file monitoring (see [merge request draft](https://gitlab.gnome.org/GNOME/glib/-/merge_requests/3626) and [Debian bug](https://bugs.debian.org/1008208))
 * Extend `ext2fs` to support 64bit time.
 * Fix the `git` testsuite (just a few tests failing, used to pass).
-* Fix the `curl` testsuite (just a few tests failing).
 * Fix the `subversion` testsuite (just a few tests failing).
 * Fix the `vim` testsuite (just a few tests failing, used to pass).
 * Fix building `mesa`.
