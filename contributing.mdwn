@@ -192,6 +192,7 @@ This is the list of tasks that we *want* to address soon, starting with the most
 * Fix the `git` testsuite (just a few tests failing, used to pass).
 * Fix the `subversion` testsuite (just a few tests failing).
 * Fix the `vim` testsuite (just a few tests failing, used to pass).
+* Fix the `cmake` testsuite (just a few tests failing in latest version 4.0.0).
 * Fix building `mesa`.
 * Fix building `wayland`.
 * Port `python-procps`.
