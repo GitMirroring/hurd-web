@@ -12,8 +12,7 @@ License|/fdl]]."]]"""]]
 [[!tag open_issue_hurd]]
 
 The Hurd's primary filesystem is ext2, which works but lacks modern
-features.  With ext2, Hurd users reguarly deal with filesystem
-corruption.  Ext2 does not have a journal, so Hurd users occasionally
+features.  Ext2 does not have a journal, so Hurd users occasionally
 have to deal with filesystem corruption.  `fsck` can fix most of the
 issues (with loss of random data), but without a proper journal the
 Hurd currently is not a good a OS for long-term data storage.
