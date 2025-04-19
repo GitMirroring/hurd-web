@@ -14,7 +14,7 @@ License|/fdl]]."]]"""]]
 # RumpUSBDisk
 
 With RumpUSBDisk, the Hurd can use a usb to SATA dongle to access a
-SATA device.  The StarTech offers a good quality dongle that works
+SATA device.  StarTech offers a good quality dongle that works
 well.  The Hurd could then read/write data from a SATA device with an
 fatfs or ext2 filesystem.  Damien Zammit implemented [[rumpusbdisk
 already|https://lists.gnu.org/archive/html/bug-hurd/2023-07/msg00025.html]].

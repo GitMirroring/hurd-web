@@ -54,11 +54,11 @@ rewrite rights and pointers to out-of-band memory, it has to parse the
 message.  As type information and values are interleaved, it has to
 iterate over the whole message.
 
-Furthermore, there are two kinds of type descriptors, mach_msg_type_t
-and mach_msg_type_long_t.  The reason for this is that the amount of
-data that can be described using mach_msg_type_t is just 131072 byte.
-This is because msgt_size is an 8-bit value describing the size of one
-element in bits, and msgt_number is an 12-bit value describing the
+Furthermore, there are two kinds of type descriptors, `mach_msg_type_t`
+and `mach_msg_type_long_t`.  The reason for this is that the amount of
+data that can be described using `mach_msg_type_t` is just 131072 byte.
+This is because `msgt_size` is an 8-bit value describing the size of one
+element in bits, and `msgt_number` is an 12-bit value describing the
 number of items.
 
 ### Required change to the message format
