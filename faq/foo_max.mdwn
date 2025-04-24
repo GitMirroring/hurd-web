@@ -35,8 +35,9 @@ memory page, thus a TLB lookup) when manipulating a lot of paths. Allocating
 dynamically would use much less memory.
 
 Most often interfaces can be made to properly allocate dynamically. Notably,
-since Posix 2008 `realpath(path, NULL)` and `getcwd(NULL, 0)` allocate the path
-dynamically.
+since Posix 2008 `realpath(path, NULL)` allocates the path dynamically.
+Posix 2008 does not say that `getcwd(NULL, 0)` allocates the path dynamically,
+but BSD, Linux, and even windows do.
 
 In general, using `FOO_MAX` in source code (with a large value) leads to code
 that is not actually checking against overflows. `PATH_MAX` being 4096 is
