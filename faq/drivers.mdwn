@@ -24,9 +24,12 @@ which support internet connectivity via the ethernet port.  You can
 use an [[SSD|hurd/rump/rumpdisk]] on these laptops, which support a
 maximum of 8GB of RAM.  The Debian installer images from 2023 fail to
 boot these machines, but you can install the Hurd via [[Debian's
-CrossInstall|hurd/running/debian/CrossInstall]].  Until we fix the
-libdiskfs/ext2fs issues on the [[64 bit port|faq/64-bit]], we
-recommend that you use the 32 bit version of the Hurd.
+CrossInstall|hurd/running/debian/CrossInstall]] or 
+[[mmdebstrap|https://lists.debian.org/debian-hurd/2024/12/msg00003.html]].  
+
+_Until we fix the libdiskfs/ext2fs issues on the 
+[[64 bit port|faq/64-bit]], we recommend that you use the 32 bit 
+version of the Hurd._
 
 Other hardware that is known to work includes the [[Dell Inspiron
 1750|https://logs.guix.gnu.org/hurd/2024-09-28.log]] on i386
