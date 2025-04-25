@@ -19,7 +19,8 @@ and you can use an [[SSD|hurd/rump/rumpdisk]].  If you have difficulty
 installing the Hurd, then try setting your harddrive mode to "legacy"
 in the BIOS.  A cheaper option is the T43 (2GB max RAM).
 
-Other working Thinkpads include the X200, T400, or T500 Thinkpads,
+Other working Thinkpads include the X200, T400, 
+[[T410|https://logs.guix.gnu.org/hurd/2025-04-25.log#103752]] or T500 Thinkpads,
 which support internet connectivity via the ethernet port.  You can
 use an [[SSD|hurd/rump/rumpdisk]] on these laptops, which support a
 maximum of 8GB of RAM.  The Debian installer images from 2023 fail to
