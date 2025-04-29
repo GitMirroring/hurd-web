@@ -58,9 +58,7 @@ Set TERM variable and run native-install script.
     export TERM=mach
     ./native-install
 
-At the end native-install wants you to reboot and run it again. Do so and remember to set the TERM variable as well.
-
-After the second reboot and native-install run you can remove the '-s' in the kernel line above and boot GNU/Hurd as a normal user.
+You can then remove the '-s' in the kernel line above and boot GNU/Hurd as a normal user.
 
 ## <a name="Logging_in"> Logging in </a>
 

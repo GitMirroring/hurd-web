@@ -56,13 +56,6 @@ Ah, reboot and select "GNU (kernel GNUmach 1.3)" from the Grub menu. At the prom
     # export TERM=mach
     # ./native-install
 
-When done the native install requests that you reboot once again and rerun native-install.
-
-    # reboot
-    ...
-    # export TERM=mach
-    # ./native-install
-
 Done, continue setting up your system.
 
 ----
