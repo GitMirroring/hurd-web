@@ -29,9 +29,8 @@ CrossInstall|hurd/running/debian/CrossInstall]] or
 [[mmdebstrap|https://lists.debian.org/debian-hurd/2024/12/msg00003.html]].  
 
 _While the [[64 bit port|faq/64-bit]] is about as stable as the 32-bit 
-port, please be advised that many packages are failing to build on the
-64 bit port.  For this reason we recommend casual Hurd users to use
-the 32 bit port._
+port, the rumpdisk support needed for it is still relatively experimental.
+For this reason we recommend casual Hurd users to use the 32 bit port._
 
 Other hardware that is known to work includes the [[Dell Inspiron
 1750|https://logs.guix.gnu.org/hurd/2024-09-28.log]] on i386
