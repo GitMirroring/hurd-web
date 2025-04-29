@@ -12,6 +12,13 @@ License|/fdl]]."]]"""]]
 [[!meta title="What Is the GNU Hurd?"]]
 
 The Hurd is the GNU project's replacement for the [[UNIX]] system's [[kernel]].
+There are several 
+[[free software operating systems|https://www.gnu.org/distros/free-distros.en.html]]
+using the [[Linux kernel|https://en.wikipedia.org/wiki/Linux_kernel]]. The
+Hurd is an alternate operating system that uses a different kernel.  You can
+read more about the status of the Hurd [[here|hurd/status]].  If you decide
+to use the Hurd, then we would recommend 
+[[the Debian GNU/Hurd distribution|https://www.debian.org/ports/hurd/]].
 
 The Hurd is firstly a collection of protocols formalizing how different
 components may interact.  The protocols are designed to reduce the mutual
@@ -23,7 +30,8 @@ access to its backing store and that the [[principal]] that started it own the
 file system node to which it connects.
 
 The Hurd is also a set of [[servers|translator]] that implement these
-protocols.  They include file systems, network protocols and authentication.
+protocols.  They include [[file systems|hurd/translator/ext2fs]], network 
+protocols and [[authentication|hurd/translator/auth]].
 The servers run on top of the [[microkernel/Mach]] [[microkernel]] and use
 Mach's [[microkernel/mach/IPC]] mechanism to transfer information.
 
@@ -39,8 +47,8 @@ programs and libraries to operate. Let's look at an example.
 
 Firefox invokes glibc's `send ()`, which in turn uses the pfinet (or
 lwip) TCP/IP stack, which talk to our device drivers (rump or netdde),
-which finally talk to GNU Mach.  Only GNU Mach runs in kernel space!
-Everything else is userspace!
+which can actually access the hardware without entering kernel space 
+(GNU Mach).  That's a lot of power for userspace!
 
 The Hurd supplies the last major software component needed for a complete
 [[GNU_operating_system|running/gnu]] as originally conceived by Richard
@@ -51,7 +59,10 @@ organization that is the home of the [GNU project](http://gnu.org/gnu/).
 The Hurd development effort is a somewhat separate project from the
 [[Debian_GNU/Hurd|hurd/running/debian]] port.
 
+Want to know what the Hurd can do?  Read the [[status|hurd/status]] page.
 
 Read about what the GNU Hurd is [[gramatically_speaking]].
 
 Read about the [[origin_of_the_name]].
+
+Want to read more [[Hurd documentation|hurd/documentation]]?
