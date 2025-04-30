@@ -34,6 +34,8 @@ drivers, and experimental support for SATA devices was added in May 2013.
 Robert Millan worked on a port of the Rump kernel, which allowed to run a
 sound driver in userland. This work now needs to be extended. Support for
 character devices and other hardware (USB, multicore) is mostly missing.
+Damien Zammit added [[RumpDisk|hurd/rump/rumpdisk]], which lets the Hurd
+boot and use SSDs with a minimal NetBSD kernel running in userspace.
 
 Although the [[POSIX
 interface|faq/posix_compatibility]] is provided, some additional interfaces
@@ -56,13 +58,27 @@ official Debian release), in April 2015 the [[Debian
 GNU/Hurd|hurd/running/debian]] team released [[Debian GNU/Hurd
 2015|news/2015-04-29-debian_gnu_hurd_2015]]. Similarly, along Debian "stretch",
 in June 2017 [[Debian GNU/Hurd 2017|news/2017-06-18-debian_gnu_hurd_2017]] was released.
+The latest release is from 
+[[2023|https://darnassus.sceen.net/~hurd-web/news/2023-06-11-debian_gnu_hurd_2023/]].
+
+With [[Guix System|hurd/running/guix]] one can trivially run a childhurd or a 
+hurd vm running atop GNU/Linux.  The adventurous can run it on 
+[[real iron|https://guix.gnu.org/blog/2024/hurd-on-thinkpad/]]. 
 
 [[hurd/running/Arch_Hurd]] offers *LiveCDs* for testing and installation.
 
 [[hurd/running/Nix]] provides QEMU images.
 
-
 ## Usability Reports
+
+### Joshua Branson, 2025-04-30
+
+I've had my T43 Thinkpad with 1.5 GB of RAM running Debian GNU/Hurd
+for about a year now.  I use a combination of the i3 window 
+manager, emacs, git, the netsurf web browser, and a terminal to edit 
+this wiki.  The Hurd is fairly stable, but it tends to lock up on me
+about once a month.  While I am fairly certain that I have had some 
+filesystem corruption, I have not noticed any lost files yet.
 
 ### Svante Signell, 2013-05-21
 
