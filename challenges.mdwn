@@ -19,8 +19,8 @@ successful true multi-server [[microkernel]] system for general-purpose desktop
 use yet.  This is still an ongoing research effort.  Also the Hurd is not the
 only multiserver operating system. Other examples include:
 [[Genode OS|https://genode.org/]] (FOSS),  [[MINIX 3|https://www.minix3.org/]] (FOSS), 
-[[HELON OS|http://www.helenos.org/]] (FOSS), and [[QNX|https://blackberry.qnx.com/en]] 
-(proprietary).
+[[HELON OS|http://www.helenos.org/]] (FOSS), [[Redox OS|https://www.redox-os.org/]],
+and [[QNX|https://blackberry.qnx.com/en]] (proprietary).
 
 Likewise, [[resource scheduling|open_issues/multiprocessing]] in distributed operating system kernels is a
 research topic. The GNU/Hurd also has
