@@ -22,9 +22,9 @@ only multiserver operating system. Other examples include:
 [[HELON OS|http://www.helenos.org/]] (FOSS), and [[QNX|https://blackberry.qnx.com/en]] 
 (proprietary).
 
-Likewise, resource scheduling in distributed operating system kernels is a
-research topic.  For example, read more about it on the relevant [[Open Issues
-page|open_issues/multiprocessing]].  Also, the [[microkernel/Viengoos]]
-research kernel project strives to explore these.
+Likewise, [[resource scheduling|open_issues/multiprocessing]] in distributed operating system kernels is a
+research topic. The GNU/Hurd also has
+[[open_issues/resource_management_problems]]. The [[microkernel/Viengoos]]
+research kernel project strives to fix these issues, but its development has ended.
 
 TODO: more to come.  [[!tag open_issue_documentation]]
