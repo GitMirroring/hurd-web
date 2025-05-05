@@ -15,12 +15,21 @@ The filesystem implements stuff like Gnome VFS (gvfs) and KDE **network transpar
 
 One practical advantage of this is that the following works: 
 
-    settrans -a ftp\: /hurd/hostmux /hurd/ftpfs /
-    dpkg -i ftp://ftp.gnu.org/path/to/*.deb
+    $ settrans -a ftp\: /hurd/hostmux /hurd/ftpfs /
+    $ dpkg -i ftp://ftp.gnu.org/path/to/*.deb
 
 This installs all deb-packages in the folder `path/to` on the FTP server. The shell sees normal directories (beginning with the directory “ftp:”), so shell expressions just work.
 
 You could even define a Gentoo mirror translator (`settrans mirror\: /hurd/gentoo-mirror`), so every program could just access mirror://gentoo/portage-2.2.0_alpha31.tar.bz2 and get the data from a mirror automatically: `wget mirror://gentoo/portage-2.2.0_alpha31.tar.bz2`
+
+How about mounting a remote ISO file? Now that we can access ftp.gnu.org transparently,
+this is trivial!
+
+    $ settrans -c mnt /hurd/iso9660fs $PWD/ftp://ftp.gnu.org/old-gnu/gnu-f2/hurd-F2-main.iso
+    $ ls mnt/
+
+It is interesting to note that since the ISO9660 format is indexed, ftpfs does not have to 
+download the whole ISO file, it merely fetches what iso9660fs requests.
 
 Or you could add a unionmount translator to root which makes writes happen at another place. **Every user is able to make a readonly system readwrite** by just specifying where the writes should go. But the writes **only affect his view of the filesystem**.
 
