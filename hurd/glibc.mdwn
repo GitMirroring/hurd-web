@@ -49,6 +49,10 @@ One can build libc this way:
     $ make
     $ make check -k
 
+One can run tests individually with:
+
+    $ make test t=wcsmbs/test-wcsnlen
+
 One can run tests with the new libc by hand:
 
     $ ./testrun.sh ~/test
