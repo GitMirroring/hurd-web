@@ -17,7 +17,13 @@ It is not, there is no real reason why it would be particularly slow, it is just
 about switching virtual addresses and registers, which all OS have to perform
 anyway.
 
-A quick-and-dirty benchmark:
+A quick-and-dirty benchmark.
+
+You can build this file with:
+
+        gcc -pthread -rt -o context-switch context-switch.c
+
+In `context-switch.c` write:
 
         #include <fcntl.h>
         #include <semaphore.h>
