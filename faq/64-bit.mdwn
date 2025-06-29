@@ -13,8 +13,8 @@ License|/fdl]]."]]"""]]
 
 [[!meta title="Is there a 64-bit version?"]]
 
-There are plans for 64-bit kernelland with 32-bit userland, which will notably
-permit to efficiently make use of more than 2 GiB memory and provide 4 GiB
+64-bit kernelland is supported with 32-bit userland, which notably
+permits to efficiently make use of more than 2 GiB memory and provide 4 GiB
 userland addressing space.
 
 A 64-bit GNU/Hurd is also available, progress is tracked on [[open_issues/64-bit_port]]!
