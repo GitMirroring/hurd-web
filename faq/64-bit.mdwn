@@ -19,8 +19,7 @@ userland addressing space.
 
 A 64-bit GNU/Hurd is also available, progress is tracked on [[open_issues/64-bit_port]]!
 As of April 2025, the Debian hurd-amd64 port works just like the hurd-i386, except for
-some bugs, namely swapping issues with rumpdisk and the hurd-console fails to
-start, which means that you cannot use X.
+some bugs, namely swapping issues with rumpdisk and dumping core files.
 
 We plan on supporting both a 
 32-bit and 64-bit Debian GNU/Hurd, only not both at the same time.  

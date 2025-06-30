@@ -23,7 +23,7 @@ License|/fdl]]."]]"""]]
 **TODO**
 
   * Fix swapping with rumpdisk
-  * Fix hurd console startup
+  * Fix crash-dump-core server
 
 **Installing via the installer image**
 
