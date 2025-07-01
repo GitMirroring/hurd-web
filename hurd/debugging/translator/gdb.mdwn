@@ -12,6 +12,8 @@ Say you want to try running file system server ([[`ext2fs`|translator/ext2fs]],
 [[`jfs`|translator/jfs]], ...) against a modified version of
 [[`libpager`|libpager]] and debug the latter one using [[debugging/GDB]].
 
+On Debian you need the `hurd-dbgsym` and `libc0.3-dbg` packages installed.
+
 Set the [[hurd/translator]] like this:
 
     $ settrans -fgap ↩
@@ -51,3 +53,11 @@ course):
     [...]
 
 Voilà.
+
+If you need to debug the initialization of the translator, start the translator
+like
+
+    $ settrans -Pa /foo /hurd/foofs
+
+The `-P` option will make it
+pause and you will be able to attach [[debugging/GDB]] to the process.
