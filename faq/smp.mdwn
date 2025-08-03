@@ -21,12 +21,12 @@ This needs testing as SMP support has recently been added to Mach.
 Intel_iPSC/860]], so principally has the required infrastructure.  It has
 recently been enhanced to support nowadays' SMP standards like ACPI.
 
-However, [[GNU Mach|microkernel/mach/gnumach]]'s Linux device driver glue
-code isn't SMP-safe so build with --disable-linux-groups to test SMP and use
+However, [[GNU Mach|microkernel/mach/gnumach]]'s Linux device driver glue code
+isn't SMP-safe so the in-kernel drivers will be disabled, and one has to use
 rumpdisk to provide disk access.
 
 To build an SMP supported gnumach with kdb:
-../configure --enable-ncpus=8 --enable-kdb --enable-apic --disable-linux-groups
+../configure --enable-ncpus=8 --enable-kdb
 
 This will by default allow you to boot with one core isolated to the default
 processor set, and all the other detected cpus will be in the slave processor set.
