@@ -14,6 +14,4 @@ License|/fdl]]."]]"""]]
 If you want to use the `apt source` facility, make sure that
 `/etc/apt/sources.list` contains a line like
 
-    deb-src http://ftp.de.debian.org/debian unstable main
-
-... replacing _de_ with your homeland's code.
+    deb-src http://deb.debian.org/debian unstable main
