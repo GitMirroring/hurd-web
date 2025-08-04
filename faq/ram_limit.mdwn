@@ -13,16 +13,12 @@ License|/fdl]]."]]"""]]
 
 [[!meta title="830 MiB RAM Limit"]]
 
-The 830MB RAM limit has been removed, but just like any 32-bit OS without bad tricks,
-GNU Mach can not cope well with lots of memory.  Latest versions of the Debian `gnumach`
-package will limit themselves to 3 GiB of memory. If you want more, you can twiddle
-the `VM_MAX_ADDRESS` limit between kernelland and userland in
-`i386/include/mach/i386/vm_param.h`, but glibc and the hurd servers will not cope
-well with less than 1 GB.
+The 830MB RAM limit has been removed since long. The default version of the
+Debian `gnumach` package will limit themselves to 3 GiB of memory. If you
+want more, you can try the PAE version, but this requires using rumpdisk for
+accessing disks.
 
-There is a [[64-bit port|open_issues/64-bit_port]] in progress.
-
-If you have an older version, or still experience problems with `vmstat` (see
-above) reported much less memory than you have, the best is to limit the memory
-it can see via GRUB's `upppermem` feature.  Add `uppermem 786432` to GRUB's Hurd
-entry in `menu.lst`.
+Note that by architecture design, 32bit systems can only provide at most 4GiB
+addressing space for processes. With a 32bit kernel, part of is is used by the
+kernel. It is also possible you use a 32-on-64 kernel, to provide the full 4GB
+adress space to userland. To give more to userland, use a fully-64b Hurd.
