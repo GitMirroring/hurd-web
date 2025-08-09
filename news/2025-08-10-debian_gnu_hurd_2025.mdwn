@@ -8,9 +8,9 @@ Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license
 is included in the section entitled [[GNU Free Documentation
 License|/fdl]]."]]"""]]
 
-[[!meta date="2023-06-11 00:00 UTC"]]
+[[!meta date="2025-08-10 00:00 UTC"]]
 
-Debian GNU/Hurd 2023 released!
+Debian GNU/Hurd 2025 released!
 [[!if test="included()" then="""[[!toggle id=full_news
 text="Details."]][[!toggleable id=full_news text="[[!paste id=full_news]]"]]"""
 else="
