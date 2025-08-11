@@ -24,7 +24,7 @@ Building the Hurd requires the *build-essential* and *fakeroot* packages, their
 dependencies and additional packages that are specified by the source hurd
 package:
 
-    # apt install build-essential fakeroot
+    # apt install build-essential fakeroot quilt
     # apt build-dep hurd
 
 ## ... on non-Debian systems
