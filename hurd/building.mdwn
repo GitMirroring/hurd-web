@@ -25,7 +25,7 @@ dependencies and additional packages that are specified by the source hurd
 package:
 
     # apt install build-essential fakeroot quilt
-    # apt build-dep hurd
+    # apt build-dep -y hurd gnumach
 
 ## ... on non-Debian systems
 
@@ -40,6 +40,10 @@ git](http://savannah.gnu.org/git/?group=hurd):
 
 ... or (if you are working on a Debian system) the ones that are used for the
 [current Debian hurd package](http://packages.debian.net/source/unstable/hurd):
+
+    $ git clone https://salsa.debian.org/hurd-team/hurd.git
+
+Or you could use apt source
 
     $ apt source hurd
 

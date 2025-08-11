@@ -242,6 +242,12 @@ After you have a Hurd vm set up and running:
 * Start hacking.
 * For shutting down, use `reboot`, then press `c` in grub and issue halt (to avoid filesystem corruption). Adding `--no-reboot` to the qemu line should help, too.
 
+<a id="developer-workflows" name="developer-workflows"></a>
+## Developer Workflows
+
+You might want to take a look at our [[developer workflow
+recommendations|contributing/developer-workflows]].
+
 ---
 <a name="hurd_on_modern_microkernel"></a>
 # Design / Research: GNU Hurd on a Modern Microkernel

@@ -1,0 +1,110 @@
+[[!meta copyright="Copyright © 2024 Free Software Foundation, Inc."]]
+
+[[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable
+id="license" text="Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no Invariant
+Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license
+is included in the section entitled [[GNU Free Documentation
+License|/fdl]]."]]"""]]
+
+[[!meta title="Developer Workflows"]]
+
+[[!toc levels=2]]
+
+Contributing to a free software project for the first time, can be a
+little overwhelming.  There's lots of tools that can help you
+contribute: autotools,
+[[gdb|https://www.sourceware.org/gdb/documentation/]],
+[[git|https://git-scm.com/docs/user-manual]], handling lots of email
+from mailing lists, text editors, etc.  Don't try to immediately
+master everything!  You have time to figure it all out!  Learn a
+little bit and go from there.  To help you in that process, this is a
+quick guide to get you started contributing to the Hurd:
+
+---
+
+<a id="sending-patches" name="sending-patches"></a>
+# Sending Patches
+
+The easiest way to send patches is with `git send-email`.
+[[https://git-send-email.io/]] will get you up and running with
+sending patches really quickly!
+
+To email your most recent change, you can use `git send-email` like
+so:
+
+	$ git send-email -1 --to=bug-hurd@gnu.org
+
+Where `-1` means sending the current (latest) commit; you can do more
+than 1 of course. You can do multiple `--to`'s, if you want to send
+the patch to multiple lists (e.g. both to libc-alpha and bug-hurd, for
+glibc patches), as well as `--cc` to cc specific people. It is a good
+idea to cc the people who wrote or last changed the part of code
+you are changing.
+
+If you add `--rfc`, the generated subject line will have [RFC PATCH]
+instead of [PATCH], which is roughly analogous to WIP MRs on GitLab or
+Draft PRs on GitHub, which means that you want to gather feedback, but
+don't expect the patches to merged as-is. If you post a modified
+version (aka a re-roll) of your patch (set), add -v2 (or -v3, -v4
+etc), which will result in e.g. [PATCH v2].
+
+When posting a larger patch series, you might want to generate the
+patches and send them in two distinct steps. For this, you can use git
+format-patch (with pretty much all the same options); that will
+generate a bunch of text files in your cwd that you can edit with your
+favorite text editor.
+
+	$ git format-patch -4 --to-bug-hurd@gnu.org \
+	    --cover-letter --cc=hurdExpert@gnu.org
+	$ git send-email *.patch
+
+It's oftentimes a good idea to give an overview of a patch series; for
+this you use `--cover-letter`, which will generate a dummy patch number
+0, which you can then write your description over.
+
+<a id="using-git" name="using-git"></a>
+# Using Git
+
+Git can be a little tricky to use, if you are not used to it.
+
+	$ git clone https://salsa.debian.org/hurd-team/hurd.git
+	$ cd hurd
+	$ # make a change to file
+	$ git add FILENAME
+	$ git commit -m 'trans/hello.c: Fixed a typo in a comment.'
+
+You should probably read some of the documentation from
+[git-scm.com](https://git-scm.com/doc).  `man git` is another good
+resource.
+
+<a id="text-editors" name="text-editors"></a>
+# Using Emacs' Magit
+
+The git command line is fine enough, but Emacs' magit mode makes using
+git much easier (my opinion, obviously).  With Magit, you can
+trivially re-order commits, easily reword commit messages, commit a
+change to an old commit (that is not HEAD), commit only portions of a
+file, squash commits togethor, etc.  Magit is probably one of the
+easiest ways to work with git.  You could code with any other editor,
+but just use Emacs to handle your git workflow.
+
+With magit, it is easy to create patches via highlighting one or more
+commits, and one can then type "W" followed by "c".  I personally,
+output said patches to the $hurd-src/patches directory. Then I can
+send my patches to the mailing list via:
+
+	$ cd $hurd-src/patches
+	$ git send-email --to=bug-hurd@gnu.org .
+
+# Using vim-figitive
+vim users can use vim-fugitive, which is similiar to Magit.
+
+# Develop the Debian way
+
+You can develop the GNU/Hurd via Debian GNU/Hurd.  This [Hurd wiki
+page](https://www.debian.org/ports/hurd/hurd-devel-debian) has more
+information.
+
+This page describes how to [[build|hurd/building]] the hurd.
