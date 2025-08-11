@@ -1,5 +1,5 @@
-[[!meta copyright="Copyright © 2007, 2008, 2010, 2011, 2012, 2013, 2015 Free
-Software Foundation, Inc."]]
+[[!meta copyright="Copyright © 2007, 2008, 2010, 2011, 2012, 2013,
+2015, 2024 Free Software Foundation, Inc."]]
 
 [[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable
 id="license" text="Permission is granted to copy, distribute and/or modify this
@@ -28,9 +28,11 @@ repository|source_repositories/glibc]].
 
 Porting glibc to a specific architecture is non-trivial.
 
-The main port is x86, which is somewhat complete and is maintained.  There were
-incomplete ports for Alpha, MIPS, and PowerPC, but they were unmaintained and
-have been removed.
+The main port is x86, which is somewhat complete and is maintained.
+We are actively stabilizing the [[X86_64
+port|open_issues/64-bit_port]].  There were incomplete ports for
+Alpha, MIPS, and PowerPC, but they were unmaintained and have been
+removed.
 
 
 ## [[Hurd-specific Port|hurd/glibc]]
@@ -53,6 +55,8 @@ fact simply forwarded to/implemented as [[system_call]]s.
   * [[signal/signal_thread]]
 
   * [[startup]]
+
+  * [[glibc/error-reporting]]
 
 
 ## Concepts
@@ -79,7 +83,6 @@ Some of these are well-known as [[UNIX]] [[system call]]s.
   * [[mmap]]
 
   * [[poll]]
-
 
 # Debugging
 
