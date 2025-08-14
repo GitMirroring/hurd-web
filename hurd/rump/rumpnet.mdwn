@@ -13,10 +13,29 @@ License|/fdl]]."]]"""]]
 
 # RumpNet
 
-Hurd developers want to use rumpnet, so that we can use modern
-ethernet and wifi device drivers.  The Hurd is currently using Linux's
-old TCP/IP stack (`pfinet`) and device drivers.  We plan to replace
-`pfinet` with [[lwip|hurd/translator/lwip]] and use rumpnet's modern
-device drivers for ethernet and wifi hardware.  Alternatively, we
-could use rump's TCP/IP stack.
+The Hurd is currently using an old Linux's TCP/IP stack (`pfinet`) and
+device drivers. Hurd developers are replacing Linux's old ethernet
+drivers with rumpnet's modern ethernet and wifi device drivers.  While
+porting Linux's device drivers would provide better hardware support,
+we do not have the developer man-power to maintain it.  Hurd
+Developers prefer rumpnet's stable API over Linux's code churn.  We
+plan to replace `pfinet` with [[lwip|hurd/translator/lwip]] (or use
+rump's TCP/IP stack).
+
+In 2025, Damien Zammit make significant progress with rumpnet. He
+coded rumpnet to work with `/dev/wmX` cards, which are Intel i8254x
+Gigabit Ethernet devices. (Documentation is available at
+man.netbsd.org's [wm(4)](https://man.netbsd.org/wm.4) web
+page). Please note that these are ethernet cards not wifi cards. This
+should be easily extended to support other NICs by contributing to
+netbsd/rump's makefiles.
+
+Example usage:
+
+	$ settrans -fgap /dev/rumpnet /hurd/rumpnet
+	$ settrans -fgap /dev/wm0 /hurd/devnode -M /dev/rumpnet wm0
+	$ settrans -fgap /servers/socket/2 /hurd/pfinet -i /dev/wm0
+	$ ifup /dev/wm0
+
+
 
