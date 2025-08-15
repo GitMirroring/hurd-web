@@ -15,7 +15,7 @@ different format.  This is a very powerful ability: it allows using standard
 tools on all kinds of data, and combining existing components in new ways, once
 you have the necessary translators.
 
-A typical example for such a translator would be xmlfs: a translator that
+A typical example for such a translator would be [[hurd/translator/xmlfs]]: a translator that
 presents the contents of an underlying XML file in the form of a directory
 tree, so it can be studied and edited with standard filesystem tools, or using
 a graphical file manager, or to easily extract data from an XML file in a
