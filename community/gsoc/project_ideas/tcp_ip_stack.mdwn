@@ -19,7 +19,7 @@ lwip as a complete replacement for pfinet.  However, lwip uses the netdde device
 drivers for wireless chips, which are old drivers from an old version of linux. To use
 lwip for a wifi connection on more modern hardware, one would also need modern
 device drivers to access the internet.  The promising approach to this is using
-a rump kernel.  This is essentially the New Driver Framework google summer of
+[[hurd/rump/rumpnet]].  This is essentially the [[New Driver Framework|community/gsoc/project_ideas/driver_glue_code]] google summer of
 code project idea.  Hopefully, one day soon the Hurd project will completely replace pfinet
 with lwip.
 
