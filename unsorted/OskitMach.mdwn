@@ -48,7 +48,9 @@ You start Oskit-Mach almost the same way as the old 1.x version of GNUmach. Usin
               --device-master-port=${device-port}             \
               --exec-server-task=${exec-task}                 \
               -T typed ${root} $(task-create) $(task-resume)
-       module /lib/ld.so.1 /hurd/exec $(exec-task=task-create)
+       module /lib/ld-x86-64.so.1 /hurd/exec $(exec-task=task-create)
+
+Note: use `ld.so.1` instead of `ld-x86-64.so.1` on 32b systems.
 
 _Remember_ to ensure that there are no trailing spaces after the backslashes on the lines above if you copy-paste this into your menu.list file.
 

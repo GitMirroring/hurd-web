@@ -42,11 +42,11 @@ with _ps_.)
 
 W3
 
-    $ sudo gdb /var/tmp/one.full/lib/ld.so.1
+    $ sudo gdb /var/tmp/one.full/lib/ld-x86-64.so.1
     [...]
     (gdb) set solib-absolute-prefix /var/tmp/one.full
     (gdb) attach 854
-    Attaching to program `/var/tmp/one.full/lib/ld.so.1', pid 854
+    Attaching to program `/var/tmp/one.full/lib/ld-x86-64.so.1', pid 854
     warning: Can't modify tracing state for pid 854: No signal thread
     Can't fetch registers from thread 1: No such thread
 
@@ -54,7 +54,9 @@ W1
 
     [<Enter>.]
     /hurd/ext2fs.static --bootflags=-dsf --host-priv-port=38 --device-master-port=43 --exec-server-task=47 -Tdevice pseudo-root
-    /lib/ld.so.1 /hurd/exec
+    /lib/ld-x86-64.so.1 /hurd/exec
+
+Note: use `ld.so.1` instead of `ld-x86-64.so.1` on 32b systems.
 
 Now that this step has been accomplished, you can set break points in GDB, etc.
 

@@ -165,9 +165,10 @@ example `/boot/grub/grub.cfg`:
                     --host-priv-port='${host-port}' --device-master-port='${device-port}' \
                     --exec-server-task='${exec-task}' -T typed '${root}' \
                     '$(fs-task=task-create)' '$(task-resume)'
-    module          /lib/ld.so.1 exec /hurd/exec '$(exec-task=task-create)'
+    module          /lib/ld-x86-64.so.1 exec /hurd/exec '$(exec-task=task-create)'
 
 
+Note: use `ld.so.1` instead of `ld-x86-64.so.1` on 32b systems.
 
 
 # Code Inside the Kernel

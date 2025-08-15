@@ -44,8 +44,9 @@ bootloader can have the following typical configuration:
                     --multiboot-command-line='${kernel-command-line}' \
                     --exec-server-task='${exec-task}' -T typed '${root}' \
                     '$(fs-task=task-create)'
-    module          /lib/ld.so.1 exec /hurd/exec '$(exec-task=task-create)'
+    module          /lib/ld-x86-64.so.1 exec /hurd/exec '$(exec-task=task-create)'
 
+Note: use `ld.so.1` instead of `ld-x86-64.so.1` on 32b systems.
 
 GNU Mach will first make the `$(task-create)` function calls, and thus create
 a series of tasks for the various modules, and assign to the `pci-task`,

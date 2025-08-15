@@ -23,8 +23,10 @@ newly created libraries and loader actually work: they'll be used to run the
 `rpcgen` program.  If that step doesn't succeed, it'll look similar to this:
 
     [...]
-    CPP='gcc -E -x c-header' [...]/build/elf/ld.so.1 --library-path [...] [...]/build/sunrpc/rpcgen [...]
+    CPP='gcc -E -x c-header' [...]/build/elf/ld-x86-64.so.1 --library-path [...] [...]/build/sunrpc/rpcgen [...]
     Segmentation fault
+
+Note: use `ld.so.1` instead of `ld-x86-64.so.1` on 32b systems.
 
 ---
 

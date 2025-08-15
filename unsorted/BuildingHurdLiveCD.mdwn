@@ -49,6 +49,7 @@ That was the recipe for using a floppy image. If you use the `-t hd` switch of `
 * `/hurd/iso9660fs.static`
 * `/hurd/exec`
 * `/lib/ld.so.1`
+* `/lib/ld-x86-64.so.1`
 
 ## <a name="Contents_of_grub_conf"> Contents of grub.conf </a>
 
@@ -63,7 +64,9 @@ That was the recipe for using a floppy image. If you use the `-t hd` switch of `
               --host-priv-port=${host-port} --device-master-port=${device-port}      \
               --exec-server-task=${exec-task} -T typed ${root} $(task-create)        \
               $(task-resume)
-       module /lib/ld.so.1 /hurd/exec $(exec-task=task-create)
+       module /lib/ld-x86-64.so.1 /hurd/exec $(exec-task=task-create)
+
+Note: use `ld.so.1` instead of `ld-x86-64.so.1` on 32b systems.
 
 **_Note:_** The `root (cd)` line may prevent some computers from booting the livecd.
 

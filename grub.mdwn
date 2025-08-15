@@ -29,8 +29,10 @@ supports the multiboot standard, necessary to boot the Hurd.
         			--device-master-port='${device-port}' \
         			--exec-server-task='${exec-task}' -T typed '${root}' \
         			'$(task-create)' '$(task-resume)'
-            module /lib/ld.so.1 exec /hurd/exec '$(exec-task=task-create)'
+            module /lib/ld-x86-64.so.1 exec /hurd/exec '$(exec-task=task-create)'
         }
+
+  * Use `ld.so.1` instead of `ld-x86-64.so.1` on 32b systems.
 
 
 # syslinux' `mboot.c32`

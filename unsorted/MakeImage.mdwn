@@ -45,11 +45,13 @@ I use this for testing OSKit...
            --host-priv-port=${host-port} --device-master-port=${device-port}   \
            --exec-server-task=${exec-task} -T typed ${root} $(task-create)     \
            $(task-resume)
-    module /lib/ld.so.1 /hurd/exec $(exec-task=task-create)
+    module /lib/ld-x86-64.so.1 /hurd/exec $(exec-task=task-create)
 
     EOF
     mkisofs -R -b boot/grub/stage2_eltorito -no-emul-boot -boot-load-size 4 \
             -boot-info-table -o grub.iso iso
+
+Note: use `ld.so.1` instead of `ld-x86-64.so.1` on 32b systems.
 
 ## <a name="Booting_Qemu"> Booting Qemu </a>
 
