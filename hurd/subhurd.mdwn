@@ -161,6 +161,8 @@ Unless you change the boot script to pass `--writable` to ext2fs, you will want 
 
     fsysopts / --writable
 
+And `poweroff-hurd` should be used to stop the subhurd.
+
 ### IRC, freenode, #hurd, 2013-08-09
 
     <teythoon> btw, is there a way to get dde-based networking into a subhurd?
