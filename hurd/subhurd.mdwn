@@ -151,6 +151,15 @@ numbers are different, the order should usually match.  Often it also helps to
 look at the number of threads (e.g. using `ps -l`), as many servers have very
 characteristic thread counts.
 
+## Faster boot
+
+If you do not need daemons etc. you can just run a shell, similary to a chroot:
+
+    boot /dev/hd0s6 -c init=/bin/bash
+
+Unless you change the boot script to pass `--writable` to ext2fs, you will want to remount / read-write:
+
+    fsysopts / --writable
 
 ### IRC, freenode, #hurd, 2013-08-09
 
