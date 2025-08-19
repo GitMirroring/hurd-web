@@ -46,7 +46,6 @@ The 'fastboot' is necessary to skip the filesystem check which fails
 because the image assumes the root filesystem to be /etc/hd0s1.  Once
 booted, you can correct this:
 
-    root@debian:~# settrans -c /dev/pseudo-root /hurd/storeio pseudo-root
     root@debian:~# echo /dev/pseudo-root / ext2 defaults 0 1 >/etc/fstab
     root@debian:~# halt
 
