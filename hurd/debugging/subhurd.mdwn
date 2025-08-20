@@ -54,9 +54,7 @@ W1
 
     [<Enter>.]
     /hurd/ext2fs.static --bootflags=-dsf --host-priv-port=38 --device-master-port=43 --exec-server-task=47 -Tdevice pseudo-root
-    /lib/ld-x86-64.so.1 /hurd/exec
-
-Note: use `ld.so.1` instead of `ld-x86-64.so.1` on 32b systems.
+    /hurd/exec.static
 
 Now that this step has been accomplished, you can set break points in GDB, etc.
 
