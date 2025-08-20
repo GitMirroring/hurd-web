@@ -82,6 +82,7 @@ debootstrap as root:
     mke2fs /dev/hd0s6
     settrans -ca mnt /hurd/ext2fs /dev/hd0s6
     debootstrap --keyring=/usr/share/keyrings/debian-ports-archive-keyring.gpg --extra-suites=unreleased sid chroot http://deb.debian.org/debian-ports/
+    chroot mnt passwd
     settrans -fga mnt
 
 ## Booting
