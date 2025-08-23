@@ -90,7 +90,6 @@ people who would like to dive into the code but just lack a "somewhere to begin
 with". Make sure to check out the most up-to-date version on
 <https://darnassus.sceen.net/~hurd-web/contributing>
 
-* Make libstore file backend use 512-byte block size when the file is multiple of 512 bytes.
 * Make block size configurable in libstore, probably through a libstore layer (similarly to the part libstore layer)
 * Teach rsync to use `*getxattr` and friends on GNU/Hurd too, to enable the -X option, so as to preserve translator entries.
 * Avoid GCC trampolines: as discussed in <https://gcc.gnu.org/onlinedocs/gccint/Trampolines.html> these happen when we pass the address of a nested function to another function. This can be seen by running `readelf -S file.o | grep GNU-stack | grep X`, for instance that happens in libdiskfs/file-exec.c, libdiskfs/io-revoke.c. We can't really use -fno-trampoline, we should instead add `void *data` parameters to iterators such as `ports_class_iterate` or `fshelp_exec_reauth`, so that the nested functions can be made mere static functions that get their information from the `void *data` parameter.
