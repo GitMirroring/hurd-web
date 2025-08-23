@@ -89,7 +89,7 @@ debootstrap as root:
 
 One can also use mmdebstrap:
 
-    mmdebstrap --mode=chrootless --variant=required --setup-hook='echo "deb http://deb.debian.org/debian-ports unreleased main" >> "$1"/etc/apt/sources.list.d/unreleased.list' sid rootfs.tar.gz http://deb.debian.org/debian-ports
+    mmdebstrap --mode=chrootless --variant=required '' rootfs.tar.gz 'deb http://deb.debian.org/debian-ports unreleased main' 'deb http://deb.debian.org/debian-ports/ unstable main'
     mke2fs /dev/hd0s6 -d rootfs.tar.gz
 
 ## Booting
