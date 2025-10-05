@@ -1,31 +1,41 @@
-## <a name="Easy_install_with_CrossHurd"> Easy install with CrossHurd </a>
+Curious about the Hurd? Have a 1-5 GiB partition free? Let's install GNU/Hurd on it!
 
-Qurious about the Hurd? Have a 1-5 GiB partition free? Let's install GNU/Hurd on it!
+This page covers two ways to install a Debian GNU/Hurd system from a running
+Debian GNU/Linux in a dual boot type of setup, using either
+[crosshurd](#CrossHurd) or [mmdebstrap](#mmdebstrap).
+
+For the sake of the examples in this page we will consider `/dev/hda3` as
+the partition where you want to install your Hurd system as displayed from linux.
+
+The examples here assume the installation of a `hurd-i386` system, but it is
+simple to modify for a `hurd-amd64` installation.
+
+
+## <a name="CrossHurd"> CrossHurd method </a>
+
+First install the [crosshurd package](http://packages.debian.org/crosshurd).
+
+    # apt install crosshurd
+
+If you have problems it might be because the crosshurd version in the Stable
+distribution is out of date, try the version in Unstable before reporting the issue.
 
 ### <a name="Preparing_the_partition"> Preparing the partition </a>
 
-We'll assume you have a partition ready, for the sake of argument we use an example here: /dev/hda3 is the Hurd partition (type: Linux) and /dev/hda4 is the Linux swap that we'll reuse.
+We create the Ext2 filesystem for the Hurd system, notice the `hurd` option.
 
-First we create the Ext2 filesystem, notice the `hurd` option.
-
-    # mke2fs -o hurd /dev/DEVICE
+    # mke2fs -o hurd /dev/hda3
 
 Next we create a useful mountpoint and mount the partition.
 
     # mkdir /gnu
     # mount /dev/hda3 /gnu
 
-### <a name="Retrieving_CrossHurd"> Retrieving CrossHurd </a>
-
-Unless you don't run Debian GNU/Linux download it from <http://packages.debian.org/crosshurd>, or simply apt the package from Testing or Unstable. Avoid using the version from Stable since it probably is outdated. In case of problems, make sure to try the Unstable version before reporting the issue.
-
-    # apt install crosshurd
 
 ### <a name="Cross_installing"> Cross installing </a>
 
 The crosshurd package only operates in the given target directory, which is the first question asked when running the program.
 
-    # cd /gnu
     # crosshurd
 
 Answer the questions you get: $ What is the target directory?: `/gnu` $ Target Debian system?: gnu $ Target CPU?: i386
@@ -34,36 +44,87 @@ Now the program starts retrieving all the necessary base packages.
 
 ### <a name="Preparing_to_reboot"> Preparing to reboot </a>
 
-When all packages have been extracted we must prepare [[GRUB]] for the Hurd when we reboot. Add the below entry to your `/boot/grub/menu.lst` file to boot the Hurd in single user mode (-s). Single user mode is needed only for the two reboots when running the Native Install.
+When all packages have been extracted we must prepare [[GRUB]] for the Hurd when we reboot.
+Add the below entry to `/etc/grub.d/40_custom` file in your linux installation.
 
-    title GNU (kernel GNUmach 1.5)
-      root (hd0,2)
-      kernel /boot/gnumach-1.5-486.gz root=device:hd0s3 -s
-      module /hurd/ext2fs.static                           \
-           --multiboot-command-line=${kernel-command-line} \
-           --host-priv-port=${host-port}                   \
-           --device-master-port=${device-port}             \
-           --exec-server-task=${exec-task}                 \
-           -T typed ${root} $(task-create) $(task-resume)
-      module /lib/ld-x86-64.so.1 /hurd/exec $(exec-task=task-create)
+	menuentry "Debian GNU/Hurd" {
+		set root='hd0,msdos3'
+		echo	'Loading GNU Mach ...'
+		multiboot	/boot/gnumach-1.8-486-up.gz root=part:3:device:wd0 noide
+		echo	'Loading the Hurd ...'
+		module	/hurd/pci-arbiter.static pci-arbiter \
+			--host-priv-port='${host-port}' --device-master-port='${device-port}' \
+			--next-task='${acpi-task}' \
+			'$(pci-task=task-create)' '$(task-resume)'
+		module	/hurd/acpi.static acpi \
+			--next-task='${disk-task}' \
+			'$(acpi-task=task-create)'
+		module	/hurd/rumpdisk.static rumpdisk \
+			--next-task='${fs-task}' \
+			'$(disk-task=task-create)'
+		module	/hurd/ext2fs.static ext2fs \
+			--multiboot-command-line='${kernel-command-line}' \
+			--exec-server-task='${exec-task}' -T typed '${root}' \
+			'$(fs-task=task-create)'
+		module	/hurd/exec.static exec '$(exec-task=task-create)'
+ }
 
-Note: use `ld.so.1` instead of `ld-x86-64.so.1` on 32b systems.
+*Nota Bene:* In your menu file there should be no extra white space after the back slashes.
 
-**_Nota Bene:_** In your menu file there should be no extra white space after the back slashes.
+Following this, re-create the grub configuration file:
+
+    # update-grub
 
 ### <a name="Native_install"> Native install </a>
 
-Ah, reboot and select "GNU (kernel GNUmach 1.3)" from the Grub menu. At the prompt, setup TERM and run the native-install script.
+Then, reboot and select "Debian GNU/Hurd" from the Grub menu. At the prompt, setup TERM and run the native-install script.
 
     # export TERM=mach
     # ./native-install
 
-Done, continue setting up your system.
+You should add a swap partition to `/etc/fstab`. You can share the swap
+partition between your Hurd and linux installations. If the swap partition
+was `/dev/hda4` on linux, it will be `/dev/wd0s4` on the Hurd.
 
-----
+Before you reboot the system be sure to set a root password.
 
-Jeff Bailey has set up a system where you can install a Hurd system without having to use CDs. It's another type of cross-installation method which uses Debian package management tools to get the packages required as opposed to the one single big tarball.
+    # passwd
 
-As of 2005-03-22, the latest version of crosshurd is 1.7.11. It can be found at <http://packages.debian.org/crosshurd>.
+We can now reboot into the newly configured system.
 
--- [[Main/PeterMelville]] - 12 Jun 2004
+    # reboot-hurd
+
+## <a name="mmdebstrap"> mmdebstrap method </a>
+
+First we need to install the [mmdebstrap](http://packages.debian.org/mmdebstrap) and libarchive13t64 packages.
+
+    # apt install mmdebstrap libarchive13t64
+
+The way this installation method works is to run mmdebstrap in the
+[chrootless mode](https://gitlab.mister-muffin.de/josch/mmdebstrap/wiki#modes)
+from a linux host. But because misconfigured package Maintainer scripts may
+damage the host installation while running in chrootless mode, we wrap two
+mmdebstrap calls: the first creates a throw-away linux chainroot from within
+which we call mmdebstrap in chrootless mode to install our GNU/Hurd image.
+
+We run the following command (we use line breaks for readability, but it is a
+single command):
+
+    # mmdebstrap --variant=apt
+        --include=passwd,debian-ports-archive-keyring,mmdebstrap,sysvinit-core,sysv-rc,e2fsprogs,libarchive13t64
+        --customize-hook='chroot "$1"
+            mmdebstrap --mode=chrootless --arch=hurd-i386
+            --include=sysvinit-core,sysv-rc,debian-ports-archive-keyring,netdde,gnumach-image-1-486
+            --customize-hook="passwd --root=\"\$1\" --delete root"
+            --variant=apt unstable -
+            "deb http://ftp.ports.debian.org/debian-ports/ unstable main"
+            "deb http://ftp.ports.debian.org/debian-ports/ unreleased main"
+            | mkfs.ext2 -o hurd -d - /dev/hda3'
+        stable /dev/null
+
+We then need to [configure the bootloader grub](#Preparing_to_reboot) in the
+same way as described in the crosshurd method above.
+
+You can then reboot into the Debian GNU/Hurd system and install any further
+packages using `apt`.
+
