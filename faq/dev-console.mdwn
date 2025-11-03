@@ -16,10 +16,11 @@ License|/fdl]]."]]"""]]
 Somehow your `/dev/console` got hurt. You can mount by hand (e.g. on `/target`)
 your root filesystem from a Hurd installation CD and run
 
-    settrans /target/dev/console /hurd/term /dev/console device console
+    settrans -c /target/dev/console /hurd/term /dev/console device console
 
 to restore it.
 
 You can also set it from a Linux system with:
 
+    touch /target/dev/console
     setfattr -n gnu.translator -v "/hurd/term\0/dev/console\0device\0console\0" /target/dev/console
