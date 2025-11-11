@@ -29,3 +29,7 @@ some existing experimental code.
 
 Another option is to create translators out of
 [[libguestfs|hurd/translator/libguestfs]].
+
+Another option is the newly created 
+[[experimental journal for ext2fs|https://lists.gnu.org/archive/html/bug-hurd/2025-08/msg00040.html]].
+As of November 9, 2025, this has not yet been merged upstream.
