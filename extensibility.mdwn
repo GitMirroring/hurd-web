@@ -28,7 +28,7 @@ The Hurd's extensibility is not just limited to the VFS.  It is possible for
 users to have their own [[TCP/IP|hurd/translator/pfinet]] 
 [[stack|hurd/translator/lwip]] using the [[hurd/translator/remap]]
 translator.  Users can create their own 
-[[personal firewall|https://darnassus.sceen.net/~hurd-web/hurd/translator/eth-filter/]],
+[[personal firewall|hurd/translator/eth-filter]],
 run a personal [[hurd/translator/auth]] server, or isolate untrusted applications inside
 a [[hurd/subhurd]].  The possibilities are endless!
 

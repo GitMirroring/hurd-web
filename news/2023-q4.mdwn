@@ -67,7 +67,7 @@ untyped, but it appears that the Hurd only uses typed RPC.  So it
 seems best to remove any untyped RPC code.
 
 Sergey Bugaev added [[GNU Mach entry re-coalescing
-support|https://darnassus.sceen.net/~hurd-web/open_issues/gnumach_vm_map_entry_forward_merging/]].
+support|open_issues/gnumach_vm_map_entry_forward_merging]].
 Essentially, Mach was not always able to merge two vm entries that are
 made next to each other, which was slowing down ext2, bash, etc.  Sergey
 allowed GNU Mach to merge entries in the common cases, which greatly

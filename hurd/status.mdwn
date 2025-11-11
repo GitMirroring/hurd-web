@@ -59,7 +59,7 @@ GNU/Hurd|hurd/running/debian]] team released [[Debian GNU/Hurd
 2015|news/2015-04-29-debian_gnu_hurd_2015]]. Similarly, along Debian "stretch",
 in June 2017 [[Debian GNU/Hurd 2017|news/2017-06-18-debian_gnu_hurd_2017]] was released.
 The latest release is from 
-[[2023|https://darnassus.sceen.net/~hurd-web/news/2023-06-11-debian_gnu_hurd_2023/]].
+[[2023|news/2023-06-11-debian_gnu_hurd_2023]].
 
 With [[Guix System|hurd/running/guix]] one can trivially run a childhurd or a 
 hurd vm running atop GNU/Linux.  The adventurous can run it on 

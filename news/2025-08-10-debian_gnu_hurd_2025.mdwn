@@ -27,7 +27,7 @@ sources. It is not an official Debian release, but it is an official
 [[Debian GNU/Hurd|hurd/running/debian]] port release.
 
 Before posting questions on various webnews, please read
-[the FAQ](https://darnassus.sceen.net/~hurd-web/faq/) which will answer most if
+[the FAQ][faq] which will answer most if
 not all of them.
 
 For release details, please read the

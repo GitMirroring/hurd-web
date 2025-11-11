@@ -48,7 +48,7 @@ right](https://lists.gnu.org/archive/html/bug-hurd/2024-04/msg00001.html) to
 Mach and MIG.
 
 Some time ago, Sergey also wrote the
-[terrible-mdns-responder](https://darnassus.sceen.net/~hurd-web/hurd/terrible-mdns-responder/),
+[terrible-mdns-responder][hurd/terrible-mdns-responder],
 and if you would like to be able to type in `ssh HOSTNAME.local` and connect to
 a locally running Hurd, then you may want to try it!
 
@@ -72,7 +72,7 @@ archive](https://logs.guix.gnu.org/hurd/2024-06-25.log).
 
 Now for something trivial but fun! I updated the guide on the Hurd wiki that
 shows how one can run their own [personal ext2fs
-translator](https://darnassus.sceen.net/~hurd-web/hurd/translator/ext2fs/).
+translator][hurd/translator/ext2fs].
 
 You could go crazy even! Why not make something like this:
 
