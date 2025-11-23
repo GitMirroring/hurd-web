@@ -20,7 +20,7 @@ your root filesystem from a Hurd installation CD and run
 
 to restore it.
 
-You can also set it from a Linux system with:
+You can also set it from a Linux system (mounting it as ext4) with:
 
     touch /target/dev/console
     setfattr -n gnu.translator -v "/hurd/term\0/dev/console\0device\0console\0" /target/dev/console

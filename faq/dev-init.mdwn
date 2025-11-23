@@ -1,0 +1,40 @@
+[[!meta copyright="Copyright © 2025 Free Software Foundation,
+Inc."]]
+
+[[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable
+id="license" text="Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no Invariant
+Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license
+is included in the section entitled [[GNU Free Documentation
+License|/fdl]]."]]"""]]
+
+[[!tag faq/running]]
+
+[[!meta title="Fails to boot, hangs at auth."]]
+
+Perhaps your `/dev/` got hurt. You can mount by hand (e.g. on `/target`)
+your root filesystem from a Hurd installation CD and run
+
+    chroot /target dpkg-reconfigure hurd
+
+or
+
+    chroot /target /usr/lib/hurd/setup-translators -k -p
+
+or even completely by hand:
+
+    settrans -fg /target/dev/console /hurd/term /dev/console device console
+    settrans -fg /target/dev/null /hurd/null
+    settrans -fg /target/servers/socket/1 /hurd/pflocal
+    settrans -fg /target/dev/urandom /hurd/random --seed-file /var/lib/random-seed --fast
+
+to restore it or at least the basic parts.
+
+You can also try to fix some entries from a Linux system (mounting it as ext4) with:
+
+    touch /target/dev/console
+    setfattr -n gnu.translator -v "/hurd/term\0/dev/console\0device\0console\0" /target/dev/console
+    setfattr -n gnu.translator -v "/hurd/null\0" /target/dev/null
+    setfattr -n gnu.translator -v "/hurd/pflocal\0" /target/servers/socket/1
+    setfattr -n gnu.translator -v "/hurd/random\0--seed-file\0/var/lib/random-seed\0--fast\0" /target/dev/urandom
