@@ -33,6 +33,10 @@ to restore it or at least the basic parts.
 
 You can also try to fix some entries from a Linux system (mounting it as ext4) with:
 
+    rm -f /target/dev/console
+    rm -f /target/dev/null
+    rm -f /target/servers/socket/1
+    rm -f /target/dev/urandom
     touch /target/dev/console
     touch /target/dev/null
     touch /target/servers/socket/1
