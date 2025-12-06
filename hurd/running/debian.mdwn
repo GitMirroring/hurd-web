@@ -16,8 +16,10 @@ One notable difference in this port, is that `/etc/mtab` -> `/proc/mounts`
 The Debian installer runs natively on the Hurd and it is possible to install a Debian GNU/Hurd system booting it from an IDE or SATA CD-ROM drive or from a USB stick. See 
 [installation instructions](http://www.debian.org/ports/hurd/hurd-install) for details and post-installation configuration.
 
+As of late 2025 installation may require larger amount of RAM (&ge; 2 Gi) due to [[hurd/rump/rumpdisk]] memory requirements. It is possible to install 32 bit Hurd (`hurd-i386`) on lower RAM conditions (~ 500 Mi) using the [CrossInstall](#crossinstall) method, by not loading rumpdisk and using disk drivers in gnumach.
+
 ---
-# CrossInstall
+# <a id="crossinstall">CrossInstall</a>
 It is possible to install a Debian GNU/Hurd system on a spare partition from an existing Debian GNU/Linux installation. We call this [[CrossInstall]].
 
 ---
