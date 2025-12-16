@@ -22,11 +22,11 @@ distribution is out of date, try the version in Unstable before reporting the is
 
 ### <a name="Preparing_the_partition"> Preparing the partition </a>
 
-We create the Ext2 filesystem for the Hurd system, notice the `hurd` option.
+Create the Ext2 filesystem for the Hurd system, notice the `hurd` option.
 
     # mke2fs -o hurd /dev/hda3
 
-Next we create a useful mountpoint and mount the partition.
+Next create a useful mountpoint and mount the partition.
 
     # mkdir /gnu
     # mount /dev/hda3 /gnu
@@ -125,6 +125,15 @@ single command):
 We then need to [configure the bootloader grub](#Preparing_to_reboot) in the
 same way as described in the crosshurd method above.
 
-You can then reboot into the Debian GNU/Hurd system and install any further
-packages using `apt`.
+We can then reboot into the Debian GNU/Hurd system. If we check the `/etc/fstab`
+file we will note that the system boots even without specifying a root mountpoint.
+At the moment there is no swap partition defined either, and it is a good idea to
+edit `/etc/fstab` to add both root and swap partitions. We can share the swap
+partition between Hurd and linux installations. If the swap partition
+was `/dev/hda4` on linux, it will be `/dev/wd0s4` on the Hurd. To activate swap
+without rebooting we use the command
+
+    # swapon /dev/wd0s4
+
+Any other packages can now be installed using `apt`.
 
