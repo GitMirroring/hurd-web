@@ -15,6 +15,31 @@ Only NFSv2/v3 is currently supported.
 [[!tag open_issue_hurd]]There are a few unmerged changes on a former GSoC
 project's topic-branch.
 
+#### A setup example (2025-12-21), Linux server
+
+This example has the **NFS server on a Linux system**
+and the **NFS client on a GNU hurd-amd64 system**.
+Specifically, the Linux system is a *Devuan 5 (daedalus)*, which thus corresponds to *Debian 12 (bookworm)* with the *nfs-kernel-server* package version  *1:2.6.2-4+deb12u1*;
+the hurd-amd64 is from the *debian port snapshot dated 2025-08-07*,
+and running in a QEMU VM on the server host.
+
+It all ran OOTB with only two specific configuration changes:
+
+1. The configuration file **/etc/default/nfs-kernel-server** is changed by adding **"-u"** for the NFSD startup variable RPCNFSDCOUNT, so as to enable UDP for the NFS server (it is disabled by default). The configuration line will thus read:
+
+      **RPCNFSDCOUNT="-u 8"**
+
+  The nfs-kernel-server needs to be restarted following the configuration change.
+
+  Also, the export configuration file, **/etc/exports**, needs to be set up to nominate path(s) to export and which clients are allowed to use them. (See "man exports" on the Linux system for its details)
+
+2.  The **/hurd/nfs translator** is started with argument **"--nfs-program=3"** so as to make it use NFSv3 (the default is NFSv2). The startup command used thus has the following form:
+
+      **settrans $MOUNTPOINT /hurd/nfs -s --nfs-program=3 $EXPORTPATH $SERVERHOST**
+
+  where $MOUNTPOINT is a local existing pathname, e.g. */nfs*, $EXPORTPATH is the exported path on the server, e.g. */home/rrq/shared*, and $SERVERHOST is the server hostname or IP address, e.g. *172.18.46.1*.
+
+  Note that the *"-s"* argument is an optional author's choice, to let the **nfs** translator exit if it fails to connect on the first 3 attempts. Its default, without "-s", is to keep trying.
 
 # See Also
 
