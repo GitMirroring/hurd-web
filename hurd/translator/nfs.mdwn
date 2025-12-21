@@ -35,9 +35,9 @@ It all ran OOTB with only two specific configuration changes:
 
 2.  The **/hurd/nfs translator** is started with argument **"--nfs-program=3"** so as to make it use NFSv3 (the default is NFSv2). The startup command used thus has the following form:
 
-      **settrans $MOUNTPOINT /hurd/nfs -s --nfs-program=3 $EXPORTPATH $SERVERHOST**
+      **settrans $LOCAL /hurd/nfs -s --nfs-program=3 $REMOTE $SERVER**
 
-  where $MOUNTPOINT is a local existing pathname, e.g. */nfs*, $EXPORTPATH is the exported path on the server, e.g. */home/rrq/shared*, and $SERVERHOST is the server hostname or IP address, e.g. *172.18.46.1*.
+  where $LOCAL is a local existing pathname, e.g. */nfs*, $REMOTE is the exported path on the server, e.g. */home/rrq/shared*, and $SERVER is the server hostname or IP address, e.g. *172.18.46.1*.
 
   Note that the *"-s"* argument is an optional author's choice, to let the **nfs** translator exit if it fails to connect on the first 3 attempts. Its default, without "-s", is to keep trying.
 
