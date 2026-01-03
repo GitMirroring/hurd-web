@@ -1,0 +1,171 @@
+[[!meta copyright="Copyright © 2026 Free Software Foundation, Inc."]] [[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable id="license" text="Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant
+Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license
+is included in the section entitled [[GNU Free Documentation
+License|/fdl]]."]]"""]]
+
+[[!meta date="2026-01-02 06:07 UTC"]]
+
+Hello!  Welcome to a new qoth.  This qoth covers new and interesting GNU/Hurd
+developments in Q4 of 2025!
+[[!if test="included()" then="""[[!toggle id=full_news
+text="Details."]][[!toggleable id=full_news text="[[!paste id=full_news]]"]]"""
+else="
+[[!paste id=full_news]]"]]
+
+[[!cut id="full_news" text="""
+
+Joan Lledó worked on [porting dhcpcd](https://lists.gnu.org/archive/html/bug-hurd/2025-10/msg00084.html)
+ to the hurd.  He also made some changes so that 
+[lwip would work with dhcpcd](https://lists.gnu.org/archive/html/bug-hurd/2025-10/msg00068.html). In
+this [message](https://lists.gnu.org/archive/html/bug-hurd/2025-10/msg00084.html) he writes:
+
+> This is the current state of the port:
+>
+> - Support only for IPv4. IPv6 not supported yet.
+> - It works only over lwip. First, because dhcpcd requires some definitions from
+>   headers and pfinet doesn't provide them AFAIK, but lwip provide the headers
+>   through the liblwip-dev package.
+>   Second, because both pfinet and lwip need changes in the translator in order
+>   to be fully compatible with dhcpcd, and I made the changes in lwip since I
+>   know it better.
+> - Only Ethernet is supported. This is because the Hurd doesn't define `AF_LINK`
+>   so dhcpcd can't get any data from the interface other thant what is returned
+>   by `getifaddrs()`.
+>   I'm manually providing the MAC address and hardcoding the interface type to
+>   Ethernet in the `if_init` function. I assume this is correct because the Hurd
+>   only supports ethernet interfaces AFAIK.
+> - dhcpcd monitors the interfaces and gets notified when there are changes in
+>   routes or network configurations. This is not working yet for the Hurd.
+> - dhcpcd implements some privilege separation by which the process spawns new
+>   processes that run as a non-privileged user. Or that's what I understood.
+>   It's not implemented for the Hurd because I've deferred this for now.
+> - Access to BPF is provided by libpcap.
+> - libpcap and liblwip-dev are dependencies for the Hurd.
+> - This has been tested only in a 32-bit Hurd.
+
+Damien Zammit worked on fixing [some](https://lists.gnu.org/archive/html/bug-hurd/2025-10/msg00123.html)
+ [interrupt bugs](https://lists.gnu.org/archive/html/bug-hurd/2025-10/msg00132.html)
+in the acpi server.
+
+He also made some [fixes](https://lists.gnu.org/archive/html/bug-hurd/2025-10/msg00059.html) for rumpnet.
+
+He also worked on adding a 
+[callwheel to GNU Mach's clock](https://lists.gnu.org:443/archive/html/bug-hurd/2025-12/msg00015.html).
+This would make GNU Mach faster in certain ways. He writes:
+
+> Timeouts are now very fast to look up, at the expense of more memory,
+> a much shorter list is traversed rather than all of them.  See [1].
+> Timeouts that are stopped before expiry are now faster to remove,
+> and inserting a timeout is faster.
+> [1] [https://doi.org/10.7936/K7VM49H5](https://doi.org/10.7936/K7VM49H5)
+
+Damien also made some progress on the 
+[SMP support for `x86_64`](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00007.html). He writes:
+
+> This allows gnumach to be compiled with `--enable-ncpus > 1 on x86_64`.
+> However, there is still work to be done particularly with SWAPGS
+> instruction.  Notably, this changeset modifies the AP low boot address
+> to be hardcoded to 0x11000 because it is very difficult to implement
+> 64 bit AP bringup without knowing the offset in advance of waking up
+> the AP via SIPI.
+> 
+> TESTED:
+> 
+> - i386 UP still boots
+> - i386 SMP still works with -smp 1 (but freezes during rumpdisk probe)
+> - i386 SMP still works with -smp 6 (but freezes during rumpdisk probe)
+> - `x86_64 UP` still boots
+> - `x86_64 SMP` now compiles, but freezes with -smp 1 during grub module load
+> - `x86_64 SMP` now compiles, but freezes with -smp 6 just before AP bringup
+> 
+> We still have work to do, but this definitely makes progress.
+
+
+We had a kind developer submit a tiny patch that kills 
+[lingering zombie processes](https://lists.gnu.org:443/archive/html/bug-hurd/2025-12/msg00019.html). 
+
+
+Diego Nieto Cid fixed several compiler warnings throughout our codebase: 
+[lwip](https://lists.gnu.org/archive/html/bug-hurd/2025-10/msg00052.html), 
+[nfsd](https://lists.gnu.org/archive/html/bug-hurd/2025-10/msg00050.html),
+[nfs](https://lists.gnu.org/archive/html/bug-hurd/2025-10/msg00047.html), etc.
+
+He also tidied up the glibc `setrlimit ()` call that lets a process limit 
+its consumption of system resources.  When Samuel committed this he 
+[noticied](https://lists.gnu.org:443/archive/html/bug-hurd/2025-12/msg00052.html)
+that it works well.  Samuel wrote:
+
+> Thanks for this! That will stabilize boxes against programs that
+> allocate like crazy!
+>
+> Yes, it works well ; on packages that used to kill buildd boxes, we
+> properly get virtual addressing space limitation errors.
+
+For some time now, Mike Kelly has used `stress-ng` to stress test the hurd,
+and he keeps finding bugs to 
+[fix](https://lists.gnu.org:443/archive/html/bug-hurd/2025-11/msg00038.html).  He
+has even started to stress test in 
+[real hardware](https://lists.gnu.org:443/archive/html/bug-hurd/2025-12/msg00023.html)! 
+Thanks Mike for making the Hurd more stable!  
+
+He also worked on gnumach [fiddling to](https://lists.gnu.org:443/archive/html/bug-hurd/2025-12/msg00026.html)
+[decrease compile time](https://lists.gnu.org:443/archive/html/bug-hurd/2025-12/msg00047.html). He writes:
+
+> This implementation now searches for pages in the order: inactive/external, 
+> inactive/internal, active/external and active/internal as suggested by Samuel 
+> (https://lists.gnu.org/archive/html/bug-hurd/2025-12/msg00034.html). The 
+> performance improvement is considerable. A test case involving 3 instances of 
+> g++ compiling C++ template code (MatrixSine.cpp from libeigen-dev) uses 
+> sufficient memory on a 4GB machine to require around 500MB of swap. This test 
+> takes about 11 minutes with previous gnumach version (using a virtual machine) 
+> but 3 minutes with this alteration. I have not been able to complete this test 
+> on a 64 bit Hurd 'real hardware' installation with previous gnumach but the 
+> compilation does complete with this patch after about 10 minutes
+
+João Pedro Malhado updated our 
+[alternative hurd installation documentation page](https://lists.gnu.org/archive/html/bug-hurd/2025-10/msg00035.html).
+I think it's pretty cool, that using a Debian GNU/Linux computer, one can install
+the Hurd via mmdebstrap.
+
+We also now have some people running the `x86_64` hurd port on
+[real hardware](https://lists.gnu.org/archive/html/bug-hurd/2025-10/msg00001.html).
+
+Some time ago, Milos Nikic, implemented a 
+[metadata journal for ext2fs](https://lists.gnu.org:443/archive/html/bug-hurd/2025-08/msg00040.html).
+It has not been commited to `libdiskfs`, and it is a 
+[different design from ext3](https://lists.gnu.org:443/archive/html/bug-hurd/2025-07/msg00048.html). 
+He writes:
+
+> This patch introduces a working implementation that captures metadata changes,
+> writes them to a CRC32-protected journal file, and replays them during early
+> boot—before fsck runs—allowing us to correct inconsistencies proactively.
+> 
+> I'm now using this system routinely without issues, and I believe it already
+> provides value for users.
+
+Some people are mentioning on other news channels that Debian is considering 
+requiring rust for apt.  We just want to mention that rust was ported to the Hurd,
+so while there might be some challenges in getting a "rusted" apt working on the Hurd,
+we do not forsee any 
+[unsurmountable problems](https://lists.gnu.org:443/archive/html/bug-hurd/2025-11/msg00014.html).
+
+In other rust news, apparently the crate `uzers-rs` has recently been built with
+[Hurd support](https://lists.gnu.org:443/archive/html/bug-hurd/2025-12/msg00020.html).  Apparently,
+this is quite a commonly used crate, which should help more rust code work on the Hurd.
+
+
+---
+
+The **GNU Hurd** is the GNU project's replacement for the Unix kernel.  It is a
+collection of servers that run on the Mach microkernel to implement file
+systems, network protocols, file access control, and other features that are
+implemented by the Unix kernel or similar kernels (such as Linux).  [[More
+detailed|hurd/documentation]].
+
+**GNU Mach** is the microkernel upon which a GNU Hurd system is based.  It
+provides an Inter Process Communication (IPC) mechanism that the Hurd uses to
+define interfaces for implementing in a distributed multi-server fashion the
+services a traditional operating system kernel provides.  [[More
+detailed|microkernel/mach/gnumach]].
+
+"""]]
