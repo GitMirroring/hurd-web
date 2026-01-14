@@ -163,6 +163,7 @@ This is the list of tasks that we *want* to address soon, starting with the most
 
 * Finish fixing shell output pipe replacement issue on amd64, see
 [discussion](https://lists.gnu.org/archive/html/bug-hurd/2025-04/msg00021.html) and [remaining issue](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00115.html)
+* Fix `i386_debug_state` for 64b support for use by gdb's hardware watchpoints
 * Check the [packages build failures differences](https://people.debian.org/~sthibault/hurd-amd64/failed_diff.txt) between hurd-i386 and hurd-amd64: they are failing on hurd-amd64 but are successful on hurd-i386. Possibly it's just a mere missing `s/hurd-i386/hurd-any/` in the debian/ directory, or a new bug that actually also affects hurd-i386 if you rebuild the package there now, but possibly it's a more profound issue in the amd64 port.
 * On amd64, fix crash-core
 * On amd64, fix running posixtestsuite (not necessarily fixing the tests themselves, but at least make sure it doesn't crash the box ; it could still be useful to compare the output on 32bit and 64bit are the same with the same gnumach/hurd/glibc).
