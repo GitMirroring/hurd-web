@@ -186,7 +186,6 @@ This is the list of tasks that we *want* to address soon, starting with the most
 * Improve rumpdisk's asynchronism, see end of `hurd/rumpdisk/block-rump.c`.
 * Check performance of `rumpdisk` against the in-`gnumach` drivers.
 * Finish glib's file monitoring (see [merge request draft](https://gitlab.gnome.org/GNOME/glib/-/merge_requests/3626) and [Debian bug](https://bugs.debian.org/1008208))
-* Extend `ext2fs` to support 64bit time.
 * Port `golang` (gccgo is already ported).
 * Fix the `git` testsuite (just a few tests failing, used to pass).
 * Fix the `subversion` testsuite (just a few tests failing).
