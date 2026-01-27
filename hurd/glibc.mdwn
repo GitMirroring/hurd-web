@@ -63,9 +63,11 @@ One can build by hand some target with e.g.:
 
 # glibc gotcha
 
-Please note, that if you `git clone` glibc from upstream, and run
+Please note, that like on Linux, if you `git clone` glibc from upstream, and run
 
-     $ make 
+(DON'T DO THIS)
+
+     $ make
      # make install
 
-**You will crash your hurd install**.  Don't run `# make install` from upstream glibc.
+**You will crash your hurd install** because glibc's default configuration doesn't match your system configuration.  Don't run `# make install` from upstream glibc.
