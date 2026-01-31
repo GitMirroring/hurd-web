@@ -170,8 +170,6 @@ This is the list of tasks that we *want* to address soon, starting with the most
 * Port `dhcpcd`, see [call for help](https://lists.debian.org/debian-hurd/2023/11/msg00030.html)
 * Make sure that lwip supports configuration by DHCP.
 * Extensively test (e.g. running testsuites of glibc, perl, curl, rust-mio) and fix the lwip-based TCP/IP stack, to be sure we don't get regressions by switching to it.
-* Fix swapping with `rumpdisk`
-  * Apparently some wiring cases is not effective, we are seeing pageout of rumpdisk memory.
 * Fix the [GPLv2 vs GPLv3 licence incompatibility between ext2fs and libparted](https://bugs.debian.org/838244):
   * For /hurd/ext2fs, use a different libstore that does not include the parted module.
   * For /hurd/ext2fs.static in the bootstrap chain (e.g. to access wd0s1), add a storeio translator before it, and have ext2fs open it, use `file_get_storage_info` and access the underlying device. That wouldn't need any code modification if we were using an initial ramfs exposing that storeio on /dev/wd0s1.
