@@ -17,7 +17,12 @@ License|/fdl]]."]]"""]]
 
 # Past
 
+  * [[FOSDEM_2026]]
   * [[Guix_Days_2024]]
+  * [[FOSDEM_2022]]
+  * [[FOSDEM_2019]]
+  * [[FOSDEM_2018]]
+  * [[FOSDEM_2017]]
   * [[GNU Hackers Meeting, 2016, Rennes|ghm2016]]
   * [[FOSDEM_2016]]
   * [[DebConf15]]
