@@ -24,6 +24,7 @@ FOSDEM has taken place on February 5th/6th online
 
   * {{$zammit_hurd}}
 
+GNU/Hurd is the original Free Software operating system started in the 1980s. Its microkernel design has been evolving over the years and the project has not quite hit mainstream use. I believe this is due to one main reason: the lack of drivers for peripherals and hardware. In this talk, I explain how NetBSD kernel drivers have been reused in a microkernel setting and demonstrate their use to boot up a GNU/Hurd system via a userspace rump disk driver, with a driverless Hurd kernel, gnumach. The ACPI management, PCI management, and actual driver are in separate processes with RPC interfaces between them, which separates out their debugging, licencing concerns and execution. I believe this aligns with the original vision for the operating system, (as a Hurd of servers).
 
 [[!ymlfront data="""
 

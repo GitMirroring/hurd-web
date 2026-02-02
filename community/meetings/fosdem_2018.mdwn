@@ -25,6 +25,9 @@ Bruxelles.
 
   * {{$thibault_hurd}}
 
+One of Hurd's goals is to isolate hardware drivers, to provide flexibility and safety, by isolating drivers' possibly erratic behavior, delegating driving hardware to unprivileged users, etc.
+
+We are thus currently working on a PCI arbiter, which allows to let different userland drivers access PCI devices concurrently, while paving the way for fine-grain per-user, per-session, etc. permission management over PCI access, the use of IOMMUs allowing to do that very safely.
 
 [[!ymlfront data="""
 

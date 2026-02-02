@@ -11,7 +11,7 @@ License|/fdl]]."]]"""]]
 
 [[!meta title="FOSDEM 2026"]]
 
-<http://fosdem.org/2022>
+<http://fosdem.org/2026>
 
 FOSDEM has taken place on January 31th / February 1st at the Université Libre de Bruxelles.
 
@@ -23,6 +23,10 @@ FOSDEM has taken place on January 31th / February 1st at the Université Libre d
 <https://fosdem.org/2026/schedule/track/microkernel/>
 
   * {{$thibault_hurd}}
+
+It has been a while since the last FOSDEM update on GNU/Hurd, so we have a lot to talk about :)
+
+Driver support improvement is on its way through using netbsd's rump layer, now being used in production although there are a few things left to fix. Some SMP support has been added, which should allow at least compilation to be run in parallel. Hurd support was added to the rust ecosystem, which became more and more a necessity due to various software now requiring it. The x86_64 port is essentially complete, which mostly required fixing the MIG RPC layer, and telling various software that it exists. To bootstrap the Debian GNU/Hurd x86_64 distribution, many of the crossbuilding, rebootstrapping and build profiles tools were used to make it relatively smooth. Additionally, the Guix/Hurd distribution is also on its way, as well as an Alpine/Hurd distribution. And more to discover during the talk!
 
 
 [[!ymlfront data="""

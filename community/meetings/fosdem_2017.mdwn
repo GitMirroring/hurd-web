@@ -24,6 +24,8 @@ Bruxelles.
   * {{$ragkousis_guix_hurd}}
 
 
+This presentation will be a guided tour of porting Guix and its package collection to a new platform, with the specifics of GNU/Hurd. We will discuss the current status of the project. Next we will raise the problems we faced and how we solved them. Finally we will present the current status and a road map of porting GuixSD, the standalone system distribution on GNU/Hurd.
+
 
 # Microkernels devroom
 
@@ -31,6 +33,9 @@ Bruxelles.
 
   * {{$winter_hurd}}
 
+Virtualization is one aspect of our everyday life where multiserver operating systems can shine. Given the right underlying architecture, one gets robust and fine-grained virtualization with little effort and code. Achieving the same on conventional monolithic systems requires careful and invasive changes to the whole system, and the security merely depends on the implementation at hand.
+
+This talk describes and demos how both fine- and coarse-grained virtualization is implemented on the Hurd, and how virtualization helps users gain freedom #0, i.e. the freedom to shape her computation environment anyway she wants.
 
 [[!ymlfront data="""
 

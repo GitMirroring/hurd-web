@@ -36,11 +36,19 @@ Bruxelles.
   * {{$ragkousis_guix_hurd}}
 
 
+This presentation will be a guided tour of porting Guix and its package collection to a new platform, with the specifics of GNU/Hurd. We will discuss the current status of the project. Next we will raise the problems we faced and how we solved them. Finally we wiil present a road map for porting GuixSD, the standalone system distribution on GNU/Hurd.
+
+
+
 # Microkernels devroom
 
 <https://fosdem.org/2016/schedule/track/microkernels/>
 
   * {{$thibault_hurd}}
+
+
+
+The Hurd recently saw some experimental work to add sound support. This was done thanks to the Rump kernel, embedded in a library. As a first-working implementation the library is directly linked into mplayer, but of course we plan to make this much more flexible by moving the Rump sound driver into a separate translator, very much like we did for network drivers with netdde. This however poses design questions. The other hardware bit missing on the Hurd is USB support, which we should be able to add a similar way. This poses yet more design questions, as to the shape of the hird of translators we should start for this. This will of course also be the opportunity to give the now-traditional yearly latest news about the Hurd.
 
 
 [[!ymlfront data="""

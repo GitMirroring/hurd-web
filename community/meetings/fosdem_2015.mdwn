@@ -38,6 +38,17 @@ Bruxelles.
 
   * {{$thibault_hurd}}
 
+
+
+It is not so obvious to newcomers to the Hurd project how to follow execution path from their application to actual behavior in the Hurd translators. This talk will guide them through the involved RPCs, thus providing a starting guide into the GNU Hurd architecture, and hopefully, to contributing fixes or new features!
+
+With monolithic kernels, the path from application source code to actual implementation in the kernel is very simple: only the system call layer needs to be understood. In a multiserver system such as the GNU Hurd, this is not so simple, since one for a start has to understand which server one is actually talking to, and how RPCs work. Once this is cleared up, it becomes way easier to know where to contribute fixes and features!
+
+This talk will thus take a few examples of typical application operations (opening and reading a file, opening and working with a socket) and go through the RPC path, to illustrate how translators are involved and where the eventual implementations actually reside.
+
+It will also be an opportunity to give the latest news about the GNU/Hurd project.
+
+
 [[!ymlfront data="""
 
 thibault_hurd:

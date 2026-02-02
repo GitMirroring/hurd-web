@@ -36,6 +36,10 @@ Bruxelles.
 
   * {{$thibault_hurd}}
 
+We will explain how userland drivers are implement in GNU/Hurd thanks to the DDE layer, and what kernel support is needed for that. We will also show the flexibility this brings for the user.
+
+A longer version of this talk (incl video) is also available at [GHM 2013 archive](https://www.gnu.org/ghm/2013/paris/)
+
 [[!ymlfront data="""
 
 thibault_hurd:
