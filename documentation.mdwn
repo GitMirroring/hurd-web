@@ -65,6 +65,8 @@ from userlandish interfaces (Hurd) or from the microkernel itself (Mach).
 ---
 # Presentations
 
+* **2026**
+ * FOSDEM: {{$community/meetings/fosdem_2026#thibault_hurd}}
 * **2022**
  * FOSDEM: {{$community/meetings/fosdem_2022#zammit_hurd}}
 * **2019**

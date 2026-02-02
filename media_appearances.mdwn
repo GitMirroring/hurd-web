@@ -16,7 +16,14 @@ A lot of stuff is missing here.
 [[!toc levels=2]]
 
 
-# 2021
+# 2026
+
+## February
+
+  * FOSDEM: {{$community/meetings/fosdem_2026#thibault_hurd}}
+
+
+# 2022
 
 ## February
 
