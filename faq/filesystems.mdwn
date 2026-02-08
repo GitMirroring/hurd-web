@@ -1,0 +1,22 @@
+[[!meta copyright="Copyright © 2026 Free Software Foundation,
+Inc."]]
+
+[[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable
+id="license" text="Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no Invariant
+Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license
+is included in the section entitled [[GNU Free Documentation
+License|/fdl]]."]]"""]]
+
+[[!tag faq/support]]
+
+[[!meta title="What filesystems are supported?"]]
+
+We have ext2fs (with journaling coming soon), fat, iso9660 translators.
+
+There is an experimental read-only JFS translator.
+
+We also have an NFS translator and an experimental samba translator.
+
+For simpler long-term maintenance, we plan to try to use [[rump fs|/hurd/rump/rumpfs]]
