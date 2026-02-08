@@ -11,6 +11,8 @@ License|/fdl]]."]]"""]]
 
 [[!tag faq/general]]
 
+[[!meta title="How to report bugs?"]]
+
 Please try to reproduce bugs which are not obviously Hurd-specific on Debian
 GNU/Linux and then file them there.
 
