@@ -13,4 +13,4 @@ License|/fdl]]."]]"""]]
 
 [[!meta title="Is USB supported?"]]
 
-USB disk and CD are supported in `rumpusbdisk`. For now the stack is embedded inside it, so we don't support other USB devices. Once we still it in two pieces with the `ugen` interface in between, we will be able to support other USB devices.
+USB disk and CD are supported in `rumpusbdisk`. For now the stack is embedded inside it, so we don't support other USB devices. Once we split it in two pieces with the `ugen` interface in between, we will be able to support other USB devices.
