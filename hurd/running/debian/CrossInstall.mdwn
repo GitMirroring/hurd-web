@@ -114,7 +114,7 @@ single command):
         --include=passwd,debian-ports-archive-keyring,mmdebstrap,sysvinit-core,sysv-rc,e2fsprogs,libarchive13t64
         --customize-hook='chroot "$1"
             mmdebstrap --mode=chrootless --arch=hurd-i386
-            --include=sysvinit-core,sysv-rc,debian-ports-archive-keyring,netdde,gnumach-image-1-486
+            --include=sysvinit-core,sysv-rc,debian-ports-archive-keyring,netdde,gnumach-image-1-486,nano
             --customize-hook="passwd --root=\"\$1\" --delete root"
             --variant=apt unstable -
             "deb http://ftp.ports.debian.org/debian-ports/ unstable main"
