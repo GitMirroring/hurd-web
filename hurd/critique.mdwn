@@ -13,7 +13,7 @@ License|/fdl]]."]]"""]]
 
 Neal Walfield and Marcus Brinkmann wrote a paper titled [*A Critique of
 the GNU Hurd Multi-server Operating
-System*](http://walfield.org/papers/200707-walfield-critique-of-the-GNU-Hurd.pdf).
+System*](https://web.archive.org/web/20180907010928/http://walfield.org/papers/200707-walfield-critique-of-the-GNU-Hurd.pdf).
 This was published in ACM SIGOPS Operating Systems Review in July 2007.  This
 is sometimes referred to as *the critique*.
 
