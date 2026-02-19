@@ -12,13 +12,20 @@ The Hurd has very few people working on it. This is a list of people who are  la
 
 * Samuel Thibault - Maintainer
 * Joshua Branson - Documentation
-* Sergey Bugaev - 64 bit port and security fixes
+* Etienne Brateau - xkb keyboard layout
+* Sergey Bugaev - security fixes, 64 bit and AArch64 port, and Alpine/Hurd
+* Diego Nieto Cid - fixed compilation warnings
 * Flávio Cruz - Mach IPC improvements
-* Luca Dariz - 64 bit port
+* Luca Dariz - 64 bit port and make check
+* Guy Fleury - moved pthread to glibc
 * Almudena Garcia - SMP work and hardware tester
+* Michael Kelly - memory fixes via stress-ng
 * Joan Lledó - PCI arbiter and lwip port
+* Janneke Nieuwenhuizen - Guix/Hurd
+* Milos Nikic - libdiskfs and ext2fs contributions
 * Svante Signell - file record locking, ada/gnat/go port, owner of mahler buildd
-* Damien Zammit - ACPI arbiter, SMP, and rumpkernel
+* Vedant Tewari - initial rust port
+* Damien Zammit - ACPI arbiter, SMP, rumpkernel, and openjdk
 
 Here is a list of people who were large contributors:
 
