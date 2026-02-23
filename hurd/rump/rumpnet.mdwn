@@ -32,10 +32,18 @@ netbsd/rump's makefiles.
 
 Example usage:
 
-	$ settrans -fgap /dev/rumpnet /hurd/rumpnet
-	$ settrans -fgap /dev/wm0 /hurd/devnode -M /dev/rumpnet wm0
-	$ settrans -fgap /servers/socket/2 /hurd/pfinet -i /dev/wm0
-	$ ifup /dev/wm0
+    # settrans -fgapc /dev/rumpnet /hurd/rumpnet
+    # settrans -fgapc /dev/wm0 /hurd/devnode -M /dev/rumpnet wm0
+    # settrans -fgap /servers/socket/2 /hurd/pfinet -i /dev/wm0
+
+In your `/etc/network/interfaces` replace `/dev/eth0` with `/dev/wm0`
+
+    auto /dev/wm0  # this will autostart rumpnet at boot
+    iface /dev/wm0 inet dhcp
+
+Now you should be able to manually start rumpnet!
+
+    # ifup /dev/wm0
 
 
 
