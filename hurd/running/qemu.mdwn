@@ -432,6 +432,11 @@ Note that, contrary to [[GRUB]]'s configuration file, you don't specify
 on their command line...
 
 ---
+# Flashing your qemu image to real hardware
+
+If you have a working Hurd distribution running on qemu, then you can [[flash that image to a spare SSD|hurd/running/flash_qemu_img]].  You could then install that spare SSD to a [[machine that can run the Hurd|faq/drivers]].  This is an easy way to install the Hurd on real hardware.
+
+---
 # Related Links
 
 These are links that users may find helpful.

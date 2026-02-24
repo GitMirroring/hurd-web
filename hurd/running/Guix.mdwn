@@ -12,6 +12,11 @@ GNU/Hurd|hurd/running/debian]].
 [[!inline pages=hurd/running/Guix/qemu_image raw=yes feeds=no]]
 
 ---
+# Flash qemu image to disk
+
+You can install the Hurd to bare metal via flashing a working [[qemu image|hurd/running/flash_qemu_img]].
+
+---
 # Documentation
 
 As Hurd support is integrated in Guix, the [official

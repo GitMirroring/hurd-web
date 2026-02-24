@@ -17,7 +17,7 @@ There are several different ways to run a GNU/Hurd system:
 * [[Distributions|Distrib]] - Distros based on the Hurd
 * [[microkernel/mach/gnumach/ports/Xen]] - In Xen
 * [[Live_CD]] - As a live CD without installing (can also be run in QEMU)
-* [[QEMU]] - In QEMU
+* [[QEMU]] - In QEMU, which you can [[flash to real hardware|hurd/running/flash_qemu_img]]
 * [[Cloud]] - In the "cloud": OpenStack
 * [[Chroots|chroot]] need a couple of tricks to work properly.
 * [[VirtualBox]] - In VirtualBox

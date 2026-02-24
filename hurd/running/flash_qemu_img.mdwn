@@ -1,0 +1,78 @@
+[[!meta copyright="Copyright © 2026 Free Software Foundation,
+Inc."]]
+
+[[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable
+id="license" text="Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no Invariant
+Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license
+is included in the section entitled [[GNU Free Documentation
+License|/fdl]]."]]"""]]
+
+[[!meta title="Installing the Hurd from a Qemu Image"]]
+
+# Installing the Hurd from a Qemu Image
+
+Perhaps the easiest method of installing the Hurd on [[real
+hardware|faq/drivers]] is to use a GNU/Linux machine to download a [[qemu
+image|https://cdimage.debian.org/cdimage/ports/latest/hurd-i386/]] (or [[64 bit
+image|https://cdimage.debian.org/cdimage/ports/latest/hurd-amd64/]]), run it via
+[[hurd/running/qemu]], update the distribution, install the packages you want,
+and [[configure your hurd to your
+liking|https://www.debian.org/ports/hurd/hurd-install]], and finally flash the
+image directly to your SSD.
+
+Please note that as of Feb 2026, the 64 bit image uses [[hurd/rump/rumpdisk]] by
+default, while the 32 bit image does not use rumpdisk, because rumpdisk is a
+little memory hungry at the moment.  If you wish, you can switch to [[hurd/rump/rumpdisk]]. Please read this [[faq entry|faq/2_gib_partition_limit]] to learn more about maximum partition sizes.
+
+#### Getting a qemu image
+
+[[!inline pages=hurd/running/debian/qemu_image raw=yes feeds=no]]
+
+#### Flashing a qemu hurd image to an SSD or HDD
+
+Next attach your spare SSD to your GNU/Linux machine via USB to SATA dongle. StarTech dongles are a good choice.  Once you are plugged in run this command to determine your spare SSD's device name.
+
+    $ lsblk
+    NAME          MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTS
+    sda             8:0    0  74.5G  0 disk
+    ├─sda1          8:1    0     2M  0 part
+    └─sda2          8:2    0  74.5G  0 part
+      └─cryptroot 253:0    0  74.5G  0 crypt /gnu/store
+                                             /
+    sdb             8:16   0 953.9G  0 disk
+    └─sdb4          8:20   0 953.9G  0 part
+
+Normally `/dev/sda` and `/dev/sdaN` is GNU/Linux's SSD and `/dev/sdb` is your blank SSD.  In the above example, Guix System is my `sda` and `sdb` is my spare SSD. To double check your spare SSD's device name, run the above command with your SATA dongle connected and disconnected.  Once you have your spare SSD's device name, flash your hurd image to it. Here's the command that worked for me:
+
+    # dd if=debian-hurd*.img of=/dev/sdb bs=1m status=progress
+
+Note do not write `/dev/sdb1`.  Write it as `/dev/sdb`.  The vm image already contains the partitions.
+
+#### Expand your hurd filesystem partitions.
+
+    $ lsblk | grep sdb
+    NAME          MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTS
+    sdb             8:16   0 238.5G  0 disk
+    ├─sdb1          8:17   0   953M  0 part
+    ├─sdb2          8:18   0     1K  0 part
+    └─sdb5          8:21   0     4G  0 part
+
+Sweet!  Flashing was successful! You cannot really tell here, but my Hurd partitions are `sdb1` swap, `sdb2` extended, `sdb5` ext2.  We need to expand the `sdb2` and `sdb5` and resize the filesystem to take up all available space (please be aware of the [[partition size limits|faq/2_gib_partition_limit]]). That's easily achieved via:
+
+    # parted /dev/sdb
+    (parted) resizepart 2 100%
+    (parted) resizepart 5 100%
+    (parted) quit
+    # resize2fs /dev/sdb5
+    $ echo new let's check out work!
+    $ lsblk | grep sdb
+    NAME          MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTS
+    sdb             8:16   0 238.5G  0 disk
+    ├─sdb1          8:17   0   953M  0 part
+    ├─sdb2          8:18   0     1K  0 part
+    └─sdb5          8:21   0 237.5G  0 part
+
+It looks like our ext2 filesystem has expanded to about 240G.  Now we can unplug our SATA dongle, install the SSD to a [[supported Hurd machine|faq/drivers]] and boot!  Our [[hurd/running/x]] page gives some good window manager recommendations!
+

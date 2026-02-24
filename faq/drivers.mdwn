@@ -22,7 +22,7 @@ in the BIOS.  A cheaper option is the T43 (2GB max RAM).
 **Please note that as of January 2026, users must install the Hurd on physical
 machines with a physical CD, because the Hurd has almost no USB support.**  Also
 please see our [[recommended Hurd Distributions page|hurd/running/distrib]].
-One can also run virtually run the hurd via [[qemu|hurd/running/qemu]].
+One can also virtually run the hurd via [[qemu|hurd/running/qemu]] and use that image to [[install to real hardware|hurd/running/flash_qemu_img]].
 
 Other working Thinkpads include the X200, T400, 
 [[T410|https://logs.guix.gnu.org/hurd/2025-04-25.log#103752]] or T500 Thinkpads,

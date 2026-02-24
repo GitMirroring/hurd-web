@@ -23,6 +23,10 @@ As of late 2025 installation may require larger amount of RAM (&ge; 2 GB) due to
 It is possible to install a Debian GNU/Hurd system on a spare partition from an existing Debian GNU/Linux installation. We call this [[CrossInstall]].
 
 ---
+# Flash qemu image to disk
+You can install the Hurd to bare metal via flashing a working [[qemu image|hurd/running/flash_qemu_img]].
+
+---
 # Contributing
 - [[Porting]] — Helping with porting packages
   * [[Patch_submission]] — How to submit patches for build failures
