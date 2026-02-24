@@ -73,6 +73,7 @@ from userlandish interfaces (Hurd) or from the microkernel itself (Mach).
  * FOSDEM: {{$community/meetings/fosdem_2019#thibault_hurd}}
 * **2018**
  * FOSDEM: {{$community/meetings/fosdem_2018#thibault_hurd}}
+ * Brent Baccala: [[Building a GNU/Hurd Cluster|https://www.youtube.com/watch?v=JwsuAEF2FYE]]
 * **2017**
   * FOSDEM: {{$community/meetings/fosdem_2017#ragkousis_guix_hurd}}
   * FOSDEM: {{$community/meetings/fosdem_2017#winter_hurd}}
