@@ -11,7 +11,7 @@ License|/fdl]]."]]"""]]
 [[!meta title="Debian's QEMU Image"
 
 There is a QEMU image with [[Debian GNU/Hurd|debian]] pre-installed available
-at <https://cdimage.debian.org/cdimage/ports/latest/hurd-i386/debian-hurd.img.tar.gz>.
+at <https://cdimage.debian.org/cdimage/ports/latest/hurd-i386/debian-hurd.img.tar.gz> or you may use the 64 bit image: <https://cdimage.debian.org/cdimage/ports/latest/hurd-amd64/debian-hurd.img.tar.gz>.
 
 Usage:
 
@@ -38,7 +38,7 @@ Usage:
 
 * logout via `logout`
 
-Optionally you may use `--curses` to keep your keyboard layout. If need be modprobe kvm_amd, kvm intel and kvm to get kvm support (which is much, much faster).
+Optionally you may use `-display curses` to keep your keyboard layout. If need be modprobe `kvm_amd`, `kvm_intel` and kvm to get kvm support (which is much, much faster).  You may need to add your user to your machine's `kvm` group.  The group name may differ by your distribution.  Check the group name via `$ ls -lha /dev/kvm`.
 
 Note that if you do not have a command named `kvm`, you can try something across the lines of:
 
