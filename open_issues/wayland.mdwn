@@ -10,6 +10,8 @@ License|/fdl]]."]]"""]]
 
 [[!tag open_issue_porting]]
 
+While Hurd users are not running wayland yet, users can use [[X|hurd/running/x]].
+
 IRC, freenode, #hurd, 2012-03-18:
 
     <antrik> Wayland should be very portable. all the system dependencies are

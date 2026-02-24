@@ -23,6 +23,7 @@ There are several different ways to run a GNU/Hurd system:
 * [[VirtualBox]] - In VirtualBox
 * [Vagrant Basebox](https://github.com/bbesim/vagrant_GNU-debian-hurd_basebox) - On Vagrant
 * [[vmware]] (**non-free!**)
+* [[X|x]]
 
 <!-- This comment pushes the last li element "vmware" into the list. I don't know why, but it works. -->
 

@@ -1,0 +1,41 @@
+[[!meta copyright="Copyright © 2026 Free Software Foundation,
+Inc."]]
+
+[[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable
+id="license" text="Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no Invariant
+Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license
+is included in the section entitled [[GNU Free Documentation
+License|/fdl]]."]]"""]]
+
+[[!tag stable_URL]]
+
+[[!meta title="X"]]
+
+X runs on the Hurd quite well.  Users can pick simple window managers
+like i3, awesome-wm, openbox, fluxbox, ice-wm, etc.  Even Xfce runs
+well on the Hurd.  Although, we have not been able to run
+coreboot and X.  Please reach out if you'd like to help us fix this
+bug. Work is underway to port Xlibre.  Users should be able to use either in the near
+future.
+
+There are a couple of gotchas when running X on the Hurd.
+They are documented in [[Debian GNU/Hurd
+wiki|https://www.debian.org/ports/hurd/hurd-install]].  Look for the
+X.org section.
+
+Most graphical applications should work just fine.  The main
+limitation these days seem to be web browsers.  A few simple web
+browsers that work include netsurf, dillo, lynx, and emacs' eww.
+Although, as of Feb 2026, users need to compile dillo and netsurf
+manually due to `PATH_MAX` issues.  Older versions of Firefox,
+LadyBird, and gnome-web used to run on the Hurd, so a motivated
+developer could port a newer version.
+
+As of February 2026, the Hurd has [[minimal sound
+support|hurd/rump/rumpsound]], so please do not expect any
+applications to support audio output.
+
+It should be possible to [[port wayland|open_issues/wayland]].
+Contributions in that direction are always welcome!
