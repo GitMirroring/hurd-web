@@ -161,15 +161,13 @@ Performance will be yet better if HAP (EPT or NPT) is available:
 ---
 # Installing Debian/Hurd with QEMU using the Debian installer
 
-Note: If you have hardware support, replace the qemu commands below with kvm, e.g. qemu-ing -> kvm-img.
-
 First off you will need to create a disk image using `qemu-img`. I have set mine to 4 GiB, although you should be able to get away with less.
 
     $ qemu-img create hd0.img 4G
 
-Next you will want to start up QEMU and begin the installation process.
+Next you will want to start up QEMU and begin the installation process. Note: if you are booting a 64b image, you will want to add `-M q35` to improve support.
 
-    $ qemu -m 1G -drive cache=writeback,file=hd0.img -cdrom debian-7.0-hurd-i386-NETINST-1.iso -net nic,model=e1000 -net user
+    $ qemu -enable-kvm -m 1G -drive cache=writeback,file=hd0.img -cdrom debian-7.0-hurd-i386-NETINST-1.iso -net nic,model=e1000 -net user
 
 Now at his point do the regular install using `hd0` as your harddrive. Partition it and install the base system.
 
@@ -215,9 +213,9 @@ Once you have finished installing the base system (might take some time) the sys
 
 ## Running the installed system
 
-Starting qemu/qemu-kvm:
+Starting qemu:
 
-    $ kvm -m 1G -net nic,model=e1000 -net user,hostfwd=tcp::5555-:22 -drive cache=writeback,file=hd0.img -vga vmware
+    $ qemu -enable-kvm -m 1G -net nic,model=e1000 -net user,hostfwd=tcp::5555-:22 -drive cache=writeback,file=hd0.img -vga vmware
     vmsvga_value_write: guest runs Linux.
 
 Note: See below on port forwarding in the networking section.
