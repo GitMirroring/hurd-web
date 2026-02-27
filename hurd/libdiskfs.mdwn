@@ -1,4 +1,4 @@
-[[!meta copyright="Copyright © 2011 Free Software Foundation, Inc."]]
+[[!meta copyright="Copyright © 2011, 2026 Free Software Foundation, Inc."]]
 
 [[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable
 id="license" text="Permission is granted to copy, distribute and/or modify this
@@ -8,6 +8,12 @@ Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license
 is included in the section entitled [[GNU Free Documentation
 License|/fdl]]."]]"""]]
 
+Libdiskfs is the foundational library for building filesystems on the
+Hurd.  The Hurd's current filesystems [[hurd/translator/ext2fs]],
+[[hurd/translator/fatfs]], and [[hurd/translator/iso9660fs]] all use
+it.  Some Hurd developers wish to
+[[merge|open_issues/libnetfs_vs_libdiskfs]] [[hurd/libnetfs]] with
+libdiskfs into one unified library.
 
 # Paging
 
