@@ -17,17 +17,23 @@ few?"]]
 
 # How Many Developers?
 
-Literally only half a handful works on the core of the system in their free time, and another
-half of handful helps with [[Debian GNU/Hurd|hurd/running/debian]] and
-[[hurd/running/Arch_Hurd]] packaging.  Also, an additional half of handful of former
-developers are still available for answering technical questions, but are not
-participating in the current development anymore.
+Literally only half a handful works on the core of the system in their
+free time, and another half of handful helps with and [[GNU
+Guix/Hurd|hurd/running/guix]] packaging.  From 2017 until 2019, also
+[[hurd/running/Arch_Hurd]] was actively worked on.  Also, an
+additional half of handful of former developers are still available
+for answering technical questions, but are not participating in the
+current development anymore.
 
-In the past (that is, a lot of years ago), the FSF did pay a few developers for
-working full time on the GNU Hurd.  But that was for a limited amount of time
-only, and evidently, it was too little for getting the system into a
-competitive state.  Nowadays, it's only unpaid (apart from some
-[[bounties|tag/bounty]]) and free-time volunteers' work.
+In the past (that is, a lot of years ago), the FSF did pay a few
+developers for working full time on the GNU Hurd.  But that was for a
+limited amount of time only, and evidently, it was too little for
+getting the system into a competitive state.  Nowadays, it's mostly
+unpaid (apart from some [[bounties|tag/bounty]]) and free-time
+volunteers' work, although [[NLnet|https://NLnet.n]] has
+[[sponsored|https://nlnet.nl/project/Hurd-Audio/]] some
+[[projects|https://nlnet.nl/project/Guix-Hurd]] recently.  If you have
+a good project, you could apply for funding and might get it.
 
 In contrast to the Linux kernel, there is no industry involvement in
 development.  For one, this is a good thing: independency; no conflicts of
