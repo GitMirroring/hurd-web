@@ -11,7 +11,7 @@ License|/fdl]]."]]"""]]
 The Hurd has very few people working on it. This is a list of people who are  large contributors to the project.
 
 * Samuel Thibault - Maintainer
-* Joshua Branson - Documentation
+* Joshua Branson - Documentation  (jab or gnucode on irc)
 * Etienne Brateau - xkb keyboard layout
 * Sergey Bugaev - security fixes, 64 bit and AArch64 port, and Alpine/Hurd
 * Diego Nieto Cid - fixed compilation warnings
