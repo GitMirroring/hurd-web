@@ -60,9 +60,9 @@ raised by the GNU Hurd -- we can only learn and improve upon working on them.
 For likely the same reasons there is no industry interest in the GNU Hurd: its
 advantages are too abstract and incomplete for being of interest there.
 
-As for the scientific sector, the GNU Hurd projects was rather about *using* a
-[[microkernel]] intead of doing research on them, for example.  But, there have
-been some projects and theses done, and some scientific papers published on GNU
+As for the scientific sector, the GNU Hurd project was rather about *using* a
+[[microkernel]] instead of doing research on them, for example.  But, there have
+been some projects and these done, and some scientific papers published on GNU
 Hurd topics, and we're generally very interested in further such projects.
 
 
