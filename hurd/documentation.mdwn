@@ -53,7 +53,7 @@ is included in the section entitled
 ## External
 
   * [*Examining the Legendary HURD
-    Kernel*](http://www.informit.com/articles/printerfriendly.aspx?p=1180992),
+    Kernel*](https://web.archive.org/web/20130126084218/http://www.informit.com/articles/printerfriendly.aspx?p=1180992),
     an article by David Chisnall.
 
     Also covers a bit of GNU's and the Hurd's history, fundamental techniques
