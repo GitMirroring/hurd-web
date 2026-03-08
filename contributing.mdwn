@@ -182,6 +182,9 @@ This is the list of tasks that we *want* to address soon, starting with the most
 * Improve rumpdisk's asynchronism, see end of `hurd/rumpdisk/block-rump.c`.
 * Check performance of `rumpdisk` against the in-`gnumach` drivers.
 * Finish glib's file monitoring (see [merge request draft](https://gitlab.gnome.org/GNOME/glib/-/merge_requests/3626) and [Debian bug](https://bugs.debian.org/1008208))
+* In htl, make `__pthread_getid` take a reference in `thread->nr_refs` to keep the `struct __pthread` alive until its called is finished with it.
+* Then, make `ss` allocated in `__pthread_thread_alloc` and freed in `__pthread_thread_terminate`.
+* Then we should be able to easily fix the remaining races in thread termination, see issues `S-1`, `H-1`, `H-2` and `H-6` in [bug report](https://lists.gnu.org/archive/html/bug-hurd/2026-03/msg00045.html)
 * Port `golang` (gccgo is already ported).
 * Fix the `git` testsuite (just a few tests failing, used to pass).
 * Fix the `subversion` testsuite (just a few tests failing).
