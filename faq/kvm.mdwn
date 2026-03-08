@@ -1,0 +1,42 @@
+[[!meta copyright="Copyright © 2026 Free Software Foundation, Inc."]]
+
+[[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable
+id="license" text="Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no Invariant
+Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license
+is included in the section entitled [[GNU Free Documentation
+License|/fdl]]."]]"""]]
+
+[[!tag faq/running]]
+
+[[!meta title="failed to initialize kvm"]]
+
+Please always read README files.
+
+Always.
+
+Do you want to fix this warning, otherwise qemu will be very slow.
+
+Install kvm:
+
+    $ sudo apt install qemu-kvm
+
+Make sure that you can access /dev/kvm . You can easily check with
+
+    $ file -s /dev/kvm
+
+that you properly get "ERROR: cannot read `/dev/kvm' (Invalid argument)",
+which means that "file" was properly able to open kvm, just not smart enough
+to use it :)
+
+If you get "cannot open `/dev/kvm' (No such file or directory)", check in your
+BIOS setup to make sure that accelerated virtualization is activated, and make
+sure that the `kvm_intel` or `kvm_amd` module is loaded.
+
+If you get "no read permission", make sure you give your user permissions to use
+kvm:
+
+    $ sudo adduser $USER kvm
+
+and log-out and log-in again.
