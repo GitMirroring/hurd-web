@@ -1,3 +1,6 @@
+[[!meta copyright="Copyright © 2026 Free Software Foundation,
+Inc."]]
+
 [[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable
 id="license" text="Permission is granted to copy, distribute and/or modify this
 document under the terms of the GNU Free Documentation License, Version 1.2 or
@@ -295,6 +298,23 @@ the documentation in the Hurd source, the Debian Hurd port pages.
 ## Web Pages
 
 Please read about [[how_to_contribute_to_these_web_pages|web_pages]].
+
+---
+# Artwork
+
+Any cool open source project needs some awesome artwork, and the Hurd
+is super cool!
+
+The GNU Hurd project has an official Hurd [[logo]], and our [[existing
+translators|hurd/translator]] want logos too:
+[[hurd/translator/ext2fs]], [[hurd/rump/rumpdisk]],
+[[hurd/translator/nsmux]], etc.  We have some wiki pages that have
+[[some nice graphics|hurd/what_is_the_gnu_hurd]], and you are free to
+add more!  You could even design some nice desktop backgrounds!  We
+encourage you to create your artwork as an svg image.
+[Inkspace](https://inkscape.org/) makes great svg images.  Please note
+that artwork with copyright assignments to the FSF will be more usable
+to the project as a whole.
 
 ---
 # Final Words -- Difficulties
