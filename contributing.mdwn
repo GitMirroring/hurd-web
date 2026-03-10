@@ -179,7 +179,7 @@ This is the list of tasks that we *want* to address soon, starting with the most
 * Fix the memory consumption of `rumpdisk`.
 * Plug acpi shutdown event.
 * Check that `MAP_NORESERVE` passed to `mmap` avoids the overcommit limitation recently introduced in gnumach (`RLIMIT_AS`)
-* Fix `tmpfs` losing files, see [discussion](https://lists.gnu.org/archive/html/bug-hurd/2015-02/msg00091.html).
+* Fix `tmpfs` losing files, see [[open issue|/open_issues/tmpfs]]
 * Port `libasan`/`lsan`/`ubsan`/`libtasn` so we can use these sanitizers (youpi did some of it, pending clean/submit).
 * Rewrite `pthread_cond_*`, `pthread_rwlock_*`, `pthread_barrier_*` to use `gsync`, like `pthread_mutex_*` do (also see the nptl implementations, possibly just share with them).
 * Improve rumpdisk's asynchronism, see end of `hurd/rumpdisk/block-rump.c`.

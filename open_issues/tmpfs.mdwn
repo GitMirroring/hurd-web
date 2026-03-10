@@ -24,3 +24,5 @@ drops the object completely, and subsequent accesses to the mmap thus
 fail with SIGBUS.  We'd need a way for tmpfs to know about the
 mappings of the pager object, to avoid shutting it down.  Or a way to
 keep the object alive even if tmpfs has deallocated its port to it.
+
+See [discussion](https://lists.gnu.org/archive/html/bug-hurd/2015-02/msg00091.html)
