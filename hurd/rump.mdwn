@@ -48,7 +48,7 @@ has not completed on those projects.
 
 # Rump kernels
 
-  * [[rumpdisk|rump/rumpdisk]] HHD/SSD/NVMe device drivers
+  * [[rumpdisk|rump/rumpdisk]] HDD/SSD/NVMe device drivers
 
   * [[rumpfs|rump/rumpfs]] using NetBSDs filesystems (FFS)
 
