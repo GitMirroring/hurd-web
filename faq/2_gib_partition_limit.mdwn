@@ -11,12 +11,14 @@ License|/fdl]]."]]"""]]
 
 [[!tag faq/support]]
 
-[[!meta title="Is there still a 2 GiB ext2fs disk partition limit?"]]
+[[!meta title="Is there still a 2 GiB / 128GiB ext2fs disk partition limit?"]]
 
-The 2 GiB ext2fs limit has been removed.
+The 2 GiB ext2fs limit has been removed since long.
 
 IDE disk drivers (`hd*`) however currently do not support more than 2^28 sectors, i.e. 128GiB.
 
 The gnumach AHCI disk driver (`sd*`) and rumpkernel drivers (`wd*`) support up to 2^48 sectors, i.e. 128PiB, but the device interface supports only 2^32 sectors, i.e. 2TiB.
+
+To use disks bigger than 128GiB you can either switch your disk to AHCI (BIOS or virtualization) configuration, or switch to [[using the rumpkernel driver|/hurd/rump/rumpdisk]]
 
 You can have a bigger disk, you just should not put disk partitions beyond these limits for the drivers to be able to read from them.

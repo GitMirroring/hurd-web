@@ -59,5 +59,3 @@ rumpdisk is normally already set up on `/dev/rumpdisk`.
 
 	$ showtrans /dev/rumpdisk
 	/hurd/rumpdisk
-
-[[!inline pages=open_issues/running_rump_for_slash raw=yes feeds=no]]
