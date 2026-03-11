@@ -1,4 +1,4 @@
-[[!meta copyright="Copyright © 2009, 2010, 2011 Free Software Foundation,
+[[!meta copyright="Copyright © 2009, 2010, 2011, 2026 Free Software Foundation,
 Inc."]]
 
 [[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable
@@ -19,7 +19,38 @@ License|/fdl]]."]]"""]]
 
 ---
 
-There is an effort going on to make [[/DDE]] usable in GNU/Hurd
+/!\ DDE uses old Linux device drivers.  It is not maintained. /!\
+
+We will probably replace most of DDE with [[hurd/rump]].
+
+While we still have dde, you can use the those drivers in GNU/Hurd
 userspace.
 
 See Zheng Da's [[project page|zhengda]], as well as another [[guide]].
+
+---
+
+# Documentation
+
+  * <http://demo.tudos.org/dsweeper_tutorial.html>
+
+    Why device drivers in user space; different possibilities for getting
+    device drivers; DDE's origins and rationale.
+
+  * <http://wiki.tudos.org/DDE/DDEKit>,
+    <http://os.inf.tu-dresden.de/pipermail/l4-hackers/2009/004291.html>
+
+    Structural overview of the components.
+
+
+# Discussion
+
+DDE essentially is a glue layer to embed Linux device drivers into another
+environement.  In the DDE case, this *other environment* is a user-space task
+-- compared to the GNU Mach kernel having a *in-kernel* Linux 2.0 device
+drivers glue code (cf. paper by Goel et al.).
+
+
+# Source Code
+
+  * <http://www.inf.tu-dresden.de/index.php?node_id=1584&ln=en>

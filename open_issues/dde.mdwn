@@ -11,13 +11,13 @@ License|/fdl]]."]]"""]]
 
 [[!tag open_issue_hurd open_issue_gnumach]]
 
-[[General Information|/dde]].
+[[General Information|/hurd/dde]].
 
 [[!template id=highlight text="""/!\ Obsolete /!\
 
 ---
 
-DDE is no longer being updated or maintained.  The [[Rump_kernel]] is a better alternative.
+DDE is no longer being updated or maintained.  The [[hurd/rump]] kernels are a better alternative.
 """]]
 
 
