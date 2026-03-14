@@ -41,8 +41,7 @@ of `hdN` in your `/etc/fstab` to `wdN`.
 	#/dev/hd2        /media/cdrom0   iso9660 noauto          0       0
 	/dev/wd2        /media/cdrom0   iso9660 noauto          0       0
 
-Then reboot your machine.  As of Feb 2026, due to an odd bug, you may need
- to add "-M q35" to your qemu invocation.  Before Grub appears change "compatibility"
+Then reboot your machine. Before Grub appears change "compatibility"
 in your BIOS to "AHCI" (not "RAID").  If you successfully boot,
 congrats!  You are now using rumpdisk! You can permanently add in the
 "noide" option to grub:

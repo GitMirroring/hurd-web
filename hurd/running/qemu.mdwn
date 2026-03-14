@@ -165,7 +165,7 @@ First off you will need to create a disk image using `qemu-img`. I have set mine
 
     $ qemu-img create hd0.img 4G
 
-Next you will want to start up QEMU and begin the installation process. Note: if you are booting a 64b image, you will want to add `-M q35` to improve support.
+Next you will want to start up QEMU and begin the installation process.
 
     $ qemu -enable-kvm -m 1G -drive cache=writeback,file=hd0.img -cdrom debian-7.0-hurd-i386-NETINST-1.iso -net nic,model=e1000 -net user
 

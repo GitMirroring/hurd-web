@@ -76,7 +76,7 @@ You can shutdown via `/sbin/poweroff`.
 
 start qemu with `-smp 4` and add `-nographic` if you want to use `com0`.
 
-	$ qemu-system-i386 -M q35,accel=kvm -smp 4 -m 2G -net  \
+	$ qemu-system-i386 -smp 4 -m 2G -net  \
 	user,hostfwd=tcp::2223-:22 -net nic -hda debian-hurd-VERSION.img \
 	-nographic
 
