@@ -1,4 +1,4 @@
-[[!meta copyright="Copyright © 2009, 2012, 2014 Free Software Foundation,
+[[!meta copyright="Copyright © 2009, 2012, 2014, 2026 Free Software Foundation,
 Inc."]]
 
 [[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable
@@ -15,6 +15,9 @@ License|/fdl]]."]]"""]]
 
 This is a collection of resources concerning *Berkeley Packet Filter*s.
 
+The Hurd does not currently have a `/dev/bpf`, but libpcap does
+work on the Hurd.  And the Hurd does have a stateless firewall:
+[[hurd/translator/eth-filter]].
 
 # Documentation
 
