@@ -41,7 +41,7 @@ In your `/etc/network/interfaces` replace `/dev/eth0` with `/dev/wm0`
     auto /dev/wm0  # this will autostart rumpnet at boot
     iface /dev/wm0 inet dhcp
 
-Now you should be able to manually start rumpnet!
+Now you should be able to manually start rumpnet, and it should autostart at boot!
 
     # ifup /dev/wm0
 
