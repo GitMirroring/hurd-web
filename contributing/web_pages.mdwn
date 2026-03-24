@@ -103,6 +103,14 @@ editing.
 
     $ apt install ikiwiki libyaml-syck-perl markdown libsearch-xapian-perl texinfo
 
+### Guix
+
+	If you have guix installed, then you can render the wiki via:
+
+	$ cd hurd-web/
+	$ guix shell
+	$ ./render_locally
+
 ## Identifying Yourself
 
 First, let's make sure that you're properly identifying yourself towards Git.
