@@ -31,13 +31,16 @@ License|/fdl]]."]]"""]]
 
   * **[[Hurd]]**
       * [[Hurd/Documentation]]
+      * [[hurd/Building]]
       * [[hurd/Running]]
   * **[[microkernel/Mach]]**
       * [[microkernel/mach/Documentation]]
       * [[GNU Mach|microkernel/mach/gnumach]]
+      * [[Building GNU Mach|microkernel/mach/gnumach/building]]
   * **[[microkernel/mach/MIG]]**
       * [[Documentation|microkernel/mach/mig/documentation]]
       * [[microkernel/mach/mig/GNU MIG]]
+      * [[Building GNU MIG|microkernel/mach/mig/GNU MIG/building]]
 
 ---
 

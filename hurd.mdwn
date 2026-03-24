@@ -63,6 +63,7 @@ in the *unstable* branch of the Debian archive.
 # Using
 
 * [[Running]]
+* [[Building]]
 * [[running/Distrib]] -- Distributions
 * [[Public_Hurd_Boxen]]
 * [[Neighborhurd]]s and [[Subhurd]]s
