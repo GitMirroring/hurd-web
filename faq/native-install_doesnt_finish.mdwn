@@ -1,4 +1,4 @@
-[[!meta copyright="Copyright © 2009, 2013 Free Software Foundation, Inc."]]
+[[!meta copyright="Copyright © 2009, 2013, 2026 Free Software Foundation, Inc."]]
 
 [[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable
 id="license" text="Permission is granted to copy, distribute and/or modify this
@@ -22,5 +22,10 @@ try to run native-install it never gets to the very end. First time it froze on
 > /dev/hdWHATEVER.  Does this help?
 
 >> Thank You very much, more memory solved the freezing.
+
+Also note, that you do not need to install the Hurd to use it.  You
+can use a working [[qemu image|hurd/running/qemu#index1h1]].  You
+could even [[flash that image to disk|hurd/running/flash_qemu_img]]
+and boot on real hardware.
 
 [[!tag open_issue_hurd]]
