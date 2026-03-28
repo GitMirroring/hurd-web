@@ -18,9 +18,7 @@ device drivers. Hurd developers are replacing Linux's old ethernet
 drivers with rumpnet's modern ethernet and wifi device drivers.  While
 porting Linux's device drivers would provide better hardware support,
 we do not have the developer man-power to maintain it.  Hurd
-Developers prefer rumpnet's stable API over Linux's code churn.  We
-plan to replace `pfinet` with [[lwip|hurd/translator/lwip]] (or use
-rump's TCP/IP stack).
+Developers prefer rumpnet's stable API over Linux's code churn.
 
 In 2025, Damien Zammit make significant progress with rumpnet. He
 coded rumpnet to work with `/dev/wmX` cards, which are Intel i8254x
