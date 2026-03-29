@@ -27,6 +27,9 @@ on specified nodes, using **-4** and **-6** options.  This is, you have to
 install a [[passive_translator|passive]] on */servers/socket/2* that also binds
 the IPv6 port and vice versa.
 
+The idea is that the first time one of the two is accessed, the translator is
+triggered, and attaches itself on the other one.
+
 
 # Examples
 
