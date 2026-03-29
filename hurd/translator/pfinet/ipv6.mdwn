@@ -126,8 +126,7 @@ Amongst other things, support for [[IOCTL]]s is missing.
     <youpi> ok, enabling ALLMULTI was enough to fix it
     <youpi> you can ping6 2001:910:1059:2:5054:00ff:fe12:3456 :)
 
-Indeed, IPv6 now works properly, and the very machine hosting this wiki
-(darnassus.sceen.net) can be reached with that protocol.
+Indeed, IPv6 now works properly.
 
 ## IRC, freenode, #hurd, 2013-01-13
 
