@@ -22,8 +22,8 @@ but it was incredibly helpful pointing out several problems.  You can
 read its report
 [here](https://lists.gnu.org:443/archive/html/bug-hurd/2026-03/msg00045.html).
 
-Joshua Branson tweaked the hurd wiki.  The most helpful addition is [this
-page](https://lists.gnu.org/archive/html/bug-hurd/2026-02/msg00087.html),
+Joshua Branson tweaked the hurd wiki.  The most helpful addition is [[this
+page|/hurd/running/flash_qemu_img]],
 which documents how to flash a working qemu hurd image directly to an
 HDD or SSD.  This is a *really easy* way to install the Hurd on real
 hardware!  Buy a supported machine from [[this page|faq/drivers]] and
