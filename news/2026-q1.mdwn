@@ -1,0 +1,213 @@
+[[!meta copyright="Copyright © 2026 Free Software Foundation, Inc."]] [[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable id="license" text="Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant
+Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license
+is included in the section entitled [[GNU Free Documentation
+License|/fdl]]."]]"""]]
+
+[[!meta date="2026-03-02 06:07 UTC"]]
+
+Hello!  Welcome to a new qoth.  This qoth covers new and interesting GNU/Hurd
+developments in Q1 of 2026!
+[[!if test="included()" then="""[[!toggle id=full_news
+text="Details."]][[!toggleable id=full_news text="[[!paste id=full_news]]"]]"""
+else="
+[[!paste id=full_news]]"]]
+
+[[!cut id="full_news" text="""
+
+Brent W. Baccala debugged some `x86_64` SMP issues with a Claude AI
+bot.  The bot did not contribute any code.  It just found some
+incorrect code that Damien then fixed.  It did get [some things
+wrong](https://lists.gnu.org/archive/html/bug-hurd/2026-02/msg00134.html),
+but it was incredibly helpful pointing out several problems.  You can
+read its report
+[here](https://lists.gnu.org:443/archive/html/bug-hurd/2026-03/msg00045.html).
+
+Joshua Branson tweaked the hurd wiki.  The most helpful addition is [this
+page](https://lists.gnu.org/archive/html/bug-hurd/2026-02/msg00087.html),
+which documents how to flash a working qemu hurd image directly to an
+HDD or SSD.  This is a *really easy* way to install the Hurd on real
+hardware!  Buy a supported machine from [[this page|faq/drivers]] and
+give it a shot!  Consider this another reminder that the Hurd project
+could use more documentation writers.  It's an easy way to
+[[contribute|contributing#index3h1]].  As a fun fact, Joshua wrote this qoth on
+the Hurd running on a T420 with 12 GB of RAM!  Running Debian GNU/Hurd on
+bare metal these days is largely fairly stable.  Emacs, i3, netsurf,
+and luakit all work just fine and most of the Debian package archive
+compiles without issue on the Hurd.
+
+Etienne Brateau fixed a [compilation error](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00194.html).
+He also provided a [simple test program](https://lists.gnu.org:443/archive/html/bug-hurd/2026-03/msg00010.html)
+that exposed a [rather serious threading bug](https://lists.gnu.org:443/archive/html/bug-hurd/2026-03/msg00012.html),
+which [Samuel promptly fixed](https://lists.gnu.org:443/archive/html/bug-hurd/2026-03/msg00038.html).
+This is a good reminder that writing simple C test programs that
+successfully run on Linux, but fail on the Hurd can have a large
+impact.
+
+Gianluca Cannata worked on our [httpfs translator](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00138.html).
+
+Diego Nieto Cid added a `daemon-wait` [option for console-client](https://lists.gnu.org:443/archive/html/bug-hurd/2026-03/msg00229.html).
+This can help users with slow machines avoid a broken Hurd console.
+He also fixed a [rumpdisk compilation issue](https://lists.gnu.org:443/archive/html/bug-hurd/2026-03/msg00195.html).
+
+Mike Kelley fixed a deadlock in [SMP enabled GNU Mach kernels](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00165.html).
+He also fixed a [page fault in amd64 SMP kernels](https://lists.gnu.org:443/archive/html/bug-hurd/2026-03/msg00197.html).
+He fixed another deadlock in the [alarm () function](https://lists.gnu.org/archive/html/bug-hurd/2026-02/msg00059.html).
+He fixed a [panic when running large builds](https://lists.gnu.org:443/archive/html/bug-hurd/2026-03/msg00122.html)
+without the `mach-defpager`.  He also fixed some of our [signal related code](https://lists.gnu.org/archive/html/bug-hurd/2026-02/msg00003.html).
+He worked with Samuel to investigate an odd [bug](https://lists.gnu.org:443/archive/html/bug-hurd/2026-03/msg00135.html).
+Their detailed investigation uncovered and lead to a fix in the [Hurd's ext2's xattr code](https://lists.gnu.org:443/archive/html/bug-hurd/2026-03/msg00072.html).
+
+Joan Lledó updated some patches for the [dhcpcd port](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00062.html)
+as well as some patches for [upstream liblwip](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00054.html).
+He also tweaked our [lwip translator](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00049.html).
+He also added a [glibc patch](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00041.html)
+for `IP_PKTINFO`.
+
+Milos Nikic
+[added](https://lists.gnu.org/archive/html/bug-hurd/2026-02/msg00048.html)
+[some](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00244.html)
+[various](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00245.html)
+[fixes](https://lists.gnu.org/archive/html/bug-hurd/2026-02/msg00113.html).
+He also made
+[many](https://lists.gnu.org/archive/html/bug-hurd/2026-02/msg00060.html)
+[considerable](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00235.html)
+[contributions](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00221.html)
+[on](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00220.html)
+[filesystem](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00219.html)
+[related](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00142.html)
+things including [adding ext2fs support for 64 bit time](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00230.html),
+He also fixed a [rumpdisk deadlock](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00233.html).
+He also fixed a potential lock in [GNU Mach](https://lists.gnu.org/archive/html/bug-hurd/2026-02/msg00039.html).
+He fixed some [IPC issues in glibc](https://lists.gnu.org/archive/html/bug-hurd/2026-02/msg00040.html).
+He [contributed some](https://lists.gnu.org:443/archive/html/bug-hurd/2026-03/msg00043.html)
+[tiny fixes](https://lists.gnu.org:443/archive/html/bug-hurd/2026-03/msg00028.html)
+to speed up GNU Mach's IPC.  His most exciting work is a [JDB2 binary
+compliant journal](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00186.html),
+which is an ext3/ext4 compatible journal.  The Hurd may soon be running on
+`ext3fs` or `ext4fs` instead of `ext2fs`!  He writes:
+
+    I have been working on creating a prototype for a journal inside
+    ext2fs which is fully Linux compatible (binary JBD2 compatible). This
+    enables standard Linux tools (e2fsck, tune2fs, debugfs, etc.) to work
+    seamlessly with Hurd partitions.
+
+    This means one can mount a Hurd image from Linux and fix any issues
+    with the drive using standard journaling tools if the need
+    arises. While this is currently a prototype with polish still
+    required, it is functional.
+
+    Key Features:
+    * Log Replay: The driver writes JBD2-compliant transactions. I have
+      verified that after a hard crash of the Hurd guest, a Linux host
+      running e2fsck correctly replays the journal and restores filesystem
+      metadata consistency.
+    * Continuous Operation: The driver handles ring-buffer wrap-around and
+      checkpoints correctly. I have tested it with sustained loads
+      (50,000+ transaction loops) without deadlocks or corruption.
+    * Crash Safety: I have verified via "sabotage tests" (modifying the
+      disk offline after a crash) that the journal accurately restores the
+      correct metadata state.
+    * Lightweight: The implementation consists of only a few new files and
+      ~800 lines of code.
+
+You can read the complete email [here](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00186.html).
+
+He then tweaked the code a few times and summed up the current status.
+He [writes:](https://lists.gnu.org:443/archive/html/bug-hurd/2026-03/msg00166.html)
+
+    This is it. I have applied numerous fixes, performance tweaks, and
+    cleanups. I am happy to report that this (the journal) now performs on
+    par with unjournaled ext2 on normal workloads, such as
+    configuring/compiling the Hurd, installing and reinstalling packages
+    via APT, and untarring large archives (like the Linux kernel). I have
+    also heavily tested it against artificial stress conditions (which I
+    am happy to share if there is interest), and it handles highly
+    concurrent loads beautifully without deadlocks or memory leaks.
+
+    Progressive checkpointing ensures the filesystem runs smoothly, and
+    the feature remains strictly opt-in (until a partition is tuned with
+    tune2fs -j, the journal is completely inactive).
+
+    The new API in libdiskfs is minimal but expressive enough to wrap all
+    filesystem operations in transactions and handle strict POSIX sync
+    barriers.
+
+
+Manolo de Medici fixed a [bug allowing unprivileged users to modify the system
+time](https://lists.gnu.org:443/archive/html/bug-hurd/2026-03/msg00235.html).
+He also worked on [partially opening up the processor set API to unprivileged processes](https://lists.gnu.org:443/archive/html/bug-hurd/2026-03/msg00169.html).
+
+
+Samuel Thibault gave an update on the [GNU Hurd project](https://fosdem.org/2026/schedule/event/7FZXHF-updates_on_gnuhurd_progress_rump_drivers_64bit_smp_software_bootstrapping/).
+His talk dived into [[hurd/rump/rumpnet]], [[hurd/rump/rumpdisk]],
+[[open_issues/smp]], etc.  It was quite an interesting talk.
+Essentially the Hurd is becoming a fairly stable option for daily
+computing.  Check out our [[hurd/status]] page for more information.
+He provided numerous fixes for packages that were failing to build,
+like
+[xserver-xorg-input-keyboard](https://lists.debian.org/debian-hurd/2026/01/msg00020.html).
+He also reported on a [rumpnet bug](https://lists.gnu.org/archive/html/bug-hurd/2026-02/msg00075.html),
+which highlighted an interesting feature of the Hurd's design.  When
+Hurd's new or experimental device drivers crash, it does not bring
+down the system.  One can just restart the driver.  If a device driver
+crashes in Linux or BSD land, you may be in trouble.
+
+He also discovered why the Hurd's crash translator [hanged when generating core files on amd64](https://lists.gnu.org/archive/html/bug-hurd/2026-02/msg00074.html).
+Thanks to a lot of code from Damien, Samuel was able to upload an
+[amd64 SMP kernel to Debian Hurd](https://lists.debian.org/debian-hurd/2026/02/msg00103.html)!
+This kernel still restricts processes to `cpu0`, but with the
+`/sbin/smp` utility, one can experimentally run applications on
+multiple cores.  Once we fix the various race conditions, we can run
+more of the Hurd via SMP.  Please be aware that testing programs via
+`/sbin/smp` can lead to crashes.
+
+He also worked on fixing [xmm state restoration on signal](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00056.html).
+
+
+Mesa was also ported to the Hurd.  The patches are not quite [merged upstream](https://gitlab.freedesktop.org/mesa/libdrm/-/merge_requests/443).
+The Hurd does not have a DRM yet, so the performance
+is quite poor.  `nexussfan` on irc ported
+[ClassiCube](https://github.com/ClassiCube/ClassiCube/pull/1517).
+It runs quite slowly.  We are hoping to eventually add a proper DRM
+to the Hurd. Please reach out if you'd like to help us achieve this.
+
+Damien Zammit [ported qemu to the Hurd](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00266.html).
+He is currently using it for his [continuous integration](https://mail.gnu.org/archive/html/bug-hurd/2026-01/msg00199.html).
+It uses a Hurd host to launch qemu to test GNU Mach.  He made many
+contributions to the Hurd's
+[CI](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00183.html)
+including [testing the Hurd's xen support](https://lists.gnu.org/archive/html/bug-hurd/2026-02/msg00021.html). He
+[fixed GNU Mach compilation on GCC 10](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00182.html).
+He also contributed
+[a](https://lists.gnu.org/archive/html/bug-hurd/2026-02/msg00111.html)
+[lot](https://lists.gnu.org/archive/html/bug-hurd/2026-02/msg00127.html)
+[of](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00148.html)
+[fixes](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00181.html)
+[for](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00098.html)
+[the Hurd's](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00083.html)
+[x86_64](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00007.html)
+[support](https://lists.gnu.org/archive/html/bug-hurd/2026-01/msg00185.html).
+Thanks to Damien's numerous contributions, the Hurd's SMP support is
+becoming far more useful!
+
+If you did not see the recent Guix Hurd news, then please check out
+their [most recent blog post](https://guix.gnu.org/en/blog/2026/the-64-bit-hurd)!  There are
+currently two active GNU Hurd distributions: Debian GNU/Hurd and GNU
+Guix Hurd.  These two distributions run on real hardware!  If you have
+been closely reading the `#hurd` irc channel, then you may have heard
+about some work on adding another Hurd distribution.  Perhaps we will
+have more to report on this exciting news in the next Qoth!
+
+The **GNU Hurd** is the GNU project's replacement for the Unix kernel.  It is a
+collection of servers that run on the Mach microkernel to implement file
+systems, network protocols, file access control, and other features that are
+implemented by the Unix kernel or similar kernels (such as Linux).  [[More
+detailed|hurd/documentation]].
+
+**GNU Mach** is the microkernel upon which a GNU Hurd system is based.  It
+provides an Inter Process Communication (IPC) mechanism that the Hurd uses to
+define interfaces for implementing in a distributed multi-server fashion the
+services a traditional operating system kernel provides.  [[More
+detailed|microkernel/mach/gnumach]].
+
+"""]]
