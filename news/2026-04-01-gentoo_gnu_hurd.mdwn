@@ -25,8 +25,8 @@ the GNU Hurd.
 [...]
 
 Scripts to build a working image that can be booted in QEMU can be
-found at https://codeberg.org/thesamesam/gentoo-hurd (will move that to
-Gentoo infra).
+found at [https://codeberg.org/thesamesam/gentoo-hurd](https://codeberg.org/thesamesam/gentoo-hurd)
+(will move that to Gentoo infra).
 ”
 
 
