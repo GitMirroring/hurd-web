@@ -14,7 +14,14 @@ License|/fdl]]."]]"""]]
 
 # Sources
 
-<https://git.savannah.gnu.org/cgit/hurd/libpthread.git/>
+glibc has merged libpthread inside glibc.  So libpthread can be found
+inside glibc.  You can clone glibc from any of these repos.
+
+<https://sourceware.org/git/glibc.git>
+
+<https://https.git.savannah.gnu.org/git/hurd/glibc.git/>
+
+<https://salsa.debian.org/glibc-team/glibc.git>
 
 
 # Specifics
@@ -23,7 +30,6 @@ Porting libpthread to a specific architecture is non-trivial.
 
 Our libpthread is currently used by/ported to the [[Hurd]] on [[GNU
 Mach|microkernel/mach/gnumach]], and [[microkernel/Viengoos]].
-
 
 # History
 
