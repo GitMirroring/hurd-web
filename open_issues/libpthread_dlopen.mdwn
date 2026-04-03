@@ -46,9 +46,6 @@ single-threading to multi-threading, which is only supported since libc0.3
     <youpi> (ideally)
     <youpi> but for this we need to build libpthread along glibc, to get it
       really working
-
-[[Packaging_libpthread]].
-
     <youpi> and that's the tricky part (Makefile & such) which hasn't been done
       yet
     <pinotree> why both (stubs + actual libpthread)?
