@@ -11,10 +11,3 @@ License|/fdl]]."]]"""]]
 
 The *exec* server, listening on `/servers/exec`, is responsible for
 preparing the execution of processes.
-
-
-# Open Issues
-
-  * [[open_issues/exec]].
-
-  * [[open_issues/exec_memory_leaks]].
