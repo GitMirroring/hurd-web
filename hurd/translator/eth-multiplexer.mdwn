@@ -1,4 +1,4 @@
-[[!meta copyright="Copyright © 2024 Free Software Foundation,
+[[!meta copyright="Copyright © 2024, 2026 Free Software Foundation,
 Inc."]]
 
 [[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable
@@ -15,6 +15,8 @@ The `eth-multiplexer` translator lets one share an ethernet device.
 It is commonly used to set up subhurds' networking to share an
 ethernet device with the subhurd and the main hurd.  The [[subhurds'
 page|hurd/subhurd]] has a guide to show you how to do this.
+
+[[!img logo/ethernet-multiplexor.svg size="200x" alt="ftpfs logo" align="center"]]
 
 Here's a basic example to get you started using the eth-multiplexer.
 To do so, install the multiplexer at `/dev/eth0m`.
