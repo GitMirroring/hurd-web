@@ -24,10 +24,6 @@ trivial to do so.  It is a little like having a packed board meeting.  More
 people in the room potentially means more can get done, but only one person can
 speak at a time.  Scheduling everyone to speak can be quite an involved task.
 
-
-
-     NOTE: Many of the veteran Hurd developers consider this task too large for a Google summer of code project.
-
 <!--
 This svg is cc attribute
 https://en.wikipedia.org/wiki/File:SMP_-_Symmetric_Multiprocessor_System.svg -->
@@ -38,8 +34,8 @@ https://en.wikipedia.org/wiki/File:SMP_-_Symmetric_Multiprocessor_System.svg -->
 
 # Current Status
 
-As of September 2024, the SMP support is implemented for i386 with
-working internet, because it boots with only one cpu in the default
+As of early 2026, the SMP support is implemented for i386 and amd64
+, but currently the Hurd runs with only one cpu in the default
 processor set.  The slave processors are temporarily disabled until
 they can be safely used per task.  We are unable to turn on the full
 set at boot time due to race bugs.  Debian Hurd provides SMP enabled
