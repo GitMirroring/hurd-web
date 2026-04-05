@@ -33,7 +33,11 @@ read [[the details on the system bootstrap|hurd/bootstrap]].
 # disk translator
 
 The disk translator contains the disk drivers used to access the root
-filesystem. This is currently work in progress.
+filesystem.  By default the amd64 Hurd uses
+[[rumpdisk|hurd/rump/rumpdisk]] for its disk drivers, while the i386
+Hurd uses the [[outdated DDE drivers|hurd/dde]].  Once we make
+rumpdisk less memory hungry, we'll use rumpdisk by default on all
+architectures.
 
 # ext2fs
 
@@ -63,7 +67,7 @@ Auth knows about identities: uid, gid, etc.  Details are available in
 
 # startup
 
-"startup" is the unixish system starting point: it basically runs /sbin/init, at
+"startup" is the unixish system starting point: it basically runs `/sbin/init`, at
 which point we end up with the standard Unix boot up.
 
 # netdde / pfinet
@@ -71,13 +75,15 @@ which point we end up with the standard Unix boot up.
 At some point of the boot process, networking will have to be configured. This
 is done by starting "pfinet", the TCP/IP stack, from /servers/socket/2, which
 itself starts the network device driver server, "netdde", from /dev/netdde.
+We eventually plan to replace netdde and pfinet with
+[[rumpNET|hurd/rump/rumpnet]] and [[lwip|hurd/translator/lwip]].
 
 # everydaylife
 
 Normal processes use glibc to interact with the system. Depending on the kind of
 call, glibc will perform RPCs with the various servers mentioned above: opening
-files will trigger RPCs with ext2fs, calling getpid() and such will trigger RPCs
-with proc, calling getuid() and such will trigger RPCs with auth, opening a
+files will trigger RPCs with ext2fs, calling `getpid()` and such will trigger RPCs
+with proc, calling `getuid()` and such will trigger RPCs with auth, opening a
 network socket will trigger RPCs with pfinet.  Details are available in [[the RPC page|/hurd/rpc]]
 
 One can read the [[details how reading a file happens|hurd/io_path]].
