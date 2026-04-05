@@ -57,6 +57,12 @@ everyone, take your chance to chat with GNU Hurd developers!
   * `#archhurd`, [[hurd/running/Arch_Hurd]].
     [Logs](http://files.archhurd.org/irclogs).
 
+  * `#gentoo-hurd`, [source code](https://codeberg.org/thesamesam/gentoo-hurd)
+
+  * `#guix`, [guix.gnu.org](https://guix.gnu.org),
+    [logs](https://logs.guix.gnu.org): This is the best channel for
+    asking Guix Hurd questions.
+
 
 ## OFTC
 
