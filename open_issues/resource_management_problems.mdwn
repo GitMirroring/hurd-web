@@ -24,7 +24,7 @@ discardable, for example.
 This is the fundamental failing of the Mach/Hurd architecture.  The
 Hurd operates via many server to client relationships, in which
 servers request resources on behalf of their clients.  For example at
-any given time, `extfs` could have many different clients (emacs, vim,
+any given time, `ext2fs` could have many different clients (emacs, vim,
 git etc.) requesting data, creating files, deleting files, re-naming
 files, etc.  Suppose one rogue client out of 50 is continually
 requesting increasingly more memory, which is exhasting the machine's
