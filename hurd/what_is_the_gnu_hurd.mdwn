@@ -45,7 +45,7 @@ programs and libraries to operate. Let's look at an example.
 
 [[!img open_issues/images/overview.svg]]
 
-Firefox invokes glibc's `send ()`, which in turn uses the pfinet (or
+Labybird invokes glibc's `send ()`, which in turn uses the pfinet (or
 lwip) TCP/IP stack, which talk to our device drivers (rump or netdde),
 which can actually access the hardware without entering kernel space 
 (GNU Mach).  That's a lot of power for userspace!
