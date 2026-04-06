@@ -13,7 +13,7 @@ License|/fdl]]."]]"""]]
 
 # RumpDisk
 
-The Hurd supports modern SATA devices like SSDs with RumpDisk.  If you
+The Hurd supports SATA devices like SSDs with RumpDisk.  If you
 successfully installed the Hurd in real hardware, via toggling the
 "compatibility" mode in your BIOS, then the Hurd is probably using old
 Linux drivers to access your hard drive/SSD.  Even more problematic,
