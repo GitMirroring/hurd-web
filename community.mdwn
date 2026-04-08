@@ -9,8 +9,8 @@ License|/fdl]]."]]"""]]
 [[!meta title="Community"]]
 
 
-There is an ever expanding community of people developing and running GNU/Hurd
-systems! This page tries to list all the places where we commonly hang out.
+Join The Hurd! There is an ever expanding community of hackers developing and running GNU/Hurd
+systems. This page tries to list all the places where we commonly hang out.
 
 ---
 # Online Communities
