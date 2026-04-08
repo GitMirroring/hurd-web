@@ -156,9 +156,15 @@ allocated buffer. One can thus use:
 
 Same rationale as `PATH_MAX`. There is no limit on the number of arguments.
 
+This limit can be simply ignored, or replaced by an arbitrary constant, there is
+no restriction issue here.
+
 ## <a name="IOV_MAX"> `IOV_MAX` </a>
 
 Same rationale as `PATH_MAX`. There is no limit on the number of iovec items.
+
+This limit can be simply ignored, or replaced by an arbitrary constant, there is
+no restriction issue here.
 
 ## <a name="MAXHOSTNAMELEN_tt_"> `MAXHOSTNAMELEN`, `HOST_NAME_MAX` </a>
 
