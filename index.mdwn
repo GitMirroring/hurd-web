@@ -111,8 +111,10 @@ are rendered on a [[Debian_GNU/Hurd|hurd/running/debian]] system.
 # Current Status
 
 <!-- I understand the "GNU" prefix is important, especially for Mach, since GNU Mach is an implementation of normal Mach. I'm assuming the reader picks up on this instinctively. Revert if it seems wrong. -->
-The latest GNU releases are **Hurd 0.9**, **Mach 1.8**, and **MIG
-1.8** [[(Release Notes)|news/2016-12-18-releases]], 2016-12-18.
+
+The **hurd**, **mach**, and **mig** repository are continuously updated, please
+check out the latest git development, downstream distributions pick up snapshots
+every few months..
 
 The Hurd is developed by [[a few volunteers in their spare time|faq/how_many_developers]].
 The project welcomes any assistance [[you can provide|contributing]].
