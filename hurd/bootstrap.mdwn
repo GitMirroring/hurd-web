@@ -292,7 +292,7 @@ rumpdisk. It calls `fsys_init` on its bootstrap port.
 # pci-arbiter getting initialized
 
 pci-arbiter's `trivfs_S_fsys_init` gets called from the `fsys_init` call from
-rumpdisk.
+acpi.
 
 It gets the root node of ext2fs, sets all common ports, and install
 itself in the ext2fs FS as translator for `/servers/bus/pci`.
