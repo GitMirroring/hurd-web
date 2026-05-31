@@ -14,7 +14,7 @@ License|/fdl]]."]]"""]]
 
 [[!inline pagenames=hurd/what_is_an_os_bootstrap raw=yes feeds=no]]
 
-Sergey Bugaev proposed:
+Sergey Bugaev proposed (the WIP code is [[here|https://github.com/bugaevc/hurd/tree/bootstrap/bootstrap]]):
 
 The Hurd's current bootstrap, [[Quiet-Boot|hurd/bootstrap]] (a biased
 and made-up name), is fragile, hard to debug, and complicated:
