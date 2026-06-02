@@ -18,6 +18,8 @@ of Hurd: this means that applications that implement a FUSE filesystem, when
 compiled against libfuse-hurd, become translators to be set with usual [[settrans]]
 etc.
 
+Sergey Bugaev has a separate WIP [libfuse](https://github.com/bugaevc/hurd/tree/fuse/libfuse). 
+
 
 # Status
 
