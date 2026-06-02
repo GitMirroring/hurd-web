@@ -13,7 +13,7 @@ License|/fdl]]."]]"""]]
 
 # RumpNet
 
-The Hurd is currently using an old Linux's TCP/IP stack (`pfinet`) and
+The Hurd currently uses an old Linux's TCP/IP stack ([[hurd/translator/pfinet]]) and
 device drivers. Hurd developers are replacing Linux's old ethernet
 drivers with rumpnet's modern ethernet and wifi device drivers.  While
 porting Linux's device drivers would provide better hardware support,
@@ -44,4 +44,7 @@ Now you should be able to manually start rumpnet, and it should autostart at boo
     # ifup /dev/wm0
 
 
+# See Also
 
+We hope to replace `pfinet` with [[hurd/translator/lwip]].  Alternatively, we could
+use rump's TCP/IP driver.
