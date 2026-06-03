@@ -9,6 +9,12 @@ Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license
 is included in the section entitled [[GNU Free Documentation
 License|/fdl]]."]]"""]]
 
+The GNU/Hurd currently uses ext2 as its filesystem, but it can now use a JDB2
+binary journal, which is compatible with ext3 or ext4.  While ext3 is not the
+world's best filesystem, it does work.  A talented developer could add a rump
+driver to use one of [NetBSD's filesystems](https://www.netbsd.org/about/interop.html).
+A brilliant developer could potentially port [[open_issues/bcachefs]].
+
 
 # Implementation
 
@@ -21,6 +27,18 @@ License|/fdl]]."]]"""]]
   * [[metadata_caching]]
 
   * [[internal_allocator]]
+
+## Journal
+
+In early June of 2026, Milos Nikic added a JBD2 binary compliant journal, which is compatible
+with ext3/ext4.  `ext2fs` will continue to read ext2 only filesystems, but if you enable the journal
+on an ext2 partition via:
+
+     # tune2fs -j <partition>
+
+Then `ext2fs` will use an "ext3/ext4" journal on that filesystem.  This should help the Hurd avoid
+so much filesystem corruption.  Additionally, GNU/Linux will now recognize that partition as ext3
+or ext4.
 
 ## Current Limitations
 
@@ -97,7 +115,6 @@ Ognyan's patch lifted this limitation (and is being used in the
 incompatibility: `ext2fs` then only supports block sizes of 4096 bytes.
 Smaller block sizes are commonly automatically selected by `mke2fs` when using
 small backend stores, like floppy devices.
-
 
 #### IRC, freenode, #hurd, 2012-06-30
 
