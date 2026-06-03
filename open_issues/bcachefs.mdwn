@@ -11,11 +11,12 @@ License|/fdl]]."]]"""]]
 
 [[!tag open_issue_hurd]]
 
-The Hurd's primary filesystem is ext2, which works but lacks modern
-features.  Ext2 does not have a journal, so Hurd users occasionally
-have to deal with filesystem corruption.  `fsck` can fix most of the
-issues (with loss of random data), but without a proper journal the
-Hurd currently is not a good a OS for long-term data storage.
+The Hurd's primary filesystem is [[hurd/translator/ext2fs]], which also supports
+an ext3/ext4 compatible journal.  However, the ext2/3/4 filesystems are non-CoW
+filesystems and are somewhat technically dated. ZFS has shown what is possible 
+with a CoW filesystem.  Perhaps [Bcachefs](https://bcachefs.org/) could be the 
+Hurd's modern CoW filesystem, but only a devoted developer could port it to the Hurd.
+There are currently no concrete plans to do so due to lack of developer man power.
 
 Bcachefs is a modern COW (copy-on-write) open source filesystem for
 Linux, which intends to replace Btrfs and ZFS while having the
@@ -27,13 +28,11 @@ database transaction layer.  That core database library is maybe
 
 Some Hurd developers recently [[talked with
 Bcachefs|https://youtube.com/watch?v=bcWsrYvc5Fg]] author Kent
-Overstreat about porting bcachefs to the Hurd.  There are currently no
-concrete plans to do so due to lack of developer man power.
-
+Overstreat about porting bcachefs to the Hurd. Kent explained that
 90% of the Bcachefs filesystem code builds and runs in userspace.  It
 uses a shim layer that makes maps kernel locking primatives to
-pthreads, the kernel io API is mapped to AIO, etc.  Bcachefs does
-intend to eventually rewrite most or all of its current codebase into
+pthreads, the kernel io API is mapped to AIO, etc.  Kent
+intends to eventually rewrite most or all of bcachefs in
 rust.
 
 Kent is ok with us merging a shim layer for libstore that maps to the
