@@ -21,6 +21,9 @@ those drivers are baked into the GNU Mach kernel!  With rumpdisk, you
 can use SSDs on the Hurd and enjoy a max partition size of [[2
 TiB|faq/2_gib_partition_limit]]!
 
+RumpDisk can support NVMe SSDs, but a developer needs to compile RumpDisk
+with this support enabled.  Contribution welcome.
+
 If you want to test if the Hurd can boot with your SSD, change any
 occurence of `hdN` in `/boot/grub/grub.cfg` to `wdN`, where `N` is a
 number, and add the `noide` option on the `multiboot` line,
