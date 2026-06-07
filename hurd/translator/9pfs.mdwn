@@ -1,0 +1,39 @@
+[[!meta copyright="Copyright © 2026 Free Software Foundation, Inc."]]
+
+[[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable
+id="license" text="Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no Invariant
+Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license
+is included in the section entitled [[GNU Free Documentation
+License|/fdl]]."]]"""]]
+
+Sergey wrote a [WIP 9pfs](https://github.com/bugaevc/9pfs) translator
+for the Hurd.  9P is a network protocol developed by Plan 9 that
+connects remote computers’ components.  9pfs is a 9P protocol client,
+which can read (there is some support for writing too) remote
+directories.  9P is perhaps not as robust or as fault tolerant as NFS,
+but it is a rather simple an ingenious protocol that works well enough
+for most use cases.  The Hurd’s NFSv3 translator is an alternative to
+9pfs.
+
+Sergey currently uses 9pfs to build software on the Hurd that is
+edited on GNU/Linux.  You just need to spin up a 9P server on
+GNU/Linux.  [diod](https://github.com/chaos/diod) is a good choice.
+But if the Hurd implemented `virtio-9p`, which qemu supports, then you
+would not need to run diod.
+
+Please note that you can do the same thing with the Hurd’s nfsv3
+client, even though the Hurd’s nfsv3 only supports UDP.
+
+Once there exists a 9P server that runs on the Hurd the following
+would be possible.
+
+- GNU/Linux could read/write several Hurd vms’ filesystems.  For this
+to work, a developer needs to port or write a 9P server for the
+GNU/Hurd.  Once that 9P server worked, then GNU/Linux could mount the
+Hurd’s filesystem.  You just specify that the [filesystem is
+9p](https://docs.kernel.org/filesystems/9p.html).
+
+- The GNU/Hurd could read/write several subhurds’ filesystems and vice
+  versa.
