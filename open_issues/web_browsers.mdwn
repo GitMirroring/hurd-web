@@ -1,0 +1,24 @@
+[[!meta copyright="Copyright © 2026 Free Software Foundation, Inc."]]
+
+[[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable
+id="license" text="Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no Invariant
+Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license
+is included in the section entitled [[GNU Free Documentation
+License|/fdl]]."]]"""]]
+
+Modern users spend lots of computing time using their web browser.
+Many web browsers work on Debian GNU/Hurd: Emacs' eww, lynx, Surf,
+Luakit, Netsurf, and Dillo.  However, users must compile netsurf and
+dillo from source due to `PATH_MAX` issues.  While luakit should work
+for most users' needs, the Hurd does lack a modern web browser such as
+Chromium, Firefox, Brave, or LadyBird.
+
+Some years ago, Debian GNU/Hurd did support an older version of
+Firefox.  More recently, Sergey did manage to port and run and older
+version of LadyBird.  A talented and dedicated GNU Hurd developer
+could port a modern web browser, but it would take a significant
+amount of work.  It may take a continuous herculean effort to keep the
+port up to date.
+
