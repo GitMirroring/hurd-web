@@ -124,6 +124,8 @@ part:1:file:/home/samy/tmp/foo`). This would be libnetfs-based.
 * Make something useful out of SIGINFO for programs which do catch it. This is in `glibc/hurd/siginfo.c`, it could e.g. print the current RPC, like BSD does.
 * Define some way to get network interface statistics (sent/received bytes/packets, etc.), probably as an ioctl like the other network interface manipulation calls, ideally like BSD does. Probably by supporting `SIOCGIFDATA` like on NetBSD and OpenBSD, and use that in `getifaddrs`.
 * Add `SO_RCVTIMEO` support to `pflocal`. That means adding timed reception support to `libpipe`, and plugging it in pflocal.
+* Document how to use the `tun` support of pfinet/lwip.
+* Add `tap` support to pfinet/lwip.
 
 <a name="porting"></a>
 ## Porting Packages
