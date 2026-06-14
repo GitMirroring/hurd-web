@@ -23,10 +23,10 @@ alt="FVWM and Gnumeric running on GNU/Hurd"
 title="FVWM and Gnumeric running on GNU/Hurd"
 align="right"
 ]] The GNU system (also called GNU/Hurd) is completely self-contained
-(you can compile all parts of it using GNU itself).  You can run
-several instances of the Hurd in parallel, and debug even critical
+(you can compile all parts of it using GNU itself).  You can [[run
+several instances of the Hurd in parallel|hurd/subhurd]], and [[debug even critical
 servers in one Hurd instance with gdb running on another Hurd
-instance.  You can run the X window system, applications that use it such as
+instance|hurd/subhurd#index9h2]].  You can [[run the X window system|hurd/running/x]], applications that use it such as
 gnumeric, iceweasel, and advanced server applications like the Apache webserver.
 
 The DDE environment allows for reusing half of the Linux 2.6.32 network device
@@ -35,7 +35,9 @@ Robert Millan worked on a port of the Rump kernel, which allowed to run a
 sound driver in userland. This work now needs to be extended. Support for
 character devices and other hardware (USB, multicore) is mostly missing.
 Damien Zammit added [[RumpDisk|hurd/rump/rumpdisk]], which lets the Hurd
-boot and use SSDs with a minimal NetBSD kernel running in userspace.
+boot and use SATA devices including SSDs with a minimal NetBSD kernel running in userspace.
+He also added [[RumpNET|hurd/rump/rumpnet]], which lets the Hurd use some of NetBSD's
+network device drivers.
 
 Although the [[POSIX
 interface|faq/posix_compatibility]] is provided, some additional interfaces
