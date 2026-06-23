@@ -126,6 +126,7 @@ part:1:file:/home/samy/tmp/foo`). This would be libnetfs-based.
 * Add `SO_RCVTIMEO` support to `pflocal`. That means adding timed reception support to `libpipe`, and plugging it in pflocal.
 * Document how to use the `tun` support of pfinet/lwip.
 * Add `tap` support to pfinet/lwip.
+* Add support for `EA node inline` storage of xattr, at the very least for getting xattr, see <https://kernel-internals.org/vfs/xattr/#storage-in-ext4>
 
 <a name="porting"></a>
 ## Porting Packages
