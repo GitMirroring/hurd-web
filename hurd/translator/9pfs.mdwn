@@ -37,3 +37,13 @@ Hurd’s filesystem.  You just specify that the [filesystem is
 
 - The GNU/Hurd could read/write several subhurds’ filesystems and vice
   versa.
+
+## Example Usage
+
+You can test the 9P translator via:
+
+     $ settrans -c /tmp/9p.io ~/9pfs/9pfs 9p.io
+     $ ls /tmp/9p.io/
+     9grid adm contrib dist extra lsr nix patch plan9 _sources wiki xen
+
+[IRC Log 2026-06-02](https://logs.guix.gnu.org/hurd/2026-06-02.log)
