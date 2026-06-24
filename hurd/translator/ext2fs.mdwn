@@ -36,6 +36,8 @@ on an ext2 partition via:
 
      # tune2fs -j <partition>
 
+(note that the partition needs to be unmounted, otherwise tune2fs' effect will be ignored)
+
 Then `ext2fs` will use an "ext3/ext4" journal on that filesystem.  This should help the Hurd avoid
 so much filesystem corruption.  Additionally, GNU/Linux will now recognize that partition as ext3
 or ext4.
