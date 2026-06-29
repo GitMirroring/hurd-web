@@ -127,6 +127,7 @@ part:1:file:/home/samy/tmp/foo`). This would be libnetfs-based.
 * Document how to use the `tun` support of pfinet/lwip.
 * Add `tap` support to pfinet/lwip.
 * Add support for `EA node inline` storage of xattr, at the very least for getting xattr, see <https://kernel-internals.org/vfs/xattr/#storage-in-ext4>
+* Add setxattrat/getxattrat/listxattrat/removexattrat, which are just `at` variants of the existing setxattr/getxattr/listxattr/removexattr, that should simply use `__file_name_lookup_at` instead of `__file_name_lookup`. glibc's `7ae60af75b78f408420512c58fd5a08ca7a88bad` is probably a good read to understand the subtelty.
 
 <a name="porting"></a>
 ## Porting Packages
