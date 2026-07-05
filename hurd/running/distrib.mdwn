@@ -26,28 +26,6 @@ There are several GNU distributions that are built on the Hurd. If you develop a
 ###Defunct GNU/Hurd distributions:
 
   * Bee GNU/Hurd.  Castellano distribution, pkgsrc package based.
-  * Unofficial port to Gentoo and the portage system.  It was
-    [announced](http://forums.gentoo.org/viewtopic.php?t=41939&amp;postdays=0&amp;postorder=asc&amp;start=0)
-    March 17, 2003 in the Gentoo forums, but development stopped at some point.
-
-####IRC, freenode, #hurd, 2013-01-15:
-
-        <WhiteKIBA> we are trying to revive Gentoo/hurd
-        <WhiteKIBA> we are using debian as a start
-        <WhiteKIBA> we installed portage on debian and are now bootstrapping the system into a folder
-        <WhiteKIBA> except glibc everything seems fine 
-        <_d3f> braunr: http://wiki.rout0r.org/index.php/Gentoo/Hurd/en - if you want to know more.
-
-####IRC, freenode, #hurd, 2013-02-01:
-
-        <WhiteKIBA> natsukao: http://wiki.rout0r.org/index.php/Gentoo/Hurd/en I am working on it
-        <WhiteKIBA> if i can get glibc to compile correctly i can create a stage3 but at the moment it fails
-
-####IRC, freenode, #hurd, 2013-02-02:
-
-        <alexxy> WhiteKIBA: you may be interested in my try to run gentoo/hurd
-        <alexxy> WhiteKIBA: http://omrb.pnpi.spb.ru/gitweb/?p=gentoo/hurd.git;a=summary
-
 
 # Using
 
@@ -60,15 +38,14 @@ about getting applications to work (if possible).
 
 # For Developers
 
-<dl>
-  <dt>[[SavannahProjects]]</dt>
-  <dd> Savannah is a CVS &amp; Bug system evolved from a free version of the code that powers <a href="http://sf.net" target="_top">sourceforge.net</a>. It has forked and been slightly modified for use by FSF, GNU and non-GNU projects. Actual Development takes place here. There is also a <a href="http://savannah.gnu.org/people/?group=hurd" target="_top">help wanted</a> list. </dd>
-</dl>
+* Savannah is a CVS & Bug system evolved from a free version of the
+  code that powers [sourceforge.net](https://sf.net). It has forked
+  and been slightly modified for use by FSF, GNU and non-GNU
+  projects. Actual Development takes place here. There is also a
+  [help wanted](http://savannah.gnu.org/people/?group=hurd) list.
 
-<dl>
-  <dt>[[porting/guidelines]] FAQ</dt>
-  <dd> What does it take to move a piece of Debian packaged software to the GNU/Hurd port? </dd>
-</dl>
+* [[porting/guidelines]] FAQ
+* What does it take to move a piece of Debian packaged software to the GNU/Hurd port?
 
 
 # External
