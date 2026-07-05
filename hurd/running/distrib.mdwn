@@ -16,8 +16,9 @@ There are several GNU distributions that are built on the Hurd. If you develop a
 * [[Debian]]
 * [[Guix]]
 
-###GNU/Hurd distributions in early stages of development: 
+###GNU/Hurd distributions in early stages of development:
 
+* [[Alpine]]
 * [[Arch|arch_hurd]] (features a LiveCD)
 * [[Nix]]
 

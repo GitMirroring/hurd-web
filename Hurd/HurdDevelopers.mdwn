@@ -13,7 +13,7 @@ The Hurd has very few people working on it. This is a list of people who are  la
 * Samuel Thibault - Maintainer
 * Joshua Branson - Documentation  (jab or gnucode on irc)
 * Etienne Brateau - xkb keyboard layout
-* Sergey Bugaev - security fixes, 64 bit and AArch64 port, and Alpine/Hurd
+* Sergey Bugaev - security fixes, 64 bit and AArch64 port, and [[Alpine/Hurd|hurd/running/alpine]]
 * Diego Nieto Cid - fixed compilation warnings
 * Flávio Cruz - Mach IPC improvements
 * Luca Dariz - 64 bit port and make check

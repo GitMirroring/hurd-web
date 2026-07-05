@@ -1,0 +1,22 @@
+[[!meta copyright="Copyright © 2026 Free Software Foundation, Inc."]]
+
+[[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable
+id="license" text="Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no Invariant
+Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license
+is included in the section entitled [[GNU Free Documentation
+License|/fdl]]."]]"""]]
+
+In early 2024, Sergey Bugaev hacked together a Hurd OS running via
+Alpine; he just replaced musl and Linux with glibc and the Hurd.  His
+goal was to boot the Hurd with busybox and OpenRC (one can install
+bash, if one wishes).  You can [read the annoucement
+email](https://lists.gnu.org/r/bug-hurd/2024-01/msg00180.html).  The
+source code is [here](https://github.com/bugaevc/aports/).
+
+He doesn't want to call it Alpine Hurd, because upstream Alpine is not
+the biggest fan of GNU.  It has not seen a ton of activity lately, but
+anyone is free to revive it.
+
+
