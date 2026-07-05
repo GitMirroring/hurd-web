@@ -50,7 +50,7 @@ Add the below entry to `/etc/grub.d/40_custom` file in your linux installation.
 	menuentry "Debian GNU/Hurd" {
 		set root='hd0,msdos3'
 		echo	'Loading GNU Mach ...'
-		multiboot	/boot/gnumach-1.8-486-up.gz root=part:3:device:wd0 noide
+		multiboot	/boot/gnumach-1.8-486-up.gz root=part:3:device:wd0 noide noahci
 		echo	'Loading the Hurd ...'
 		module	/hurd/pci-arbiter.static pci-arbiter \
 			--host-priv-port='${host-port}' --device-master-port='${device-port}' \
