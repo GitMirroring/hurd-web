@@ -11,9 +11,10 @@ what those standards are."""]]
 
 There are several GNU distributions that are built on the Hurd. If you develop a Hurd-based distro or know of one that isn't on this list yet, feel free to add it!
 
-###Working distributions of GNU/Hurd: 
+###Working distributions of GNU/Hurd:
 
 * [[Debian]]
+* [[Gentoo]]
 * [[Guix]]
 
 ###GNU/Hurd distributions in early stages of development:

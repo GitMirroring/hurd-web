@@ -1,0 +1,19 @@
+[[!meta copyright="Copyright © 2026 Free Software Foundation, Inc."]]
+
+[[!meta license="""[[!toggle id="license" text="GFDL 1.2+"]][[!toggleable
+id="license" text="Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no Invariant
+Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license
+is included in the section entitled [[GNU Free Documentation
+License|/fdl]]."]]"""]]
+
+Gentoo GNU/Hurd has qemu images available and some daring developers
+run Gentoo GNU/Hurd on real hardware!  You can view the
+[screenshots](https://www.gentoo.org/news/2026/04/01/gentoo-hurd.html)
+in the annoucement blog post!  The current Gentoo Hurd codebase is on
+[codeberg](https://codeberg.org/thesamesam/gentoo-hurd).
+
+Read [Gentoo Hurd's project wiki
+page](https://wiki.gentoo.org/wiki/Project:Hurd) for more information.
+
