@@ -69,6 +69,10 @@ Add the below entry to `/etc/grub.d/40_custom` file in your linux installation.
 		module	/hurd/exec.static exec '$(exec-task=task-create)'
  }
 
+Note that `wd0` corresponds to `hda` in Linux. If it was `hdb` in Linux, it should be `wd1` for the Hurd, etc.
+
+Similarly, `part:3` corresponds to `3` in `hda3` in Linux, another partition number would need another number.
+
 *Nota Bene:* In your menu file there should be no extra white space after the back slashes.
 
 Following this, re-create the grub configuration file:
