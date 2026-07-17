@@ -134,20 +134,14 @@ Currently these tests are known to fail:
 
 tests/ui:
 
-    [ui] tests/ui/abi/homogenous-floats-target-feature-mixup.rs
-    [ui] tests/ui/associated-consts/issue-93775.rs
     [ui] tests/ui/env-funky-keys.rs
-    [ui] tests/ui/issues/issue-74564-if-expr-stack-overflow.rs
-    [ui] tests/ui/macros/macros-nonfatal-errors.rs
     [ui] tests/ui/modules/path-no-file-name.rs
     [ui] tests/ui/parser/mod_file_with_path_attr.rs
     [ui] tests/ui/process/no-stdio.rs#mir
     [ui] tests/ui/process/no-stdio.rs#thir
     [ui] tests/ui/process/println-with-broken-pipe.rs
-    [ui] tests/ui/sse2.rs
-    [ui] tests/ui/traits/object/print_vtable_sizes.rs
 
-notably because we have not enabled SSE2 by default, and we have errno values that are different from Linux etc.,
+notably because we have errno values that are different from Linux etc.,
 
 library/std:
 
@@ -163,7 +157,7 @@ library/std:
     os::unix::net::tests::test_read_with_timeout
     os::unix::net::tests::test_unix_datagram_connect_to_recv_addr
 
-because pfinet currently lets double-bind on IPv6 addresses, doesn't currently support `SO_SNDTIMEO` / `SO_RCVTIMEO`, and pflocal doesn't support getpeername.
+because pfinet currently lets double-bind on IPv6 addresses when `SO_REUSEADDR` is set to 1, doesn't currently support `SO_SNDTIMEO` / `SO_RCVTIMEO`, and pflocal doesn't support getpeername.
 
 ---
 
