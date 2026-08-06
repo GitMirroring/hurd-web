@@ -11,6 +11,9 @@ License|/fdl]]."]]"""]]
 
 [[!tag open_issue_glibc]]
 
+# Mailing list
+
+See [Sergey's comment about it](https://lists.gnu.org/archive/html/bug-hurd/2023-02/msg00054.html)
 
 # IRC, unknown channel, unknown date
 
