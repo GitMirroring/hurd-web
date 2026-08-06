@@ -24,9 +24,8 @@ It also has some tricky [[problems|challenges]] to solve.
 However, [[gnu.org|https://www.gnu.org/distros/free-distros.html]] maintains a
 list of freedom respecting and production ready GNU/Linux systems.  One of the
 most promising of these is [[Guix System|https://www.gnu.org/software/guix/]], which
-is the GNU Guix System Distribution, which even supports the hurd as one of its kernel! You can even use a 
-[[childhurd|https://guix.gnu.org/manual/devel/en/html_node/Virtualization-Services.html#The-Hurd-in-a-Virtual-Machine]]
-on Guix System!
+is the GNU Guix System Distribution. It even supports the Hurd as one of its kernels! The best way to run Guix GNU/Hurd is by using a 
+[[childhurd|https://guix.gnu.org/manual/devel/en/html_node/Virtualization-Services.html#The-Hurd-in-a-Virtual-Machine]].
 
 ## Resources
 
