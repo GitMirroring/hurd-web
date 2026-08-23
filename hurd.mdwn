@@ -13,6 +13,9 @@ The GNU Hurd is under active development.  Because of that, there is no
 [[Git|source_repositories]].  The latest release is [[GNU Hurd
 0.9|news/2016-12-18-releases]].
 
+The translators of the GNU Hurd are shipped under the General Public License,
+either version 2, or (at your option) any later version.
+
 Although it is possible to bootstrap the GNU/Hurd system from the sources by
 cross-compiling and installing the system software and the basic applications,
 this is a difficult process.  It is not recommended that you do this.  Instead,

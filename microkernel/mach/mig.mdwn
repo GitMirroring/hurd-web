@@ -27,6 +27,9 @@ and how to be passed.
 It has its problems with
 [[structured_data|open_issues/mig_portable_rpc_declarations]], however.
 
+GNU Mig is mostly shipped under a BSD/MIT license, some parts are shipped under
+the General Public License, either version 2, or (at your option) any later
+version.
 
   * [[Documentation]]
 
