@@ -37,9 +37,7 @@ There is a list of [[known failures|open_issues/glibc]].
 
 ---
 
-When building the debian glibc, to save yourself a double-compilation, comment
-in debian/sysdeps/hurd-i386.mk the lines about xen. Then to avoid the whole
-testsuite, use:
+When building the debian glibc, to avoid the whole testsuite, use:
 
     DEB_BUILD_OPTIONS=nocheck dpkg-buildpackage
 
