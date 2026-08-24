@@ -190,6 +190,7 @@ This is the list of tasks that we *want* to address soon, starting with the most
 * Rewrite `pthread_cond_*`, `pthread_rwlock_*`, `pthread_barrier_*` to use `gsync`, like `pthread_mutex_*` do (also see the nptl implementations, possibly just share with them).
 * Improve rumpdisk's asynchronism, see end of `hurd/rumpdisk/block-rump.c`.
 * Check performance of `rumpdisk` against the in-`gnumach` drivers.
+* Add a uuid translator that would use `libblkid` to probe the different available disks and partitions and their filesystems UUIDs, to be used in the bootstrap chain so grub can designate the root filesystem through a UUID rather than a device name. It would be useful to serve a /dev/disk/by-uuid too.
 * Finish glib's file monitoring (see [merge request draft](https://gitlab.gnome.org/GNOME/glib/-/merge_requests/3626) and [Debian bug](https://bugs.debian.org/1008208))
 * In htl, make `__pthread_getid` take a reference in `thread->nr_refs` to keep the `struct __pthread` alive until its called is finished with it.
 * Then, make `ss` allocated in `__pthread_thread_alloc` and freed in `__pthread_thread_terminate`.
