@@ -128,7 +128,7 @@ part:1:file:/home/samy/tmp/foo`). This would be libnetfs-based.
 * Add `tap` support to pfinet, by determining which is desired in `setup_tunnel_device` and then add/remove the ethernet header in `trivfs_S_io_read`/`trivfs_S_io_write`. Similarly, in lwip, in `create_netif_state` / `hurdtunif_device_init`, and then `trivfs_S_io_read`/`trivfs_S_io_write`.
 * Add support for `EA node inline` storage of xattr, at the very least for getting xattr, see <https://kernel-internals.org/vfs/xattr/#storage-in-ext4>
 * Add setxattrat/getxattrat/listxattrat/removexattrat, which are just `at` variants of the existing setxattr/getxattr/listxattr/removexattr, that should simply use `__file_name_lookup_at` instead of `__file_name_lookup`. glibc's `7ae60af75b78f408420512c58fd5a08ca7a88bad` is probably a good read to understand the subtelty.
-* Make `libbpf` use `libpcap`'s `bpf_filter` and `bpf_validate` instead of using our own copy.
+* Make `libbpf` use `libpcap`'s `bpf_filter` and `bpf_validate` instead of using our own copy, after it is made loop-free, see <https://github.com/the-tcpdump-group/libpcap/issues/1434>
 
 <a name="porting"></a>
 ## Porting Packages
