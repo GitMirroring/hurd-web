@@ -28,7 +28,9 @@ Quite a few of them are actually benign:
     [...]
     Free inodes count wrong (880891, counted=880909).
 
-see [[open_issues/ext2fs_dtime]]
+This was fixed on september 2026 by implementing the orphan list, available along journaling support:
+
+https://lists.gnu.org/archive/html/bug-hurd/2026-09/msg00079.html
 
     /dev/hd0s1: i_file_acl_hi for inode 81872 (/proc) is 32, shoud be 0.
 
