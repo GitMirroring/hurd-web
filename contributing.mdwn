@@ -104,10 +104,6 @@ with". Make sure to check out the most up-to-date version on
 * Add NX / SMEP / SMAP protection support to GNU Mach.
 * Add use of PCID in GNU Mach.
 * Fix 64bit instruction set disassembling in GNU Mach's `/i386/i386/db_disasm.c` `db_disasm` function and tables.
-* Write a partfs translator, to which one gives a disk image, and
-which exposes the partitions of the disk image, using parted, and
-the parted-based storeio (`settrans -c foos1 /hurd/storeio -T typed
-part:1:file:/home/samy/tmp/foo`). This would be libnetfs-based.
 * Write [[virtio drivers for KVM|open_issues/virtio#KVM]].
 * Move the [[mount/umount|open_issues/glibc#mount]] logic from
 `utils/{,u}mount.c` into [[glibc]].
