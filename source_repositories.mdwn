@@ -18,13 +18,23 @@ This page is meant to give some guidelines.  Please use good sense or ask on
 
 # Git repositories on Savannah
 
-<https://git.savannah.gnu.org/cgit/hurd>
+Unfortunately, the web frontend <https://git.savannah.gnu.org/cgit/hurd> is
+spammed by scrapers.
 
-  * hurd.git -- Hurd meta package; no real content yet
+The most efficient way to get sources is thus to use a git clone, e.g.:
+
+    git clone https://git.savannah.gnu.org/git/hurd/hurd.git
+
+or even setup an account on <https://savannah.gnu.org/> and clone through ssh:
+
+    git clone git.savannah.gnu.org:/srv/git/hurd/hurd.git
+
+The following repositories are available:
+
+  * hurd/hurd.git -- [[/Hurd]] ([[hurd/building]])
   * [[hurd/glibc.git|glibc]] -- [[/glibc]] maintenance
   * hurd/gnumach.git -- [[GNU Mach|microkernel/mach/gnumach]]
     ([[microkernel/mach/gnumach/building]])
-  * hurd/hurd.git -- [[/Hurd]] ([[hurd/building]])
   * [[hurd/incubator.git|incubator]] -- the great next stuff
   * hurd/libpthread.git	-- [[POSIX threading library|libpthread]]
   * hurd/mig.git -- [[microkernel/mach/MIG]]
@@ -34,6 +44,7 @@ This page is meant to give some guidelines.  Please use good sense or ask on
   * hurd/viengoos.git -- [[microkernel/Viengoos]]
     ([[microkernel/viengoos/building]])
   * hurd/web.git -- [[contributing/Web_pages]]
+  * hurd.git -- Hurd meta package; no real content yet
 
 These are mirrored on
 <https://git.sceen.net/hurd/>, which
