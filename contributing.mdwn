@@ -126,6 +126,7 @@ with". Make sure to check out the most up-to-date version on
 * Add setxattrat/getxattrat/listxattrat/removexattrat, which are just `at` variants of the existing setxattr/getxattr/listxattr/removexattr, that should simply use `__file_name_lookup_at` instead of `__file_name_lookup`. glibc's `7ae60af75b78f408420512c58fd5a08ca7a88bad` is probably a good read to understand the subtelty.
 * Make `libbpf` use `libpcap`'s `bpf_filter` and `bpf_validate` instead of using our own copy, after it is made loop-free, see <https://github.com/the-tcpdump-group/libpcap/issues/1434>
 * Make rust-libc's `src/unix/hurd/mod.rs` define `_IO`, `_IOR`, `_IOW`, `_IOWR` functions, just like `src/unix/linux_like/mod.rs`, but with the hurd-specific encoding (see glibc's `sysdeps/mach/hurd/bits/ioctls.h`), at least for the trivial case of a single integer value. We can leave the structure case out.
+* Fix `_hurd_fd_read` and `_hurd_fd_write` (and possibly other such RPCs) for sizes beyond 2GB on 64b systems: `mach_msg_type_number_t` cannot express such a large value, they need to perform a loop.
 
 <a name="porting"></a>
 ## Porting Packages
